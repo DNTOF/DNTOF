@@ -25,73 +25,6 @@
 > *An average student who codes for fun — but fun things deserve to be done well.*
 
 <br>
-
-<!-- ░░░░░░░░░░░  GAME STICKERS  ░░░░░░░░░░░ -->
-
-## 🎮 我喜爱的游戏 / Favorite Games
-
-> 这里只展示了部分：
-
-<div align="center">
-<table>
-<tr>
-
-<td align="center" width="210">
-  <a href="https://store.steampowered.com/app/3557620">
-    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3557620/1bf892b91fc9832afaf2478fad7ed7e35e2d1dec/capsule_184x69.jpg" alt="Blue Archive" width="184"/><br/>
-    <img src="https://cdn.fastly.steamstatic.com/steamcommunity/public/images/apps/3557620/60ec056fcf6bcd2f89f99cac6f28719a2e87ed6a.jpg" width="48" alt="BA"/>
-  </a><br/>
-  <b>Blue Archive</b><br/>
-</td>
-
-<td align="center" width="210">
-  <a href="https://store.steampowered.com/app/700330">
-    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/700330/ca314b6e38461c0095ffdc6304fa0e497a2df5d4/capsule_184x69.jpg" alt="SCP: Secret Laboratory" width="184"/><br/>
-    <img src="https://cdn.fastly.steamstatic.com/steamcommunity/public/images/apps/700330/ea2e9a0aa3b0d3393e7452913b3c255cd23a13ba.jpg" width="48" alt="SCP:SL"/>
-  </a><br/>
-  <b>SCP: Secret Laboratory</b><br/>
-</td>
-
-<td align="center" width="210">
-  <a href="https://store.steampowered.com/app/1144400">
-    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1144400/capsule_184x69.jpg" alt="Senren Banka" width="184"/><br/>
-    <img src="https://cdn.fastly.steamstatic.com/steamcommunity/public/images/apps/1144400/52bb7ecf2ec4e08b37206e52bd43e328d785fabb.jpg" width="48" alt="Senren"/>
-  </a><br/>
-  <b>千恋＊万花</b><br/>
-</td>
-
-</tr>
-<tr>
-
-<td align="center" width="210">
-  <a href="https://store.steampowered.com/app/544810">
-    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/544810/capsule_184x69.jpg" alt="KARDS" width="184"/><br/>
-    <img src="https://cdn.fastly.steamstatic.com/steamcommunity/public/images/apps/544810/a87cdfca39c1dd5eadfd919621e008c1bdbd705c.jpg" width="48" alt="KARDS"/>
-  </a><br/>
-  <b>KARDS</b><br/>
-</td>
-
-<td align="center" width="210">
-  <a href="https://store.steampowered.com/app/438100">
-    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/438100/capsule_184x69.jpg" alt="VRChat" width="184"/><br/>
-    <img src="https://cdn.fastly.steamstatic.com/steamcommunity/public/images/apps/438100/52c5f93bd9f8de008307f5fad95023600267462c.jpg" width="48" alt="VRChat"/>
-  </a><br/>
-  <b>VRChat</b><br/>
-</td>
-
-<td align="center" width="210">
-  <a href="https://endfield.gryphline.com/">
-    <img src="https://cdn1.epicgames.com/spt-assets/3dc91103cd1b492c8ce095fea4e07c5f/arknightsendfield-video-rp0z2.png" />
-  <a/><br/>
-  <b>Arknights: Endfield</b><br/>
-</td>
-
-</tr>
-</table>
-</div>
-
-<br>
-
 <!-- ░░░░░░░░░░░  PROJECTS  ░░░░░░░░░░░ -->
 
 ## 📦 我的项目 / My Projects
@@ -129,16 +62,15 @@
 
 ---
 
-### 🤖 [DeepSeekBot](https://github.com/DNTOF/DeepSeekBot) &nbsp;![CSharp](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=c-sharp&logoColor=white) ![Stars](https://img.shields.io/github/stars/DNTOF/DeepSeekBot?style=flat-square&color=f1c40f) ![Release](https://img.shields.io/github/v/release/DNTOF/DeepSeekBot?style=flat-square&color=9b59b6) ![Status](https://img.shields.io/badge/状态-活跃维护-2ecc71?style=flat-square)
+### 🤖 [SLAgent](https://github.com/DNTOF/SLAgent) &nbsp;![CSharp](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=c-sharp&logoColor=white) ![Stars](https://img.shields.io/github/stars/DNTOF/SLAgent?style=flat-square&color=f1c40f) ![Release](https://img.shields.io/github/v/release/DNTOF/SLAgent?style=flat-square&color=9b59b6) ![Status](https://img.shields.io/badge/状态-活跃维护-2ecc71?style=flat-square)
 
-**SCP:SL × DeepSeek AI 对话插件 (EXILED)** — 在游戏内与 AI 聊天
+**SCP:SL × AI 辅助插件 (EXILED)** — 使用自然语言来高效管理服务器
 
-用 `.bot 你的问题` 在游戏中呼出 AI，支持上下文记忆、白名单控制。也是目前主要的 C# 练手项目。
+用 `.bot 你的问题` 在游戏中呼出 AI，支持上下文记忆、白名单控制。
 
 ```
 ✅ 游戏内 AI 对话     ✅ 上下文记忆
 ✅ 白名单控制         ✅ 多玩家并发
-📌 未来: 限流系统 · 上下文长度控制 · 多模型支持
 ```
 
 ---
@@ -153,24 +85,12 @@
 
 <!-- ░░░░░░░░░░░  STATS  ░░░░░░░░░░░ -->
 
-## 📊 GitHub 统计
-
-<div align="center">
-
-<img src="https://github-readme-stats.vercel.app/api?username=DNTOF&show_icons=true&theme=tokyonight&hide_border=true&locale=cn&include_all_commits=true&count_private=true" height="165"/>
-&nbsp;
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=DNTOF&layout=compact&theme=tokyonight&hide_border=true&locale=cn" height="165"/>
-
-</div>
-
-<br>
-
 ## 🪨Stone Badge
 <div align="center">
 
 | ![badge1](https://stone.professorlee.work/api/stone/DNTOF/astrbot_plugin_sl_query?size=120) | ![badge2](https://stone.professorlee.work/api/stone/DNTOF/DeepSeekBot?size=120) | ![badge3](https://stone.professorlee.work/api/stone/DNTOF/SLDataAPI?size=120) | ![badge4](https://stone.professorlee.work/api/stone/DNTOF/astrbot_plugin_adsb_monitor?size=120) |
 | :--: | :--: | :--: | :--: |
-| **astrbot_plugin_sl_query** | **DeepSeekBot** | **SLDataAPI** | **astrbot_plugin_adsb_monitor** |
+| **astrbot_plugin_sl_query** | **SLAgent** | **SLDataAPI** | **astrbot_plugin_adsb_monitor** |
 
 </div>
 
