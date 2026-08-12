@@ -4,27 +4,6 @@
 
 </div>
 
-<br>
-
-<!-- ░░░░░░░░░░░  ABOUT  ░░░░░░░░░░░ -->
-
-## 🧑‍🎓 关于我
-
-```
-  ╔════════════════════════════════════════════╗
-  ║  DNT_OF                                    ║
-  ║  📍 成都 · Chengdu, Sichuan, China         ║
-  ║  🎓 高中学习中                              ║
-  ║  💻 自学 Python & C# · 编程入门阶段         ║
-  ║  🔌 AstrBot 插件开发者 · SCP:SL 插件开发者   ║
-  ║  ✈️  ADS-B 航空爱好者                       ║
-  ╚════════════════════════════════════════════╝
-```
-
-> 普通学生一枚，开发插件纯属爱好。代码写得不多，但每一行都认真对待。  
-> *An average student who codes for fun — but fun things deserve to be done well.*
-
-<br>
 <!-- ░░░░░░░░░░░  PROJECTS  ░░░░░░░░░░░ -->
 
 ## 📦 我的项目 / My Projects
@@ -85,15 +64,6 @@
 
 <!-- ░░░░░░░░░░░  STATS  ░░░░░░░░░░░ -->
 
-## 🪨Stone Badge
-<div align="center">
-
-| ![badge1](https://stone.professorlee.work/api/stone/DNTOF/astrbot_plugin_sl_query?size=120) | ![badge2](https://stone.professorlee.work/api/stone/DNTOF/DeepSeekBot?size=120) | ![badge3](https://stone.professorlee.work/api/stone/DNTOF/SLDataAPI?size=120) | ![badge4](https://stone.professorlee.work/api/stone/DNTOF/astrbot_plugin_adsb_monitor?size=120) |
-| :--: | :--: | :--: | :--: |
-| **astrbot_plugin_sl_query** | **SLAgent** | **SLDataAPI** | **astrbot_plugin_adsb_monitor** |
-
-</div>
-
 ## 🛠️ 技术栈
 
 <div align="center">
@@ -111,7 +81,7 @@
 
 <div align="center">
 
-* GNSS(Github,Negative,Steam,Self-transformation)*
+*GNSS(Github,Negative,Steam,Self-transformation)*
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,50:16213e,100:0f3460&height=100&section=footer" width="100%"/>
 
