@@ -25,18 +25,17 @@
 
 **面向 astrbot\_plugin\_sl\_query 和 FDC 控制台的 EXILED 服务端数据接口插件**
 
-![Version](https://img.shields.io/badge/版本-2.3.0_SPY-green?style=flat-square) ![Platform](https://img.shields.io/badge/平台-EXILED_9.x-blue?style=flat-square) ![License](https://img.shields.io/badge/License-GPLv3-orange?style=flat-square)
+![Version](https://img.shields.io/badge/版本-2.5.3_FI_STM-green?style=flat-square) ![Platform](https://img.shields.io/badge/平台-LabAPI-blue?style=flat-square) ![License](https://img.shields.io/badge/License-GPLv3-orange?style=flat-square)
 
 </div>
 
-SLDataAPI 运行于 SCP:SL EXILED 服务端，通过 HTTP API 实时暴露服务器状态——在线玩家、回合信息、核弹状态、阵营分布等，为前端查询工具和控制台提供统一的数据源。
+SLDataAPI 运行于 SCP:SL 服务端，通过 HTTP/Websocket API 实时暴露服务器状态——在线玩家、回合信息、核弹状态、阵营分布等，为前端查询工具和控制台提供统一的数据源。
 
 ```
 ✅ 多源数据聚合（玩家 / 回合 / 服务器 / 核弹 / 阵营）
-✅ HTTP API 实时查询接口
+✅ HTTP/Websocket API 实时查询接口
 ✅ 面向 astrbot_plugin_sl_query 的数据推送
 ✅ 面向 FDC 控制台的服务器控制能力
-✅ 配套查询插件双源体系（官方 API + EXILED 实时数据）
 ```
 
 > 🔗 前端查询插件：[astrbot_plugin_sl_query](https://github.com/DNTOF/astrbot_plugin_sl_query)
