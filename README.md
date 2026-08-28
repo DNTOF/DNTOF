@@ -25,7 +25,7 @@
 
 **面向 astrbot\_plugin\_sl\_query 和 FDC 控制台的 EXILED 服务端数据接口插件**
 
-![Version](https://img.shields.io/badge/版本-2.5.3_FI_STM-green?style=flat-square) ![Platform](https://img.shields.io/badge/平台-LabAPI-blue?style=flat-square) ![License](https://img.shields.io/badge/License-GPLv3-orange?style=flat-square)
+![Version](https://img.shields.io/badge/版本-2.5.4-green?style=flat-square) ![Platform](https://img.shields.io/badge/平台-LabAPI-blue?style=flat-square) ![License](https://img.shields.io/badge/License-GPLv3-orange?style=flat-square)
 
 </div>
 
