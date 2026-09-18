@@ -505,7 +505,7 @@ ul, ol { list-style: none; }
   .dnt-rail__nav { flex-direction: row; margin-left: auto; }
   .dnt-rail__nav a { border-left: none; border-bottom: 2px solid transparent; min-height: 34px; }
   .dnt-rail__nav a:hover, .dnt-rail__nav a.is-active { border-bottom-color: var(--signal); }
-  .dnt-rail__brand { writing-mode: horizontal-tb; }
+  .dnt-rail__brand { display: none; }
   .dnt-rail__foot { display: none; }
   .proj__dots { display: none; }
   .proj__tech { grid-column: 1 / -1; }
