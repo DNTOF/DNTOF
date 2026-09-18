@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" font-family="MiSans, 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif">
+  <!-- dnt-index readme header — 档案索引终端（纸白 / 墨 / 铜橙） -->
+  <rect width="1200" height="360" fill="#ECE9E3"/>
+
+  <!-- 品牌块 -->
+  <text x="48" y="66" font-size="38" font-weight="600" fill="#141310" letter-spacing="-0.5">DNT_OF</text>
+  <text x="48" y="90" font-size="10" font-weight="500" fill="#7B786E" letter-spacing="3">SCP:SL PLUGIN DEVELOPER</text>
+  <text x="48" y="108" font-size="10" font-weight="500" fill="#7B786E" letter-spacing="3">PERSONAL ARCHIVE OS</text>
+
+  <!-- 右上工具 -->
+  <text x="1152" y="66" font-size="12" font-weight="500" fill="#141310" letter-spacing="2" text-anchor="end">GITHUB ↗</text>
+  <text x="1152" y="90" font-size="10" fill="#7B786E" letter-spacing="2" text-anchor="end" font-family="ui-monospace, 'Cascadia Mono', Consolas, monospace">RECORDS 007</text>
+  <text x="1152" y="108" font-size="10" fill="#7B786E" letter-spacing="2" text-anchor="end" font-family="ui-monospace, 'Cascadia Mono', Consolas, monospace">INTERNAL DATABASE</text>
+
+  <line x1="48" y1="136" x2="1152" y2="136" stroke="#141310" stroke-opacity="0.16"/>
+
+  <!-- 大标题 -->
+  <text x="48" y="208" font-size="62" font-weight="600" fill="#141310" letter-spacing="-1">ARCHIVE INDEX</text>
+  <text x="600" y="206" font-size="16" fill="#7B786E" letter-spacing="2">内部档案索引</text>
+
+  <!-- 检索条 -->
+  <text x="48" y="256" font-size="15" fill="#7B786E">⌕</text>
+  <text x="76" y="256" font-size="14" fill="#7B786E">检索编号、名称或类别</text>
+  <rect x="1100" y="240" width="52" height="22" fill="none" stroke="#141310" stroke-opacity="0.24"/>
+  <text x="1126" y="255" font-size="10" fill="#7B786E" letter-spacing="1" text-anchor="middle" font-family="ui-monospace, 'Cascadia Mono', Consolas, monospace">ESC</text>
+  <line x1="48" y1="266" x2="1152" y2="266" stroke="#141310"/>
+
+  <!-- 类别筛选（圆点式） -->
+  <circle cx="52" cy="296" r="3.5" fill="#9B7247"/>
+  <text x="62" y="300" font-size="12.5" fill="#141310">全部档案</text>
+  <circle cx="152" cy="296" r="3.5" fill="none" stroke="#7B786E"/>
+  <text x="162" y="300" font-size="12.5" fill="#7B786E">服务端插件</text>
+  <circle cx="258" cy="296" r="3.5" fill="none" stroke="#7B786E"/>
+  <text x="268" y="300" font-size="12.5" fill="#7B786E">ASTRBOT 插件</text>
+  <circle cx="376" cy="296" r="3.5" fill="none" stroke="#7B786E"/>
+  <text x="386" y="300" font-size="12.5" fill="#7B786E">组织</text>
+  <circle cx="434" cy="296" r="3.5" fill="none" stroke="#7B786E"/>
+  <text x="444" y="300" font-size="12.5" fill="#7B786E">平台</text>
+
+  <!-- 状态样例（右侧图例） -->
+  <circle cx="952" cy="296" r="3.5" fill="#5F7A55"/>
+  <text x="962" y="300" font-size="12" fill="#7B786E">活跃</text>
+  <circle cx="1014" cy="296" r="3.5" fill="#7B786E"/>
+  <text x="1024" y="300" font-size="12" fill="#7B786E">维护</text>
+  <circle cx="1076" cy="296" r="3.5" fill="#B42318"/>
+  <text x="1086" y="300" font-size="12" fill="#7B786E">停更</text>
+
+  <!-- 底部状态条 -->
+  <line x1="48" y1="326" x2="1152" y2="326" stroke="#141310" stroke-opacity="0.16"/>
+  <text x="48" y="346" font-size="10" font-weight="500" fill="#7B786E" letter-spacing="2">DNT_OF ARCHIVE — DNTOF.COM</text>
+  <text x="1152" y="346" font-size="10" font-weight="500" fill="#7B786E" letter-spacing="2" text-anchor="end">SCP:SL // PLUGIN INDEX</text>
+</svg>

@@ -1,106 +1,29 @@
-<div align="center">
+<img src="assets/readme-header.svg" alt="DNT_OF — Personal Archive OS" width="100%" />
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,50:16213e,100:0f3460&height=200&section=header&text=DNT_OF&fontSize=60&fontColor=e94560&animation=fadeIn&fontAlignY=38&desc=SCPSL%20Plugin%20Developer%20%7C%20C%23%20%7C%20Python&descSize=16&descAlignY=60&descColor=a8b2d8" width="100%"/>
+## FILE X-001 · OPERATOR
 
-</div>
-
-## 👋 About
-
-📍 高中生 · SCP:SL 插件开发者
-
-正在自学 C# / Python，围绕 SCP: Secret Laboratory 服务器生态构建工具链。
-
-- 🔭 专注于 EXILED 插件开发与 AstrBot 生态
-- 🌱 目前在深入学习 C# 与 .NET 框架
-
-<br>
-
-<!-- ░░░░░░░░░░░  FEATURED  ░░░░░░░░░░░ -->
-
-## ⭐ Featured Project
-
-<div align="center">
-
-### 📡 [SLDataAPI](https://github.com/DNTOF/SLDataAPI)
-
-**面向 astrbot\_plugin\_sl\_query 和 FDC 控制台的 EXILED 服务端数据接口插件**
-
-![Version](https://img.shields.io/badge/版本-2.5.4-green?style=flat-square) ![Platform](https://img.shields.io/badge/平台-LabAPI-blue?style=flat-square) ![License](https://img.shields.io/badge/License-GPLv3-orange?style=flat-square)
-
-</div>
-
-SLDataAPI 运行于 SCP:SL 服务端，通过 HTTP/Websocket API 实时暴露服务器状态——在线玩家、回合信息、核弹状态、阵营分布等，为前端查询工具和控制台提供统一的数据源。
-
-```
-✅ 多源数据聚合（玩家 / 回合 / 服务器 / 核弹 / 阵营）
-✅ HTTP/Websocket API 实时查询接口
-✅ 面向 astrbot_plugin_sl_query 的数据推送
-✅ 面向 FDC 控制台的服务器控制能力
+```text
+OPERATOR  高中生，正在自学 C# 与 Python。
+DOMAIN    SCP: Secret Laboratory 服务器生态——插件、数据接口与工具，
+          把服务器实时数据做成可查询、可复用的东西。
+STACK     C# · PYTHON · .NET · EXILED · ASTRBOT
+STATUS    活跃开发
 ```
 
-> 🔗 前端查询插件：[astrbot_plugin_sl_query](https://github.com/DNTOF/astrbot_plugin_sl_query)
+## ARCHIVE INDEX · 内部档案索引
 
-<br>
+| FILE / 编号 | ARCHIVE / 档案 | DEPARTMENT / 类别 | STATUS / 状态 |
+| --- | --- | --- | --- |
+| 001 | [SLDataAPI](https://github.com/DNTOF/SLDataAPI) | 服务端插件 · LabAPI · C#/.NET | ● 活跃 · v2.5.4 · GPLv3 |
+| 002 | [astrbot_plugin_sl_query](https://github.com/DNTOF/astrbot_plugin_sl_query) | ASTRBOT 插件 · Python | ● 活跃 |
+| 003 | [SLAgent](https://github.com/DNTOF/SLAgent) | 服务端插件 · EXILED · C# | ● 维护 |
+| 004 | [astrbot_plugin_adsb_monitor](https://github.com/DNTOF/astrbot_plugin_adsb_monitor) | ASTRBOT 插件 · Python | ● 停更 |
+| 005 | [DNT-118](https://github.com/DNT-118) | 开发组织 | ● 运作中 |
+| 006 | [Foundation Console](https://dntof.com/platform/) | 平台 · SELF-HOSTED | ● 源码 2027-01-01 公开 |
 
-<!-- ░░░░░░░░░░░  PROJECTS  ░░░░░░░░░░░ -->
+> 001 运行于 SCP:SL 服务端，通过 HTTP / WebSocket API 实时暴露服务器状态——在线玩家、回合信息、核弹状态、阵营分布；002 是它的群聊查询前端，006 是它的自托管控制台（架构与版本记录见 [dntof.com/platform](https://dntof.com/platform/)）。
 
-## 📦 Projects
+## SUPPORT · 支持开发
 
----
-
-### 🔍 [astrbot\_plugin\_sl\_query](https://github.com/DNTOF/astrbot_plugin_sl_query) &nbsp;![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Stars](https://img.shields.io/github/stars/DNTOF/astrbot_plugin_sl_query?style=flat-square&color=f1c40f) ![Status](https://img.shields.io/badge/状态-活跃维护-2ecc71?style=flat-square)
-
-**SCP:SL 服务器查询 AstrBot 插件** — 官方 API + EXILED 实时数据双源查询
-
-在群聊中绑定服务器后，实时查询在线玩家、回合时长、核弹状态、阵营人数等。数据按会话隔离，支持多服务器绑定。
-
-```
-✅ 官方 API 查询          ✅ EXILED 实时数据接入
-✅ 多服务器绑定           ✅ 多会话数据隔离
-✅ 完整 /bind /sl 命令体系
-```
-
----
-
-### 🤖 [SLAgent](https://github.com/DNTOF/SLAgent) &nbsp;![CSharp](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=c-sharp&logoColor=white) ![Release](https://img.shields.io/github/v/release/DNTOF/SLAgent?style=flat-square&color=9b59b6) ![Status](https://img.shields.io/badge/状态-基础维护-0000ff?style=flat-square)
-
-**SCP:SL × AI 辅助插件 (EXILED)** — 自然语言管理服务器
-
-用 `.bot 你的问题` 在游戏中呼出 AI，支持上下文记忆与白名单控制。
-
-```
-✅ 游戏内 AI 对话     ✅ 上下文记忆
-✅ 白名单控制         ✅ 多玩家并发
-```
-
----
-
-### ✈️ [astrbot\_plugin\_adsb\_monitor](https://github.com/DNTOF/astrbot_plugin_adsb_monitor) &nbsp;![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Status](https://img.shields.io/badge/状态-停止支持-ff0000?style=flat-square)
-
-**ADS-B 飞机信息实时监控 AstrBot 插件**
-
-连接本地 Dump1090 JSON 输出，实时解析并推送飞机信息。
-
-<br>
-
-<!-- ░░░░░░░░░░░  STATS  ░░░░░░░░░░░ -->
-
-## 🛠️ Tech Stack
-
-<div align="center">
-
-![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
-![.NET](https://img.shields.io/badge/.NET_Framework-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![HTML/CSS](https://img.shields.io/badge/HTML%2FCSS-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
-
-</div>
-
-<br>
-
-<div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,50:16213e,100:0f3460&height=100&section=footer" width="100%"/>
-
-</div>
+- 爱发电：https://afdian.com/a/DNT_OF
+- 哔哩哔哩：https://space.bilibili.com/3493125592975851
