@@ -3,582 +3,386 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SLDataAPI × Foundation Console — SCP:SL 服务器管理生态</title>
-<meta name="description" content="SLDataAPI 与 Foundation Console：为 SCP:SL 服务器构建的开源管理生态——游戏内插件与自托管控制台，从源码视角讲述。" />
+<title>SLDataAPI × Foundation Console — 平台介绍</title>
+<meta name="description" content="SLDataAPI 与 Foundation Console：为 SCP:SL 服务器构建的开源管理生态——游戏内插件与自托管控制台。源码将于 2027 年 1 月 1 日公开。" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Archivo:wght@400;500;600&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@400;500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Regular.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Medium.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Demibold.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/dnt-index.css" />
 <style>
-/* ===== Token（anthropic.com 官方 swatch · 与全站一致）===== */
-:root {
-  --bg-base: #faf9f5;
-  --bg-raised: #f0eee6;
-  --bg-overlay: #faf9f5;
-  --bg-inverted: #141413;
-  --text-primary: #141413;
-  --text-secondary: #5e5d59;
-  --text-muted: #87867f;
-  --text-inverted: #faf9f5;
-  --text-inverted-dim: rgba(250, 249, 245, 0.65);
-  --border-default: #14141333;
-  --border-subtle: #1414131a;
-  --accent: #c6613f;
-  --accent-deep: #c6613f;
-  --clay: #d97757;
-  --font-display: 'Source Serif 4', 'Noto Serif SC', Georgia, serif;
-  --font-heading: 'Archivo', 'MiSans', 'Noto Sans SC', sans-serif;
-  --font-body: 'Archivo', 'MiSans', 'Noto Sans SC', sans-serif;
-  --font-serif-body: 'Source Serif 4', 'Noto Serif SC', Georgia, serif;
-  --font-mono: 'JetBrains Mono', monospace;
-  --duration-fast: 150ms;
-  --duration-normal: 250ms;
-  --duration-slow: 400ms;
-  --ease-default: cubic-bezier(0.16, 1, 0.3, 1);
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-body);
-  background: var(--bg-base);
-  color: var(--text-primary);
-  line-height: 1.75;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-@view-transition { navigation: auto; }
-::selection { background: var(--accent); color: #faf9f5; }
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; text-underline-offset: 3px; }
-h1, h2, h3 { font-family: var(--font-heading); font-weight: 500; line-height: 1.3; }
-.mono { font-family: var(--font-mono); }
-
-/* ===== 导航 ===== */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 20px clamp(20px, 5vw, 64px);
-  backdrop-filter: blur(12px);
-  background: color-mix(in srgb, var(--bg-base) 82%, transparent);
-  border-bottom: 1px solid var(--border-subtle);
-}
-.nav__brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-weight: 600; font-size: 16px; color: var(--text-primary); text-decoration: none; }
-.nav__brand:hover { text-decoration: none; }
-.nav__brand b { color: var(--accent); font-weight: 600; }
-.nav__links { display: flex; gap: 24px; font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary); }
-.nav__links a { color: var(--text-secondary); }
-.nav__links a:hover { color: var(--text-primary); text-decoration: none; }
-
-/* ===== Hero ===== */
-.hero {
-  padding: 180px clamp(20px, 5vw, 64px) 96px;
-  display: grid;
-  grid-template-columns: 7fr 5fr;
-  gap: 64px;
-  align-items: center;
-  max-width: 1020px;
-  margin: 0 auto;
-}
-.hero__eyebrow {
-  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
-  color: var(--text-muted); margin-bottom: 24px;
-}
-.hero__title {
-  font-family: var(--font-heading);
-  font-size: clamp(36px, 5.5vw, 64px);
+/* 页面专属：卡片 / 能力 / 引用 / 时间线（token 来自 dnt-index.css）*/
+.page-main { padding-bottom: 8px; }
+.page-hero { padding: clamp(48px, 9vh, 96px) 0 0; }
+.page-hero h1 {
+  font-family: var(--font-sans);
   font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1.1;
-  max-width: 18ch;
+  font-size: clamp(1.9rem, 5vw, 3.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
-.hero__title em { font-style: normal; color: var(--accent); }
-.hero__sub {
-  margin-top: 24px; font-family: var(--font-serif-body); font-size: 17px; line-height: 1.85; color: var(--text-secondary);
-  max-width: 54ch;
+.page-hero__intro {
+  margin-top: 20px;
+  color: var(--muted);
+  line-height: 1.9;
+  max-width: 56ch;
 }
-.hero__cta { margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; }
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  min-height: 2.25rem;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-family: var(--font-heading); font-size: 15px; font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0.005em;
-  transition: background-color .2s, color .2s, border-color .2s;
-  text-decoration: none;
-}
-.btn:hover { text-decoration: none; }
-.btn--primary { background: var(--bg-inverted); color: var(--text-inverted); }
-.btn--primary:hover { background: #3d3d3a; }
-.btn--ghost { border: 1px solid var(--border-default); color: var(--text-primary); }
-.btn--ghost:hover { border-color: var(--text-primary); }
-
-/* ===== Hero 右侧：代码窗格（示意，非真实配置） ===== */
-.codecard {
-  position: relative;
-  background: var(--bg-inverted);
-  border: 1px solid rgba(250, 249, 245, 0.08);
-  border-radius: 12px;
-  padding: 28px 0 24px;
-  box-shadow: 0 24px 60px rgba(25, 25, 25, 0.2);
-  transform: rotate(1.2deg);
-}
-.codecard::before {
-  content: '●  ●  ●';
-  position: absolute; top: 14px; left: 20px;
-  font-size: 9px; letter-spacing: 4px; color: #5A574F;
-}
-.codecard code {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 12.5px; line-height: 1.9;
-  padding: 0 24px; white-space: pre;
+.page-hero__intro strong { color: var(--ink); font-weight: 500; }
+.spec {
+  margin-top: 32px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 20px 24px;
   overflow-x: auto;
-  color: var(--text-inverted-dim);
 }
-.codecard code .k { color: #E8A87C; }
-.codecard code .s { color: #9DBB8C; }
-.codecard code .c { color: #6E6A60; font-style: italic; }
-.codecard code .p { color: var(--accent); }
-.hero__code-badge {
-  position: absolute; bottom: -14px; right: 28px;
-  background: var(--accent); color: #141413;
-  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
-  padding: 7px 14px; border-radius: 4px; text-transform: uppercase;
-}
-
-/* ===== 区块通用 ===== */
-.section { padding: clamp(96px, 10vw, 160px) clamp(20px, 5vw, 64px); }
-.wrap { max-width: 920px; margin: 0 auto; }
-.section--dark { background: var(--bg-inverted); color: var(--text-inverted); border-top: none; border-bottom: none; }
-.section__label {
-  font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.02em;
-  color: var(--accent); margin-bottom: 20px;
-}
-.section--dark .section__label { color: var(--accent); }
-.section__title {
-  font-family: var(--font-display); font-weight: 400;
-  font-size: clamp(28px, 3.6vw, 42px); max-width: 24ch; letter-spacing: 0;
-}
-.section__lede { margin-top: 18px; max-width: 62ch; color: var(--text-secondary); font-family: var(--font-serif-body); font-size: 16.5px; }
-.section--dark .section__lede { color: var(--text-inverted-dim); }
-
-/* ===== 架构（两端） ===== */
-.arch { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 64px; }
-.arch__card {
-  background: rgba(250, 249, 245, 0.04);
-  border: 1px solid rgba(250, 249, 245, 0.1);
-  border-radius: 12px; padding: 36px 32px;
-  transition: border-color var(--duration-normal), transform var(--duration-normal) var(--ease-default);
-}
-.arch__card:hover { border-color: rgba(198, 97, 63, 0.55); transform: translateY(-3px); }
-.arch__kicker { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
-.arch__name { font-family: var(--font-display); font-size: 25px; margin-top: 10px; }
-.arch__desc { margin-top: 14px; color: var(--text-inverted-dim); font-size: 14.5px; }
-.arch__tags { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
-.tag {
-  font-family: var(--font-mono); font-size: 11px;
-  border: 1px solid rgba(250, 249, 245, 0.22); color: var(--text-inverted-dim);
-  padding: 4px 12px; border-radius: 4px;
-}
-.arch__connector {
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  font-family: var(--font-mono); font-size: 12px; color: var(--accent);
-  margin-top: 26px; letter-spacing: 0.15em;
-}
-.arch__line { height: 1px; flex: 1; max-width: 120px; background: linear-gradient(90deg, transparent, rgba(198,97,63,0.6), transparent); }
-
-/* ===== 能力网格 ===== */
-.cap { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 64px; }
-.cap__item {
-  background: var(--bg-raised);
-  border: 1px solid var(--border-subtle);
-  border-radius: 10px; padding: 28px;
-  transition: transform var(--duration-normal) var(--ease-default), border-color var(--duration-normal);
-}
-.cap__item:hover { transform: translateY(-2px); border-color: var(--border-default); }
-.cap__grp {
-  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.24em;
-  text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px;
-}
-.cap__title { font-family: var(--font-heading); font-size: 17px; font-weight: 500; display: flex; align-items: center; gap: 10px; }
-.cap__title::before { content: ''; width: 7px; height: 7px; border-radius: 2px; background: var(--accent); display: inline-block; transform: rotate(45deg); }
-.cap__desc { margin-top: 10px; color: var(--text-secondary); font-size: 14.5px; }
-
-/* ===== 设计理念（引用） ===== */
-.quote {
-  margin-top: 64px; padding: 48px 8px 8px;
-  border-top: 1px solid rgba(250, 249, 245, 0.12);
-}
-.quote__text {
-  font-family: var(--font-display); font-style: normal;
-  font-size: clamp(20px, 2.6vw, 30px); color: var(--text-inverted);
-  max-width: 34ch; line-height: 1.6;
-}
-.quote__src { margin-top: 18px; font-family: var(--font-mono); font-size: 12px; color: var(--text-inverted-dim); }
-
-/* ===== 时间线 ===== */
-.timeline { margin-top: 64px; }
-.tl { display: grid; grid-template-columns: 110px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--border-subtle); }
-.tl:last-child { border-bottom: none; }
-.tl__ver { font-family: var(--font-mono); font-size: 12px; color: var(--accent-deep); padding-top: 4px; }
-.tl__name { font-family: var(--font-heading); font-size: 17px; font-weight: 500; }
-.tl__desc { margin-top: 6px; color: var(--text-secondary); font-size: 14.5px; max-width: 70ch; }
-.tl__meta { margin-top: 8px; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
-
-/* ===== CTA / Footer ===== */
-.cta { text-align: center; padding: 120px 20px 140px; background: var(--bg-base); }
-.cta__title { font-family: var(--font-display); font-size: clamp(26px, 3.4vw, 40px); font-weight: 400; }
-.cta__sub { margin: 18px auto 0; color: var(--text-secondary); font-family: var(--font-serif-body); max-width: 50ch; }
-.cta .btn { margin-top: 36px; }
-.footer {
-  background: var(--bg-base); color: var(--text-muted);
-  border-top: 1px solid var(--border-default);
-  padding: 56px clamp(20px, 5vw, 64px);
-  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;
-  font-family: var(--font-mono); font-size: 12.5px;
-}
-.footer a { color: var(--text-secondary); }
-.footer a:hover { color: var(--text-primary); }
-
-/* ===== 公开倒计时 ===== */
-#release { padding-top: 100px; }
-.countdown {
-  text-align: center;
-  background: var(--bg-raised);
-  border: 1px solid var(--border-subtle);
-  border-radius: 14px;
-  padding: clamp(32px, 5vw, 64px);
-  max-width: 720px;
-  margin: 0 auto;
-}
-.countdown__grid { display: flex; align-items: flex-start; justify-content: center; gap: 12px; flex-wrap: wrap; }
-.countdown__cell {
-  min-width: 88px; padding: 16px 12px 12px;
-  background: var(--bg-overlay);
-  border: 1px solid var(--border-subtle);
-  border-radius: 10px;
-  display: flex; flex-direction: column; gap: 8px;
-}
-.countdown__num {
+.spec pre {
   font-family: var(--font-mono);
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  font-size: clamp(2rem, 5vw, 2.75rem);
-  color: var(--text-primary); line-height: 1.1;
+  font-size: 0.78rem;
+  line-height: 1.9;
+  color: var(--ink);
+  white-space: pre;
 }
-.countdown__unit { font-family: var(--font-mono); font-size: 12px; font-weight: 400; letter-spacing: 0.18em; color: var(--text-muted); }
-.countdown__sep { font-family: var(--font-mono); font-size: clamp(1.5rem, 4vw, 2rem); color: var(--accent); line-height: 1.6; padding-top: 8px; }
-.countdown__caption { margin-top: 24px; font-family: var(--font-mono); font-size: 14px; font-weight: 400; color: var(--accent); }
-.countdown__note { margin-top: 8px; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+.spec .cm { color: var(--muted); }
+.spec .kw { color: var(--signal); }
 
-/* ===== 进入动效 ===== */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s var(--ease-default), transform 0.6s var(--ease-default); }
-.reveal.on { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-  html { scroll-behavior: auto; }
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 28px;
+}
+.card__kicker {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  color: var(--signal);
+}
+.card__name {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.35rem;
+  margin-top: 8px;
+}
+.card__desc { margin-top: 12px; color: var(--muted); font-size: 0.92rem; line-height: 1.85; }
+.tags { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+.tags span {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 4px 10px;
 }
 
-/* ===== 响应式 ===== */
-@media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; padding-top: 150px; }
-  .codecard { transform: none; max-width: 560px; }
-  .arch, .cap { grid-template-columns: 1fr; }
+.cap { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.cap__item { background: var(--bg); padding: 22px 24px; }
+.cap__grp {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  color: var(--muted);
 }
-@media (max-width: 560px) {
-  .nav__links { display: none; }
-  .tl { grid-template-columns: 1fr; gap: 6px; }
-  body { font-size: 15px; }
+.cap__title { font-weight: 600; font-size: 1rem; margin-top: 6px; }
+.cap__desc { margin-top: 8px; color: var(--muted); font-size: 0.88rem; line-height: 1.8; }
+
+.quote {
+  margin-top: 8px;
+  border-left: 2px solid var(--signal);
+  padding: 4px 0 4px 24px;
+  max-width: 40em;
+}
+.quote__text { font-size: clamp(1.15rem, 2.4vw, 1.5rem); line-height: 1.7; }
+.quote__src {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.sec__lede { margin-top: 20px; color: var(--muted); line-height: 1.9; max-width: 62ch; }
+.sec__lede strong { color: var(--ink); font-weight: 500; }
+
+.tl { display: grid; grid-template-columns: 110px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.tl:last-child { border-bottom: none; }
+.tl__ver { font-family: var(--font-mono); font-size: 0.72rem; color: var(--signal); padding-top: 4px; }
+.tl__name { font-weight: 600; font-size: 1rem; }
+.tl__desc { margin-top: 6px; color: var(--muted); font-size: 0.88rem; line-height: 1.8; max-width: 70ch; }
+.tl__meta { margin-top: 6px; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; color: var(--muted); }
+
+.count-box { margin-top: 28px; max-width: 640px; }
+.count-caption {
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  .cards, .cap { grid-template-columns: 1fr; }
+  .tl { grid-template-columns: 1fr; gap: 4px; }
 }
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <a class="nav__brand" href="/">DNT_OF<b>\</b></a>
-  <div class="nav__links">
-    <a href="#arch">架构</a>
-    <a href="#cap">能力</a>
-    <a href="#timeline">版本</a>
-    <a href="/dnt-118/">DNT-118</a>
-    <a href="https://github.com/DNTOF/SLDataAPI" target="_blank" rel="noreferrer">GitHub ↗</a>
+<a class="dnt-skip" href="#main">跳到主要内容</a>
+
+<header class="dnt-topbar">
+  <div class="dnt-topbar__id">
+    <a class="dnt-topbar__brand" href="../">DNT_OF</a>
+    <span class="dnt-topbar__meta">SLDATAPI // PLATFORM</span>
   </div>
-</nav>
-
-<!-- ================= HERO ================= -->
-<header class="hero">
-  <div class="reveal on">
-    <div class="hero__eyebrow">SCP:SL 服务器管理生态</div>
-    <h1 class="hero__title">让服务器，<br /><em>被优雅地管理。</em></h1>
-    <p class="hero__sub">
-      SLDataAPI 与 Foundation Console —— 一套从游戏内插件到自托管控制台的管理生态。
-      为 SCP:SL 社区服务器而写：实时、可控、可追溯。
-      源码将于 2027 年 1 月 1 日 11:18 正式公开。
-    </p>
-    <div class="hero__cta">
-      <a class="btn btn--primary" href="#release">公开倒计时</a>
-      <a class="btn btn--ghost" href="https://github.com/DNTOF" target="_blank" rel="noreferrer">更多项目</a>
-    </div>
-  </div>
-
-  <div class="reveal on" style="transition-delay: 120ms">
-    <div class="codecard">
-      <code><span class="c"># 读与写，分开的钥匙</span>
-<span class="k">DATA</span>   数据接口      →  只读 · 监控客户端
-<span class="k">CTRL</span>   控制接口      →  管理 · 长连接 / 请求
-               鉴权  <span class="p">Bearer API Key</span> · 双轨
-
-<span class="c"># 控制面按 RA 面板语义分域：</span>
-<span class="c">#   moderation · admin · round · map · console …</span>
-<span class="c"># 端点为版本化契约，旧扁平路径已退役</span>
-
-<span class="k">→</span> <span class="s">{ "success": true, … }</span>
-
-<span class="c"># 凭据从不进入前端代码</span>
-<span class="c"># 平台与游戏服之间，始终由服务端代理</span></code>
-      <span class="hero__code-badge">Source · 2027</span>
-    </div>
+  <div class="dnt-topbar__right">
+    <span class="dnt-topbar__clock" id="clock" aria-hidden="true">--:--:--</span>
+    <nav class="dnt-topbar__links" aria-label="站内与外部链接">
+      <a href="../">主页</a>
+      <a href="../dnt-118/">dnt-118</a>
+      <a href="https://github.com/DNTOF/SLDataAPI" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </nav>
   </div>
 </header>
 
-<!-- ================= 架构 ================= -->
-<section class="section section--dark" id="arch">
-  <div class="wrap reveal">
-    <div class="section__label">01 · 架构</div>
-    <h2 class="section__title">两个进程，一端约定，一类优雅。</h2>
-    <p class="section__lede">
-      整个生态由两个可独立部署的部分构成：一个跑在游戏服务器进程内的原生插件，
-      与一个可自托管的 Web 控制台。两者通过一组清晰、文档化的接口对话。
+<main class="dnt-wrap page-main" id="main">
+
+  <!-- HERO -->
+  <header class="page-hero">
+    <p class="hero__kicker">PLATFORM · 服务器管理生态</p>
+    <h1>SLDataAPI × Foundation Console</h1>
+    <p class="page-hero__intro">
+      一套从游戏内插件到自托管控制台的管理生态，为 SCP: Secret Laboratory 社区服务器而写：
+      <strong>实时、可控、可追溯</strong>。
+      源码将于 <strong>2027 年 1 月 1 日 11:18（UTC+8）</strong>公开。
     </p>
-    <div class="arch">
-      <div class="arch__card">
-        <div class="arch__kicker">In-Game · 游戏服侧</div>
-        <div class="arch__name">SLDataAPI</div>
-        <p class="arch__desc">
+    <div class="spec" aria-label="接口设计摘要">
+<pre><span class="cm"># 读与写，分开的钥匙</span>
+<span class="kw">DATA</span>  数据接口  →  只读 · 监控客户端
+<span class="kw">CTRL</span>  控制接口  →  管理 · 长连接 / 请求
+      鉴权 Bearer API Key · 双轨
+
+<span class="cm"># 控制面按 RA 面板语义分域：</span>
+<span class="cm">#   moderation · admin · round · map · console …</span>
+<span class="cm"># 端点为版本化契约，旧扁平路径已退役</span>
+
+<span class="cm"># 凭据从不进入前端代码</span>
+<span class="cm"># 平台与游戏服之间，始终由服务端代理</span></pre>
+    </div>
+  </header>
+
+  <!-- 01 架构 -->
+  <section class="sec" id="arch">
+    <p class="sec__idx"><b>01</b> / ARCHITECTURE</p>
+    <div class="sec__head">
+      <h2>架构</h2>
+      <span class="zh">两个可独立部署的进程，一组文档化的接口</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card__kicker">IN-GAME · 游戏服侧</div>
+        <div class="card__name">SLDataAPI</div>
+        <p class="card__desc">
           运行于服务器进程的 LabAPI 原生插件，零 EXILED 依赖。把游戏世界的实时状态
           变成结构化数据，把管理员的意图变成可远程调用的控制操作。
         </p>
-        <div class="arch__tags">
-          <span class="tag">LabAPI Native</span>
-          <span class="tag">WebSocket / HTTP</span>
-          <span class="tag">事件驱动</span>
+        <div class="tags">
+          <span>LabAPI Native</span>
+          <span>WebSocket / HTTP</span>
+          <span>事件驱动</span>
         </div>
       </div>
-      <div class="arch__card">
-        <div class="arch__kicker">Self-hosted · 平台侧</div>
-        <div class="arch__name">Foundation Console</div>
-        <p class="arch__desc">
-          可自托管的 Web 管理控制台：多服务器总览、实时控制、日志、地图、语音——
+      <div class="card">
+        <div class="card__kicker">SELF-HOSTED · 平台侧</div>
+        <div class="card__name">Foundation Console</div>
+        <p class="card__desc">
+          可自托管的 Web 管理控制台：多服务器总览、实时控制、日志、地图、语音。
           浏览器与游戏服之间所有流量由平台服务端承载，凭据永不下发前端。
         </p>
-        <div class="arch__tags">
-          <span class="tag">React · TypeScript</span>
-          <span class="tag">Node.js</span>
-          <span class="tag">自托管</span>
+        <div class="tags">
+          <span>React · TypeScript</span>
+          <span>Node.js</span>
+          <span>自托管</span>
         </div>
       </div>
     </div>
-    <div class="arch__connector"><span class="arch__line"></span>一次握手，双向语义<span class="arch__line"></span></div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= 能力 ================= -->
-<section class="section" id="cap">
-  <div class="wrap reveal">
-    <div class="section__label">02 · 能力版图</div>
-    <h2 class="section__title">从源码里长出来的能力，而不是功能清单。</h2>
+  <!-- 02 能力 -->
+  <section class="sec" id="cap">
+    <p class="sec__idx"><b>02</b> / CAPABILITIES</p>
+    <div class="sec__head">
+      <h2>能力清单</h2>
+      <span class="zh">SLDataAPI · Foundation Console</span>
+    </div>
     <div class="cap">
-
       <div class="cap__item">
-        <div class="cap__grp">SLDataAPI · Control</div>
+        <div class="cap__grp">SLDATAAPI · CONTROL</div>
         <div class="cap__title">控制接口 WebSocket 化</div>
         <p class="cap__desc">控制接口为版本化分域契约（按 RA 面板语义组织），高频调用走单一长连接（hello / call / result 信封）；鉴权双轨、写操作留痕。</p>
       </div>
-
       <div class="cap__item">
-        <div class="cap__grp">SLDataAPI · Events</div>
+        <div class="cap__grp">SLDATAAPI · EVENTS</div>
         <div class="cap__title">实时事件流推送</div>
         <p class="cap__desc">服务器侧状态事件主动推送，而非轮询拉取——玩家进出、回合切换、设施变化，毫秒级抵达。</p>
       </div>
-
       <div class="cap__item">
-        <div class="cap__grp">SLDataAPI · Player</div>
+        <div class="cap__grp">SLDATAAPI · PLAYER</div>
         <div class="cap__title">游戏内举报（SSS 面板）</div>
-        <p class="cap__desc">玩家在服务器设置面板即可举报违规者，平台端提供完整处理端点——把社区治理交还给玩家。</p>
+        <p class="cap__desc">玩家在服务器设置面板即可举报违规者，平台端提供完整处理端点。</p>
       </div>
-
       <div class="cap__item">
-        <div class="cap__grp">SLDataAPI · Audit</div>
+        <div class="cap__grp">SLDATAAPI · AUDIT</div>
         <div class="cap__title">控制操作审计日志</div>
-        <p class="cap__desc">侵入性远程操作自动记录：时间、端点、请求、结果——管理出问题时，按时间追责。</p>
+        <p class="cap__desc">侵入性远程操作自动记录：时间、端点、请求、结果——管理出问题时按时间追责。</p>
       </div>
-
       <div class="cap__item">
-        <div class="cap__grp">Foundation Console · Realtime</div>
+        <div class="cap__grp">FOUNDATION CONSOLE · REALTIME</div>
         <div class="cap__title">多服务器实时总览</div>
         <p class="cap__desc">一台控制台管理多台服务器：状态聚合、一键切换、所有页面实时联动。</p>
       </div>
-
       <div class="cap__item">
-        <div class="cap__grp">Foundation Console · Media</div>
+        <div class="cap__grp">FOUNDATION CONSOLE · MEDIA</div>
         <div class="cap__title">语音监听与地图控制</div>
         <p class="cap__desc">WebSocket 实时语音流转发（Opus 解码为 PCM）；地图页面直接控制门、电梯、灯光——与游戏内 RA 面板齐平。</p>
       </div>
-
       <div class="cap__item">
-        <div class="cap__grp">Foundation Console · Comm</div>
+        <div class="cap__grp">FOUNDATION CONSOLE · COMM</div>
         <div class="cap__title">公告系统与双语界面</div>
-        <p class="cap__desc">Markdown 公告页 + 登录弹窗 + 版本记忆；中英双语覆盖每一个角落，移动端自适应。</p>
+        <p class="cap__desc">Markdown 公告页 + 登录弹窗 + 版本记忆；中英双语覆盖，移动端自适应。</p>
       </div>
-
       <div class="cap__item">
-        <div class="cap__grp">Foundation Console · Themes</div>
+        <div class="cap__grp">FOUNDATION CONSOLE · THEMES</div>
         <div class="cap__title">主题系统与动态背景</div>
-        <p class="cap__desc">暗色工业 / 亮色 / 二次元三套主题——二次元主题支持视频背景与毛玻璃控件，为不同审美的服主准备。</p>
+        <p class="cap__desc">暗色工业 / 亮色 / 二次元三套主题——二次元主题支持视频背景与毛玻璃控件。</p>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= 理念 ================= -->
-<section class="section section--dark">
-  <div class="wrap reveal">
-    <div class="section__label">03 · 安全理念</div>
-    <div class="quote">
-      <div class="quote__text">“一个密码系统应当保持安全——即使敌方知晓除密钥外的一切细节。”</div>
-      <div class="quote__src">—— Auguste Kerckhoffs · La cryptographie militaire (1883) · 项目代号 Kerckhoffs 的由来</div>
+  <!-- 03 安全设计 -->
+  <section class="sec" id="security">
+    <p class="sec__idx"><b>03</b> / SECURITY</p>
+    <div class="sec__head">
+      <h2>安全设计</h2>
+      <span class="zh">项目代号 Kerckhoffs 的由来</span>
     </div>
-    <p class="section__lede" style="margin-top:32px">
-      这套生态的安全设计遵循同样的原则：一切可以被公开的，都应公开——
+    <blockquote class="quote">
+      <p class="quote__text">“一个密码系统应当保持安全——即使敌方知晓除密钥外的一切细节。”</p>
+      <p class="quote__src">—— Auguste Kerckhoffs · La cryptographie militaire (1883)</p>
+    </blockquote>
+    <p class="sec__lede">
+      这套生态的安全设计遵循同样的原则：<strong>一切可以被公开的，都应公开</strong>——
       秘密只存在于应当存在的密钥里。双轨凭证分离只读与写权限；配置缺陷（如引号、特殊字符）在启动时被显式点破，
-      而不是让管理员在 403 里困惑。
-      当源码按计划公开后，这份承诺将交由社区共同检验。
+      而不是让管理员在 403 里困惑。当源码按计划公开后，这份承诺将交由社区共同检验。
     </p>
-  </div>
-</section>
+  </section>
 
-<!-- ================= 时间线 ================= -->
-<section class="section" id="timeline">
-  <div class="wrap reveal">
-    <div class="section__label">04 · 版本叙事</div>
-    <h2 class="section__title">每一个代号，都是一次结构性的前进。</h2>
-    <div class="timeline">
-
-      <div class="tl">
-        <div class="tl__ver">v2.6.0<br />preview</div>
-        <div>
-          <div class="tl__name">Kerckhoffs —— API Key 双轨鉴权 + 端点重写</div>
-          <p class="tl__desc">控制面改用独立 API Key 鉴权（指纹存储、明文仅创建时可见一次）；控制路径按 RA 面板语义重排为版本化分域契约，旧扁平路径退役——不同信任级别的客户端，持有不同的钥匙。</p>
-          <div class="tl__meta">2026-09 · Preview</div>
-        </div>
-      </div>
-
-      <div class="tl">
-        <div class="tl__ver">v2.5.5<br />preview</div>
-        <div>
-          <div class="tl__name">Everest C1 —— 控制审计日志</div>
-          <p class="tl__desc">侵入性远程操作自动记录，管理追责有据可依；不记来源 IP，只记发生了什么。</p>
-          <div class="tl__meta">2026-08 · Preview</div>
-        </div>
-      </div>
-
-      <div class="tl">
-        <div class="tl__ver">v2.5.4</div>
-        <div>
-          <div class="tl__name">GIS,GNSS,RS! —— SSS 举报 + 事件流转正</div>
-          <p class="tl__desc">SSS 游戏内举报功能；WS 事件流推送、重生波次控制、玩家禁言四档化正式发布。</p>
-          <div class="tl__meta">2026-08 · Release</div>
-        </div>
-      </div>
-
-      <div class="tl">
-        <div class="tl__ver">v2.5.0</div>
-        <div>
-          <div class="tl__name">控制接口 WebSocket 化</div>
-          <p class="tl__desc">高频控制调用接入单一 WS 长连接；HTTP 与 WS 双轨按传输自动协商——为平台级轮询管理铺路。</p>
-          <div class="tl__meta">2026-08</div>
-        </div>
-      </div>
-
-      <div class="tl">
-        <div class="tl__ver">v2.4.0</div>
-        <div>
-          <div class="tl__name">Rebirth —— 迁移至 LabAPI 原生</div>
-          <p class="tl__desc">脱离 EXILED，成为 LabAPI 原生插件。运行时反射桥保持对既有 EXILED 生态的兼容探测。</p>
-          <div class="tl__meta">2026-08</div>
-        </div>
-      </div>
-
-      <div class="tl">
-        <div class="tl__ver">v2.3.0</div>
-        <div>
-          <div class="tl__name">SPY —— 语音转发</div>
-          <p class="tl__desc">WebSocket 实时转发全频道语音，Opus 解码为 PCM——管理员的耳朵，延伸到每一个频道。</p>
-          <div class="tl__meta">2026-08</div>
-        </div>
-      </div>
-
+  <!-- 04 版本记录 -->
+  <section class="sec" id="timeline">
+    <p class="sec__idx"><b>04</b> / CHANGELOG</p>
+    <div class="sec__head">
+      <h2>版本记录</h2>
+      <span class="zh">SLDataAPI</span>
     </div>
-  </div>
-</section>
+    <div class="tl">
+      <div class="tl__ver">v2.6.0<br />preview</div>
+      <div>
+        <div class="tl__name">Kerckhoffs —— API Key 双轨鉴权 + 端点重写</div>
+        <p class="tl__desc">控制面改用独立 API Key 鉴权（指纹存储、明文仅创建时可见一次）；控制路径按 RA 面板语义重排为版本化分域契约，旧扁平路径退役——不同信任级别的客户端，持有不同的钥匙。</p>
+        <div class="tl__meta">2026-09 · PREVIEW</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl__ver">v2.5.5<br />preview</div>
+      <div>
+        <div class="tl__name">Everest C1 —— 控制审计日志</div>
+        <p class="tl__desc">侵入性远程操作自动记录，管理追责有据可依；不记来源 IP，只记发生了什么。</p>
+        <div class="tl__meta">2026-08 · PREVIEW</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl__ver">v2.5.4</div>
+      <div>
+        <div class="tl__name">GIS,GNSS,RS! —— SSS 举报 + 事件流转正</div>
+        <p class="tl__desc">SSS 游戏内举报功能；WS 事件流推送、重生波次控制、玩家禁言四档化正式发布。</p>
+        <div class="tl__meta">2026-08 · RELEASE</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl__ver">v2.5.0</div>
+      <div>
+        <div class="tl__name">控制接口 WebSocket 化</div>
+        <p class="tl__desc">高频控制调用接入单一 WS 长连接；HTTP 与 WS 双轨按传输自动协商。</p>
+        <div class="tl__meta">2026-08</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl__ver">v2.4.0</div>
+      <div>
+        <div class="tl__name">Rebirth —— 迁移至 LabAPI 原生</div>
+        <p class="tl__desc">脱离 EXILED，成为 LabAPI 原生插件。运行时反射桥保持对既有 EXILED 生态的兼容探测。</p>
+        <div class="tl__meta">2026-08</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl__ver">v2.3.0</div>
+      <div>
+        <div class="tl__name">SPY —— 语音转发</div>
+        <p class="tl__desc">WebSocket 实时转发全频道语音，Opus 解码为 PCM。</p>
+        <div class="tl__meta">2026-08</div>
+      </div>
+    </div>
+  </section>
 
-<!-- ================= 公开倒计时 ================= -->
-<section class="section" id="release">
-  <div class="wrap reveal">
-    <div class="section__label">05 · 源码公开</div>
-    <h2 class="section__title">代码即将与所有人见面。</h2>
-    <p class="section__lede">
-      SLDataAPI 与 Foundation Console 正在完成最后的整理与文档工作。源码将于
-      <strong>2027 年 1 月 1 日 11:18</strong> 正式公开——在那之前，请让这份预告替你计时。
+  <!-- 05 源码公开 -->
+  <section class="sec" id="release">
+    <p class="sec__idx"><b>05</b> / RELEASE</p>
+    <div class="sec__head">
+      <h2>源码公开</h2>
+      <span class="zh">2027-01-01 11:18 · UTC+8</span>
+    </div>
+    <p class="sec__lede">
+      SLDataAPI 与 Foundation Console 正在完成整理与文档工作，源码将于
+      <strong>2027 年 1 月 1 日 11:18</strong> 公开。
     </p>
-  </div>
-  <div class="wrap reveal" style="margin-top:48px">
-    <div class="countdown" id="countdown">
-      <div class="countdown__grid">
-        <div class="countdown__cell"><span class="countdown__num" id="cd-days">--</span><span class="countdown__unit">天</span></div>
-        <span class="countdown__sep">:</span>
-        <div class="countdown__cell"><span class="countdown__num" id="cd-hours">--</span><span class="countdown__unit">时</span></div>
-        <span class="countdown__sep">:</span>
-        <div class="countdown__cell"><span class="countdown__num" id="cd-mins">--</span><span class="countdown__unit">分</span></div>
-        <span class="countdown__sep">:</span>
-        <div class="countdown__cell"><span class="countdown__num" id="cd-secs">--</span><span class="countdown__unit">秒</span></div>
+    <div class="count-box">
+      <div class="dnt-count__grid">
+        <div class="dnt-count__cell"><span class="dnt-count__num" id="cd-days">--</span><span class="dnt-count__unit">天</span></div>
+        <span class="dnt-count__sep">:</span>
+        <div class="dnt-count__cell"><span class="dnt-count__num" id="cd-hours">--</span><span class="dnt-count__unit">时</span></div>
+        <span class="dnt-count__sep">:</span>
+        <div class="dnt-count__cell"><span class="dnt-count__num" id="cd-mins">--</span><span class="dnt-count__unit">分</span></div>
+        <span class="dnt-count__sep">:</span>
+        <div class="dnt-count__cell"><span class="dnt-count__num" id="cd-secs">--</span><span class="dnt-count__unit">秒</span></div>
       </div>
-      <p class="countdown__caption">SLDataAPI × Foundation Console 源码公开倒计时</p>
-      <p class="countdown__note">2027-01-01 11:18 · UTC+8</p>
+      <p class="count-caption">SLDATAAPI × FOUNDATION CONSOLE 源码公开倒计时</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= CTA ================= -->
-<section class="cta">
-  <div class="reveal">
-    <h2 class="cta__title">社区服务器，值得更好的工具。</h2>
-    <p class="cta__sub">这套工具正在为公开那一天做准备。如果你愿意支持这个项目走下去，每一份心意都会被记住。</p>
-    <div class="hero__cta" style="justify-content:center">
-      <a class="btn btn--ghost" href="https://afdian.com/a/DNT_OF" target="_blank" rel="noreferrer">支持作者</a>
-      <a class="btn btn--ghost" href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub · DNT_OF ↗</a>
-    </div>
-  </div>
-</section>
+</main>
 
-<footer class="footer">
-  <span>© 2026 DNT_OF · Foundation Console &amp; SLDataAPI</span>
-  <span style="display:flex;gap:20px">
-    <a href="https://dntof.com">主页</a>
+<footer class="dnt-wrap dnt-foot">
+  <span>© 2026 DNT_OF · SLDataAPI &amp; Foundation Console</span>
+  <nav class="dnt-foot__links" aria-label="页脚链接">
+    <a href="../">主页</a>
     <a href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub</a>
-    <a href="https://space.bilibili.com/3493125592975851" target="_blank" rel="noreferrer">哔哩哔哩</a>
     <a href="https://afdian.com/a/DNT_OF" target="_blank" rel="noreferrer">爱发电</a>
-  </span>
+  </nav>
 </footer>
 
 <script>
-// ===== 源码公开倒计时（目标：2027-01-01 11:18 UTC+8）=====
+// 顶栏本地时钟
+(function () {
+  var el = document.getElementById('clock');
+  if (!el) return;
+  function tickClock() {
+    var d = new Date();
+    el.textContent = [d.getHours(), d.getMinutes(), d.getSeconds()]
+      .map(function (n) { return String(n).padStart(2, '0'); })
+      .join(':');
+  }
+  tickClock();
+  setInterval(tickClock, 1000);
+})();
+
+// 源码公开倒计时（目标：2027-01-01 11:18 UTC+8）
 (function () {
   var TARGET = new Date('2027-01-01T11:18:00+08:00');
   function pad(n) { return String(n).padStart(2, '0'); }
@@ -594,28 +398,15 @@ h1, h2, h3 { font-family: var(--font-heading); font-weight: 500; line-height: 1.
       mins.textContent = '00'; secs.textContent = '00';
       return;
     }
-    var d = Math.floor(diff / 86400000);
-    var h = Math.floor((diff % 86400000) / 3600000);
-    var m = Math.floor((diff % 3600000) / 60000);
-    var s = Math.floor((diff % 60000) / 1000);
-    days.textContent = pad(d); hours.textContent = pad(h);
-    mins.textContent = pad(m); secs.textContent = pad(s);
+    days.textContent = pad(Math.floor(diff / 86400000));
+    hours.textContent = pad(Math.floor(diff % 86400000) / 3600000 | 0);
+    mins.textContent = pad(Math.floor(diff % 3600000) / 60000 | 0);
+    secs.textContent = pad(Math.floor(diff % 60000) / 1000 | 0);
   }
   tick();
   setInterval(tick, 1000);
 })();
-
-// 滚动进入视口时显现（IntersectionObserver）
-(function () {
-  var els = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('on'); }); return; }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) {
-      if (en.isIntersecting) { en.target.classList.add('on'); io.unobserve(en.target); }
-    });
-  }, { threshold: 0.08 });
-  els.forEach(function (e) { io.observe(e); });
-})();
 </script>
+
 </body>
 </html>
