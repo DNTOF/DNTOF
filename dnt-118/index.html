@@ -3,49 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DNT-118 — 开发组织</title>
+  <title>DNT-118 — 开发组织 · FILE 005</title>
   <meta name="description" content="DNT-118：面向 SCP:SL 服务器生态的开发组织。当前方向：EXILED 服务端插件与数据接口。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Regular.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Medium.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Demibold.min.css" />
   <link rel="stylesheet" href="../css/dnt-index.css" />
   <style>
-    /* 页面专属：目标列表（token 来自 dnt-index.css）*/
-    .page-hero { padding: clamp(48px, 9vh, 88px) 0 0; }
-    .page-hero h1 {
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: clamp(2rem, 5vw, 3rem);
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-    }
-    .page-hero__sub {
-      margin-top: 24px;
-      color: var(--muted);
-      line-height: 1.9;
-      max-width: 54ch;
-    }
-    .goals { border-top: 1px solid var(--line); max-width: 720px; }
+    /* 页面专属：计划列表 / 倒计时（token 来自 dnt-index.css）*/
+    .goals { border-top: 1px solid var(--line-soft); max-width: 720px; }
     .goals li {
-      display: flex; gap: 20px; align-items: baseline;
-      padding: 14px 4px;
-      border-bottom: 1px solid var(--line);
-      line-height: 1.8;
+      display: flex; gap: 16px; align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line-soft);
+      line-height: 1.9;
     }
     .goals .no {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--signal);
+      font-size: 0.7rem;
+      color: var(--accent);
       flex-shrink: 0;
     }
     .count-box { margin-top: 28px; max-width: 640px; }
-    .count-caption {
-      margin-top: 16px;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-    }
+    .count-caption { margin-top: 16px; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; color: var(--muted); }
   </style>
 </head>
 <body>
@@ -55,92 +38,121 @@
 <header class="dnt-topbar">
   <div class="dnt-topbar__id">
     <a class="dnt-topbar__brand" href="../">DNT_OF</a>
-    <span class="dnt-topbar__meta">DNT-118 // ORGANIZATION</span>
+    <span class="dnt-topbar__meta">DNT-118 // ORGANIZATION · FILE 005</span>
   </div>
   <div class="dnt-topbar__right">
     <span class="dnt-topbar__clock" id="clock" aria-hidden="true">--:--:--</span>
     <nav class="dnt-topbar__links" aria-label="站内与外部链接">
-      <a href="../">主页</a>
+      <a href="../">索引</a>
       <a href="../platform/">platform</a>
       <a href="https://github.com/DNT-118" target="_blank" rel="noreferrer">GitHub ↗</a>
     </nav>
   </div>
 </header>
 
-<main class="dnt-wrap" id="main">
+<main id="main">
+  <div class="doc">
+    <a class="doc-back" href="../">←&nbsp;&nbsp;ARCHIVE INDEX</a>
+    <div class="doc-grid">
 
-  <!-- HERO -->
-  <header class="page-hero">
-    <p class="hero__kicker">ORGANIZATION · 开发组织</p>
-    <h1>DNT-118</h1>
-    <p class="page-hero__sub">
-      面向 SCP:SL 服务器生态的开发组织。当前方向：EXILED 服务端插件与数据接口，
-      以及面向社区的公开分支。
-    </p>
-  </header>
+      <aside class="doc-side">
+        <div class="no">NO.005</div>
+        <div class="db">ORGANIZATION FILE</div>
+        <div class="status">
+          <span class="dir-status"><span class="dot dot--ok"></span>运作中</span>
+        </div>
+        <div class="side-links">
+          <a class="side-link" href="https://github.com/DNT-118" target="_blank" rel="noreferrer">GitHub · DNT-118</a>
+          <a class="side-link" href="../platform/">平台文档 · FILE 006</a>
+        </div>
+      </aside>
 
-  <!-- 01 方向 -->
-  <section class="sec">
-    <p class="sec__idx"><b>01</b> / DIRECTION</p>
-    <div class="sec__head">
-      <h2>当前的方向</h2>
-      <span class="zh">组织概述</span>
-    </div>
-    <p class="page-hero__sub">
-      EXILED 服务端插件与数据接口——把服务器运营中反复出现的需求，做成可复用的工具。
-    </p>
-    <figure class="dnt-figure" style="margin-top: 28px">
-      <img src="org-overview.webp" alt="DNT-118 组织概述图" loading="lazy" />
-      <figcaption>
-        <span>DNT-118 组织概述</span>
-        <span>SOURCE: INTERNAL</span>
-      </figcaption>
-    </figure>
-  </section>
+      <div class="doc-body">
+        <div class="doc-fileline"><span>FILE 005 · ORGANIZATION</span><span>REFERENCE AREA</span></div>
+        <h1 class="doc-title">DNT-118</h1>
+        <div class="doc-zh"><span>开发组织</span><span class="tag">DEVELOPMENT ORG</span></div>
+        <div class="doc-rule"></div>
 
-  <!-- 02 计划 -->
-  <section class="sec">
-    <p class="sec__idx"><b>02</b> / PLAN</p>
-    <div class="sec__head">
-      <h2>给内部项目开一个面向社区的分支</h2>
-      <span class="zh">接下来的计划</span>
-    </div>
-    <ol class="goals">
-      <li><span class="no">01</span>给现有项目建公开分支，作为社区版的主要发布渠道</li>
-      <li><span class="no">02</span>补全文档和安装说明，让人拿去就能用</li>
-      <li><span class="no">03</span>开放 Issue，收使用反馈和需求</li>
-    </ol>
-  </section>
+        <div class="doc-meta">
+          <div><div class="k">DEPARTMENT / 类别</div><div class="v">开发组织</div></div>
+          <div><div class="k">DIRECTION / 方向</div><div class="v">EXILED 服务端插件 · 数据接口</div></div>
+          <div><div class="k">RELATED / 相关</div><div class="v">DNT_OF</div></div>
+          <div><div class="k">STATUS / 状态</div><div class="v"><span class="dot dot--ok"></span>运作中</div></div>
+        </div>
 
-  <!-- 03 倒计时 -->
-  <section class="sec">
-    <p class="sec__idx"><b>03</b> / COUNTDOWN</p>
-    <div class="sec__head">
-      <h2>发布倒计时</h2>
-      <span class="zh">SCPSL_WebUI_Community</span>
-    </div>
-    <div class="count-box">
-      <div class="dnt-count__grid">
-        <div class="dnt-count__cell"><span class="dnt-count__num" id="cd-days">--</span><span class="dnt-count__unit">DAYS</span></div>
-        <span class="dnt-count__sep">:</span>
-        <div class="dnt-count__cell"><span class="dnt-count__num" id="cd-hours">--</span><span class="dnt-count__unit">HRS</span></div>
-        <span class="dnt-count__sep">:</span>
-        <div class="dnt-count__cell"><span class="dnt-count__num" id="cd-mins">--</span><span class="dnt-count__unit">MIN</span></div>
-        <span class="dnt-count__sep">:</span>
-        <div class="dnt-count__cell"><span class="dnt-count__num" id="cd-secs">--</span><span class="dnt-count__unit">SEC</span></div>
+        <section class="sec" id="direction" style="padding-top: 8px">
+          <div class="sec__head">
+            <h2>当前的方向</h2>
+            <span class="sec__lead" aria-hidden="true"></span>
+            <span class="sec__tag"><b>01</b> / DIRECTION</span>
+          </div>
+          <p class="sec__lede" style="margin-top: 0">
+            EXILED 服务端插件与数据接口——把服务器运营中反复出现的需求，做成可复用的工具。
+          </p>
+          <figure class="dnt-figure" style="margin-top: 28px">
+            <img src="org-overview.webp" alt="DNT-118 组织概述图" loading="lazy" />
+            <figcaption>
+              <span>DNT-118 组织概述</span>
+              <span>SOURCE: INTERNAL</span>
+            </figcaption>
+          </figure>
+        </section>
+
+        <section class="sec" id="plan">
+          <div class="sec__head">
+            <h2>给内部项目开一个面向社区的分支</h2>
+            <span class="sec__lead" aria-hidden="true"></span>
+            <span class="sec__tag"><b>02</b> / PLAN</span>
+          </div>
+          <p class="sec__lede" style="margin-top: 0">
+            计划把<strong>已知、归组织所有的项目逐个开出公开分支</strong>，作为面向大众社区的版本——功能内核不变，其它都放开。
+          </p>
+          <ol class="goals" style="margin-top: 20px">
+            <li><span class="no">01</span>给现有项目建公开分支，作为社区版的主要发布渠道</li>
+            <li><span class="no">02</span>补全文档和安装说明，让人拿去就能用</li>
+            <li><span class="no">03</span>开放 Issue，收使用反馈和需求</li>
+          </ol>
+        </section>
+
+        <section class="sec" id="countdown">
+          <div class="sec__head">
+            <h2>发布倒计时</h2>
+            <span class="sec__lead" aria-hidden="true"></span>
+            <span class="sec__tag"><b>03</b> / COUNTDOWN</span>
+          </div>
+          <p class="sec__lede" style="margin-top: 0">
+            SCPSL_WebUI_Community 将于 <strong>2027 年 1 月 1 日 11:18（UTC+8）</strong>发布。
+          </p>
+          <div class="count-box">
+            <div class="dnt-count__grid">
+              <div class="dnt-count__cell"><span class="dnt-count__num" id="cd-days">--</span><span class="dnt-count__unit">DAYS</span></div>
+              <span class="dnt-count__sep">:</span>
+              <div class="dnt-count__cell"><span class="dnt-count__num" id="cd-hours">--</span><span class="dnt-count__unit">HRS</span></div>
+              <span class="dnt-count__sep">:</span>
+              <div class="dnt-count__cell"><span class="dnt-count__num" id="cd-mins">--</span><span class="dnt-count__unit">MIN</span></div>
+              <span class="dnt-count__sep">:</span>
+              <div class="dnt-count__cell"><span class="dnt-count__num" id="cd-secs">--</span><span class="dnt-count__unit">SEC</span></div>
+            </div>
+            <p class="count-caption">SCPSL_WEBUI_COMMUNITY 发布倒计时</p>
+          </div>
+        </section>
+
+        <div class="doc-actions">
+          <a class="kbar" href="https://github.com/DNT-118" target="_blank" rel="noreferrer"><span>GITHUB / DNT-118</span><span class="zh">在 GitHub 打开</span></a>
+          <a class="kbar kbar--ghost" href="../"><span>ARCHIVE INDEX</span><span class="zh">返回索引</span></a>
+        </div>
       </div>
-      <p class="count-caption">SCPSL_WEBUI_COMMUNITY 发布倒计时 · 2027-01-01 11:18 UTC+8</p>
-    </div>
-  </section>
 
+    </div>
+  </div>
 </main>
 
 <footer class="dnt-wrap dnt-foot">
   <span>© DNT-118 · 由 DNT_OF 维护</span>
   <nav class="dnt-foot__links" aria-label="页脚链接">
-    <a href="../platform/">平台介绍</a>
+    <a href="../platform/">平台文档</a>
     <a href="https://github.com/DNT-118" target="_blank" rel="noreferrer">github.com/DNT-118</a>
-    <a href="../">主页</a>
+    <a href="../">索引</a>
   </nav>
 </footer>
 
