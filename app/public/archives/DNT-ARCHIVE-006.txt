@@ -1,0 +1,19 @@
+﻿RHINE LAB · INTERNAL DATABASE
+FILE 006 / Foundation Console
+SELF-HOSTED CONSOLE
+
+科室：平台
+编目范围：2027-01-01 源码公开
+相关人物：SLDataAPI
+访问范围：IN PREPARATION
+
+可自托管的 Web 管理控制台：多服务器总览、实时控制、日志、地图、语音。浏览器与游戏服之间所有流量由平台服务端承载，凭据永不下发前端。源码将于 2027 年 1 月 1 日 11:18（UTC+8）公开。
+
+研究记录
+1. 多服务器实时总览，页面实时联动。
+2. WebSocket 语音监听（Opus 解码为 PCM）与地图控制。
+3. 控制操作审计日志：时间、端点、请求、结果。
+4. 与 SLDataAPI 组成完整的管理生态。
+
+设定参考：https://dntof.com/platform/
+本文为基于公开设定的档案式改写，非游戏原文。

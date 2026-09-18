@@ -1,0 +1,18 @@
+﻿RHINE LAB · INTERNAL DATABASE
+FILE 003 / SLAgent
+IN-GAME AI ASSISTANT
+
+科室：服务端插件
+编目范围：基础维护
+相关人物：AstrBot
+访问范围：OPEN SOURCE
+
+SCP:SL × AI 辅助插件（EXILED）：用“.bot 你的问题”在游戏中呼出 AI，以自然语言管理服务器，支持上下文记忆与白名单控制。
+
+研究记录
+1. 游戏内 AI 对话。
+2. 上下文记忆。
+3. 白名单控制、多玩家并发。
+
+设定参考：https://github.com/DNTOF/SLAgent
+本文为基于公开设定的档案式改写，非游戏原文。

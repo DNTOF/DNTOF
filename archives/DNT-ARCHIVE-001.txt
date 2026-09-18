@@ -1,0 +1,19 @@
+﻿RHINE LAB · INTERNAL DATABASE
+FILE 001 / SLDataAPI
+SERVER DATA API
+
+科室：服务端插件
+编目范围：2026 · 持续迭代
+相关人物：astrbot_plugin_sl_query / FDC 控制台
+访问范围：OPEN SOURCE
+
+运行于 SCP: Secret Laboratory 服务端的 LabAPI 原生插件，通过 HTTP / WebSocket API 实时暴露服务器状态——在线玩家、回合信息、核弹状态、阵营分布，为查询工具和控制台提供统一的数据源。当前版本 v2.5.4，GPLv3。
+
+研究记录
+1. 多源数据聚合：玩家 / 回合 / 服务器 / 核弹 / 阵营。
+2. HTTP / WebSocket 实时查询接口。
+3. 面向 astrbot_plugin_sl_query 的数据推送。
+4. 面向 FDC 控制台的服务器控制能力，写操作留痕。
+
+设定参考：https://github.com/DNTOF/SLDataAPI
+本文为基于公开设定的档案式改写，非游戏原文。

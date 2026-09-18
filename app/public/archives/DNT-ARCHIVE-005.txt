@@ -1,0 +1,18 @@
+﻿RHINE LAB · INTERNAL DATABASE
+FILE 005 / DNT-118
+DEVELOPMENT ORG
+
+科室：组织
+编目范围：社区分支计划
+相关人物：DNT_OF
+访问范围：PUBLIC ORG
+
+面向 SCP:SL 服务器生态的开发组织。当前方向：EXILED 服务端插件与数据接口，以及面向社区的公开分支。组织概述与发布倒计时见 dntof.com/dnt-118/。
+
+研究记录
+1. 给现有项目建公开分支，作为社区版的主要发布渠道。
+2. 补全文档和安装说明，让人拿去就能用。
+3. 开放 Issue，收使用反馈和需求。
+
+设定参考：https://github.com/DNT-118
+本文为基于公开设定的档案式改写，非游戏原文。

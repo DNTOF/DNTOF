@@ -1,0 +1,18 @@
+﻿RHINE LAB · INTERNAL DATABASE
+FILE 002 / astrbot_plugin_sl_query
+SERVER QUERY PLUGIN
+
+科室：AstrBot 插件
+编目范围：2026 · 活跃维护
+相关人物：AstrBot
+访问范围：OPEN SOURCE
+
+SCP:SL 服务器查询 AstrBot 插件。在群聊中绑定服务器后，实时查询在线玩家、回合时长、核弹状态、阵营人数。官方 API 与 EXILED 实时数据双源查询，数据按会话隔离，支持多服务器绑定。
+
+研究记录
+1. 官方 API + EXILED 实时数据双源查询。
+2. 多服务器绑定、多会话数据隔离。
+3. 完整的 /bind、/sl 命令体系。
+
+设定参考：https://github.com/DNTOF/astrbot_plugin_sl_query
+本文为基于公开设定的档案式改写，非游戏原文。

@@ -1,0 +1,138 @@
+{
+  "categories": [
+    "站主档案",
+    "服务端插件",
+    "ASTRBOT 插件",
+    "组织",
+    "平台"
+  ],
+  "columns": [
+    "服务端插件",
+    "ASTRBOT 插件",
+    "站主档案",
+    "组织",
+    "平台"
+  ],
+  "records": [
+    {
+      "id": "X-001",
+      "title": "DNT_OF",
+      "en": "OPERATOR FILE",
+      "department": "站主",
+      "category": "站主档案",
+      "date": "持续更新",
+      "lead": "SLDataAPI / DNT-118",
+      "clearance": "REFERENCE AREA",
+      "abstract": "高中生，正在自学 C# 与 Python。为 SCP: Secret Laboratory 服务器写插件、数据接口与工具，把服务器实时数据做成可查询、可复用的东西。常用技术：C# / .NET、Python、EXILED、AstrBot。",
+      "findings": [
+        "专注 EXILED / LabAPI 插件与 AstrBot 生态。",
+        "维护 DNT-118 组织，推进面向社区的公开分支。",
+        "所有公开档案以 GitHub 仓库为准。"
+      ],
+      "source": "https://github.com/DNTOF"
+    },
+    {
+      "id": "001",
+      "title": "SLDataAPI",
+      "en": "SERVER DATA API",
+      "department": "服务端插件",
+      "category": "服务端插件",
+      "date": "2026 · 持续迭代",
+      "lead": "astrbot_plugin_sl_query / FDC 控制台",
+      "clearance": "OPEN SOURCE",
+      "abstract": "运行于 SCP: Secret Laboratory 服务端的 LabAPI 原生插件，通过 HTTP / WebSocket API 实时暴露服务器状态——在线玩家、回合信息、核弹状态、阵营分布，为查询工具和控制台提供统一的数据源。当前版本 v2.5.4，GPLv3。",
+      "findings": [
+        "多源数据聚合：玩家 / 回合 / 服务器 / 核弹 / 阵营。",
+        "HTTP / WebSocket 实时查询接口。",
+        "面向 astrbot_plugin_sl_query 的数据推送。",
+        "面向 FDC 控制台的服务器控制能力，写操作留痕。"
+      ],
+      "source": "https://github.com/DNTOF/SLDataAPI"
+    },
+    {
+      "id": "002",
+      "title": "astrbot_plugin_sl_query",
+      "en": "SERVER QUERY PLUGIN",
+      "department": "AstrBot 插件",
+      "category": "ASTRBOT 插件",
+      "date": "2026 · 活跃维护",
+      "lead": "AstrBot",
+      "clearance": "OPEN SOURCE",
+      "abstract": "SCP:SL 服务器查询 AstrBot 插件。在群聊中绑定服务器后，实时查询在线玩家、回合时长、核弹状态、阵营人数。官方 API 与 EXILED 实时数据双源查询，数据按会话隔离，支持多服务器绑定。",
+      "findings": [
+        "官方 API + EXILED 实时数据双源查询。",
+        "多服务器绑定、多会话数据隔离。",
+        "完整的 /bind、/sl 命令体系。"
+      ],
+      "source": "https://github.com/DNTOF/astrbot_plugin_sl_query"
+    },
+    {
+      "id": "003",
+      "title": "SLAgent",
+      "en": "IN-GAME AI ASSISTANT",
+      "department": "服务端插件",
+      "category": "服务端插件",
+      "date": "基础维护",
+      "lead": "AstrBot",
+      "clearance": "OPEN SOURCE",
+      "abstract": "SCP:SL × AI 辅助插件（EXILED）：用“.bot 你的问题”在游戏中呼出 AI，以自然语言管理服务器，支持上下文记忆与白名单控制。",
+      "findings": [
+        "游戏内 AI 对话。",
+        "上下文记忆。",
+        "白名单控制、多玩家并发。"
+      ],
+      "source": "https://github.com/DNTOF/SLAgent"
+    },
+    {
+      "id": "004",
+      "title": "astrbot_plugin_adsb_monitor",
+      "en": "ADS-B MONITOR",
+      "department": "AstrBot 插件",
+      "category": "ASTRBOT 插件",
+      "date": "已停止支持",
+      "lead": "Dump1090",
+      "clearance": "ARCHIVED",
+      "abstract": "连接本地 Dump1090 JSON 输出，实时解析并推送 ADS-B 飞机信息的 AstrBot 插件。该项目已停止支持，档案保留作记录。",
+      "findings": [
+        "Dump1090 JSON 输出接入。",
+        "飞机信息实时解析与推送。"
+      ],
+      "source": "https://github.com/DNTOF/astrbot_plugin_adsb_monitor"
+    },
+    {
+      "id": "005",
+      "title": "DNT-118",
+      "en": "DEVELOPMENT ORG",
+      "department": "组织",
+      "category": "组织",
+      "date": "社区分支计划",
+      "lead": "DNT_OF",
+      "clearance": "PUBLIC ORG",
+      "abstract": "面向 SCP:SL 服务器生态的开发组织。当前方向：EXILED 服务端插件与数据接口，以及面向社区的公开分支。组织概述与发布倒计时见 dntof.com/dnt-118/。",
+      "findings": [
+        "给现有项目建公开分支，作为社区版的主要发布渠道。",
+        "补全文档和安装说明，让人拿去就能用。",
+        "开放 Issue，收使用反馈和需求。"
+      ],
+      "source": "https://github.com/DNT-118"
+    },
+    {
+      "id": "006",
+      "title": "Foundation Console",
+      "en": "SELF-HOSTED CONSOLE",
+      "department": "平台",
+      "category": "平台",
+      "date": "2027-01-01 源码公开",
+      "lead": "SLDataAPI",
+      "clearance": "IN PREPARATION",
+      "abstract": "可自托管的 Web 管理控制台：多服务器总览、实时控制、日志、地图、语音。浏览器与游戏服之间所有流量由平台服务端承载，凭据永不下发前端。源码将于 2027 年 1 月 1 日 11:18（UTC+8）公开。",
+      "findings": [
+        "多服务器实时总览，页面实时联动。",
+        "WebSocket 语音监听（Opus 解码为 PCM）与地图控制。",
+        "控制操作审计日志：时间、端点、请求、结果。",
+        "与 SLDataAPI 组成完整的管理生态。"
+      ],
+      "source": "https://dntof.com/platform/"
+    }
+  ]
+}

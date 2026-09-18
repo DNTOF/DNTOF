@@ -1,0 +1,17 @@
+﻿RHINE LAB · INTERNAL DATABASE
+FILE 004 / astrbot_plugin_adsb_monitor
+ADS-B MONITOR
+
+科室：AstrBot 插件
+编目范围：已停止支持
+相关人物：Dump1090
+访问范围：ARCHIVED
+
+连接本地 Dump1090 JSON 输出，实时解析并推送 ADS-B 飞机信息的 AstrBot 插件。该项目已停止支持，档案保留作记录。
+
+研究记录
+1. Dump1090 JSON 输出接入。
+2. 飞机信息实时解析与推送。
+
+设定参考：https://github.com/DNTOF/astrbot_plugin_adsb_monitor
+本文为基于公开设定的档案式改写，非游戏原文。

@@ -1,0 +1,18 @@
+﻿RHINE LAB · INTERNAL DATABASE
+FILE X-001 / DNT_OF
+OPERATOR FILE
+
+科室：站主
+编目范围：持续更新
+相关人物：SLDataAPI / DNT-118
+访问范围：REFERENCE AREA
+
+高中生，正在自学 C# 与 Python。为 SCP: Secret Laboratory 服务器写插件、数据接口与工具，把服务器实时数据做成可查询、可复用的东西。常用技术：C# / .NET、Python、EXILED、AstrBot。
+
+研究记录
+1. 专注 EXILED / LabAPI 插件与 AstrBot 生态。
+2. 维护 DNT-118 组织，推进面向社区的公开分支。
+3. 所有公开档案以 GitHub 仓库为准。
+
+设定参考：https://github.com/DNTOF
+本文为基于公开设定的档案式改写，非游戏原文。
