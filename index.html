@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh" data-ark-theme="ark" data-ark-depth="complex">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DNT_OF — Developer Index</title>
+  <script>
+    // 防闪烁：在样式表应用前恢复用户选择的主题家族
+    try {
+      var t = localStorage.getItem('ark-theme');
+      if (t && ['ark', 'endfield', 'exa', 'popucom', 'corporate'].indexOf(t) !== -1) {
+        document.documentElement.dataset.arkTheme = t;
+      }
+    } catch (e) {}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Space+Grotesk:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/ark-theme.css" />
+</head>
+<body>
+
+<div class="ark-shell">
+
+  <!-- 左轨 -->
+  <aside class="ark-rail">
+    <a class="ark-rail__brand" href="/">DNT_OF</a>
+    <nav class="ark-rail__indices" aria-label="页面索引">
+      <a href="#featured" data-index>01</a>
+      <a href="#projects" data-index>02</a>
+      <a href="#org" data-index>03</a>
+      <a href="#contrib" data-index>04</a>
+    </nav>
+    <span class="ark-rail__foot">PERSONAL INDEX — dntof.com</span>
+  </aside>
+
+  <!-- 顶栏 -->
+  <header class="ark-topbar">
+    <a class="ark-topbar__brand" href="/">DNT_OF<b>\</b></a>
+    <span class="ark-topbar__meta">SCP:SL // PLUGIN INDEX</span>
+    <div class="ark-topbar__right">
+      <div class="ark-topbar__links">
+        <a href="/platform/">平台</a>
+        <a href="/dnt-118/">DNT-118</a>
+        <a href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://afdian.com/a/DNT_OF" target="_blank" rel="noreferrer">爱发电</a>
+      </div>
+      <label class="ark-themeswitch">
+        <span class="ark-themeswitch__label">THEME</span>
+        <select id="arkThemeSelect" aria-label="选择主题家族">
+          <option value="ark">ARK</option>
+          <option value="endfield">ENDFIELD</option>
+          <option value="exa">EX ASTRIS</option>
+          <option value="popucom">POPUCOM</option>
+          <option value="corporate">CORPORATE</option>
+        </select>
+      </label>
+    </div>
+  </header>
+
+  <!-- 主舞台 -->
+  <main class="ark-stage">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__inner">
+        <p class="hero__kicker">PERSONAL INDEX · SCP:SL PLUGIN DEVELOPER</p>
+        <h1 class="hero__id">DNT<span>_</span>OF</h1>
+        <p class="hero__statement">
+          高中生，正在自学 C# 与 Python。为 SCP: Secret Laboratory 服务器写
+          <a href="https://github.com/DNTOF" target="_blank" rel="noreferrer">插件</a>、
+          <a href="/platform/">数据接口</a>与
+          <a href="/dnt-118/">工具</a>——把游戏世界的实时数据变成可用的产品。
+        </p>
+        <div class="hero__meta">
+          <span>C#</span>
+          <span>PYTHON</span>
+          <span>.NET</span>
+          <span>EXILED</span>
+          <span>ASTRBOT</span>
+        </div>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="/platform/">平台介绍 / PLATFORM</a>
+          <a class="btn" href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="hero__status">
+        <span>INDEX: <b>04 SECTIONS</b></span>
+        <span>ECOLOGY: <b>SCP:SL · EXILED · ASTRBOT</b></span>
+        <span>STATUS: <b class="ok">ACTIVE</b></span>
+        <span>dntof.com</span>
+      </div>
+    </section>
+
+    <!-- FEATURED -->
+    <section class="section wrap" id="featured">
+      <header class="section-head ark-reveal" data-ark-reveal>
+        <p class="kicker"><b>01</b> / FEATURED · 重点项目</p>
+        <h2>SLDataAPI <span class="zh">服务端数据接口</span></h2>
+        <span class="rule" aria-hidden="true"></span>
+      </header>
+      <div class="panel featured">
+        <div class="featured__body">
+          <h3 class="featured__name"><a href="https://github.com/DNTOF/SLDataAPI" target="_blank" rel="noreferrer">SLDataAPI</a></h3>
+          <p class="featured__desc">
+            面向 astrbot_plugin_sl_query 和 FDC 控制台的 EXILED 服务端信息提供与服务器控制插件。
+            通过 HTTP API 实时暴露服务器状态——在线玩家、回合信息、核弹状态、阵营分布，
+            为前端查询工具和控制台提供统一的数据源。
+          </p>
+          <ul class="featured__list">
+            <li>多源数据聚合：玩家 / 回合 / 服务器 / 核弹 / 阵营</li>
+            <li>HTTP API 实时查询，低延迟推送</li>
+            <li>支持 FDC 控制台远程服务器控制</li>
+          </ul>
+          <div class="featured__links">
+            <a class="textlink" href="/platform/">平台介绍 →</a>
+            <a class="textlink" href="https://github.com/DNTOF/SLDataAPI" target="_blank" rel="noreferrer">查看项目 →</a>
+          </div>
+        </div>
+        <div class="terminal" aria-label="接口响应示例">
+          <div class="terminal__bar"><span>RESPONSE <b>/api/v1/round/status</b></span><span>200 OK</span></div>
+<code><span class="c">// 实时回合状态（示意）</span>
+{
+  <span class="k">"success"</span>: <span class="s">true</span>,
+  <span class="k">"round"</span>: {
+    <span class="k">"state"</span>:    <span class="s">"ongoing"</span>,
+    <span class="k">"duration"</span>: <span class="s">1284</span>,
+    <span class="k">"players"</span>:  <span class="s">17</span>
+  },
+  <span class="k">"warhead"</span>: <span class="s">"armed"</span>
+}</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section wrap" id="projects">
+      <header class="section-head ark-reveal" data-ark-reveal>
+        <p class="kicker"><b>02</b> / PROJECTS · 项目</p>
+        <h2>Index <span class="zh">项目列表</span></h2>
+        <span class="rule" aria-hidden="true"></span>
+      </header>
+      <ul class="news">
+        <li>
+          <a href="https://github.com/DNTOF/astrbot_plugin_sl_query" target="_blank" rel="noreferrer">
+            <span class="cat">PYTHON / ASTRBOT</span>
+            <span class="name">astrbot_plugin_sl_query</span>
+            <span class="lang">ACTIVE</span>
+            <span class="arrow">↗</span>
+            <span class="desc">SCP:SL 服务器查询 AstrBot 插件，官方 API + EXILED 实时数据双源查询，多服务器绑定与多会话隔离。</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/DNTOF/SLAgent" target="_blank" rel="noreferrer">
+            <span class="cat">C# / EXILED</span>
+            <span class="name">SLAgent</span>
+            <span class="lang">ACTIVE</span>
+            <span class="arrow">↗</span>
+            <span class="desc">SCP:SL × AI 辅助插件，在游戏中使用自然语言管理服务器，支持上下文记忆与白名单控制。</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/DNTOF/astrbot_plugin_adsb_monitor" target="_blank" rel="noreferrer">
+            <span class="cat">PYTHON / ADS-B</span>
+            <span class="name">astrbot_plugin_adsb_monitor</span>
+            <span class="lang">DORMANT</span>
+            <span class="arrow">↗</span>
+            <span class="desc">连接本地 Dump1090 JSON 输出，实时解析并推送 ADS-B 飞机信息。</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ORG -->
+    <section class="section wrap" id="org">
+      <header class="section-head ark-reveal" data-ark-reveal>
+        <p class="kicker"><b>03</b> / ORGANIZATION · 开发组织</p>
+        <h2>DNT-118 <span class="zh">组织方向</span></h2>
+        <span class="rule" aria-hidden="true"></span>
+      </header>
+      <div class="org">
+        <div class="org__body">
+          <h3 class="org__title">DNT-118</h3>
+          <p class="org__text">
+            面向 SCP:SL 服务器生态的开发组织。当前方向：EXILED 服务端插件与数据接口。
+            计划把<strong>已知、归组织所有的项目逐个开出公开分支</strong>，作为面向大众社区的版本——
+            功能内核不变，其它都放开。
+          </p>
+          <div class="featured__links">
+            <a class="textlink" href="/dnt-118/">组织主页 →</a>
+            <a class="textlink" href="https://github.com/DNT-118" target="_blank" rel="noreferrer">GitHub · DNT-118 →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTRIBUTIONS -->
+    <section class="section wrap" id="contrib">
+      <header class="section-head ark-reveal" data-ark-reveal>
+        <p class="kicker"><b>04</b> / CONTRIBUTIONS · 贡献记录</p>
+        <h2>Activity <span class="zh">提交足迹</span></h2>
+        <span class="rule" aria-hidden="true"></span>
+      </header>
+      <div class="chart-inset">
+        <img src="https://ghchart.rshah.org/DNTOF"
+             alt="DNT_OF GitHub contribution graph"
+             loading="lazy" />
+      </div>
+      <div class="figure-caption">
+        <b>FIG.01 — GITHUB CONTRIBUTIONS / LAST 12 MONTHS</b>
+        <span>SOURCE: GHCHART.RSHAH.ORG</span>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="ark-footer">
+      <div class="wrap">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <p>为 SCP:SL 社区服务器而写的工具——<b>数据实时，控制留痕。</b></p>
+          </div>
+          <div class="footer__col">
+            <h4>SITE / 站点</h4>
+            <ul>
+              <li><a href="/platform/">平台介绍</a></li>
+              <li><a href="/dnt-118/">DNT-118 组织</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>PROJECTS / 项目</h4>
+            <ul>
+              <li><a href="https://github.com/DNTOF/SLDataAPI" target="_blank" rel="noreferrer">SLDataAPI</a></li>
+              <li><a href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub · DNT_OF</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>SUPPORT / 支持</h4>
+            <ul>
+              <li><a href="https://afdian.com/a/DNT_OF" target="_blank" rel="noreferrer">爱发电</a></li>
+              <li><a href="https://space.bilibili.com/3493125592975851" target="_blank" rel="noreferrer">哔哩哔哩</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <span>© <span id="year"></span> DNT_OF\</span>
+          <span>THEME: ARK / COMPLEX</span>
+          <span>dntof.com</span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // 主题家族切换（root data-ark-theme 轴；localStorage 持久化）
+  (function () {
+    const sel = document.getElementById('arkThemeSelect');
+    if (!sel) return;
+    sel.value = document.documentElement.dataset.arkTheme || 'ark';
+    sel.addEventListener('change', () => {
+      const v = sel.value;
+      document.documentElement.dataset.arkTheme = v;
+      try { localStorage.setItem('ark-theme', v); } catch (e) {}
+    });
+  })();
+
+  // Masked lateral reveal（官方系 masked reveal 模式）
+  (function () {
+    const els = document.querySelectorAll('[data-ark-reveal]');
+    if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(el => el.setAttribute('data-visible', 'true'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.setAttribute('data-visible', 'true');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    els.forEach(el => io.observe(el));
+  })();
+
+  // 左轨索引高亮（真实滚动位置，非装饰状态）
+  (function () {
+    const links = document.querySelectorAll('[data-index]');
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    const map = {};
+    links.forEach(a => { map[a.getAttribute('href').slice(1)] = a; });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        const link = map[e.target.id];
+        if (!link) return;
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.remove('is-active'));
+          link.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    Object.keys(map).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  })();
+</script>
+
+</body>
+</html>
