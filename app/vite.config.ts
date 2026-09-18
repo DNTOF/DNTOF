@@ -1,3 +1,6 @@
+// Production personal homepage is the static file at the repo root (../index.html).
+// This Vite app is an optional lab, served as /archive/. Do not copy dist/index.html
+// over the site root; keep hashed assets under /app-build/ if you rebuild.
 import { defineConfig } from "vite";
 import { existsSync, readFileSync } from "node:fs";
 import { createHash } from "node:crypto";

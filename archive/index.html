@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#e8e5e1" />
+    <meta name="robots" content="noindex" />
+    <meta name="apple-mobile-web-app-title" content="DNT_OF" />
+    <meta
+      name="description"
+      content="DNT_OF 实验终端：可选的三维档案索引。个人主页在 dntof.com 根路径。"
+    />
+    <title>实验终端 · DNT_OF</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="module" crossorigin src="/app-build/index-elIS-sEY.js"></script>
+    <link rel="stylesheet" crossorigin href="/app-build/index-8hQ6QWXX.css">
+    <style>
+      #archive-exit {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2147483646;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        min-height: 40px;
+        padding: 8px max(16px, env(safe-area-inset-right)) 8px max(16px, env(safe-area-inset-left));
+        background: #EDEEE9;
+        color: #14161C;
+        border-bottom: 1px solid rgba(20, 22, 28, .14);
+        font-family: ui-monospace, "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-decoration: none;
+      }
+      #archive-exit:hover { background: #F7F7F4; }
+      #archive-exit:focus-visible { outline: 2px solid #0F766E; outline-offset: -2px; }
+      #archive-exit .zh { color: #5C6570; }
+      @media (prefers-reduced-motion: reduce) {
+        #archive-exit { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <a id="archive-exit" href="/">Skip / 返回索引 <span class="zh">个人主页不在这里</span></a>
+    <main id="viewport"><div id="stage"></div></main>
+  </body>
+</html>

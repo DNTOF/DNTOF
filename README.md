@@ -1,29 +1,65 @@
-<img src="assets/readme-header.svg" alt="DNT_OF — Personal Archive OS" width="100%" />
+# DNT_OF
 
-## FILE X-001 · OPERATOR
+高中生，自学 C# 与 Python。给 [SCP: Secret Laboratory](https://github.com/DNTOF) 服务器写插件、数据接口和工具。
+
+站点：[dntof.com](https://dntof.com)（GitHub Pages，仓库根目录即站点根目录，CNAME `dntof.com`）。
+
+## 项目
+
+以 GitHub 仓库为准，不在这里编造数字或评价。
+
+| 项目 | 说明 | 状态 |
+| --- | --- | --- |
+| [SLDataAPI](https://github.com/DNTOF/SLDataAPI) | SCP:SL 服务端 LabAPI 插件。HTTP / WebSocket 暴露在线玩家、回合、核弹、阵营等实时数据 | 活跃 · v2.5.4 · GPLv3 |
+| [astrbot_plugin_sl_query](https://github.com/DNTOF/astrbot_plugin_sl_query) | 上面那套数据的 AstrBot 群聊查询前端 | 活跃 |
+| [SLAgent](https://github.com/DNTOF/SLAgent) | EXILED 插件：游戏里用自然语言管服务器 | 维护 |
+| [astrbot_plugin_adsb_monitor](https://github.com/DNTOF/astrbot_plugin_adsb_monitor) | Dump1090 → ADS-B 推送。已归档 | 停更 |
+| [DNT-118](https://github.com/DNT-118) | 面向 SCP:SL 服务器生态的开发组织 | 运作中 |
+| [Foundation Console](https://dntof.com/platform/) | SLDataAPI 的自托管控制台 | 源码计划 2027-01-01 公开 |
+
+其余仓库见 [github.com/DNTOF](https://github.com/DNTOF)。
+
+## 站点结构
 
 ```text
-OPERATOR  高中生，正在自学 C# 与 Python。
-DOMAIN    SCP: Secret Laboratory 服务器生态——插件、数据接口与工具，
-          把服务器实时数据做成可查询、可复用的东西。
-STACK     C# · PYTHON · .NET · EXILED · ASTRBOT
-STATUS    活跃开发
+/                 个人索引（dnt-index：静态 HTML/CSS，少量 JS）
+/platform/        SLDataAPI × Foundation Console 说明
+/dnt-118/         组织页
+/redeem.html      兑换中心
+/archive/         可选实验终端（原根路径上的 Three.js ARCHIVE OS）
+CNAME             dntof.com
+css/dnt-index.css 全站唯一主题
 ```
 
-## ARCHIVE INDEX · 内部档案索引
+根路径不再跑 WebGL 开机动画。要看旧终端，从页脚「实验终端」进 `/archive/`，顶栏 Skip 回索引。
 
-| FILE / 编号 | ARCHIVE / 档案 | DEPARTMENT / 类别 | STATUS / 状态 |
-| --- | --- | --- | --- |
-| 001 | [SLDataAPI](https://github.com/DNTOF/SLDataAPI) | 服务端插件 · LabAPI · C#/.NET | ● 活跃 · v2.5.4 · GPLv3 |
-| 002 | [astrbot_plugin_sl_query](https://github.com/DNTOF/astrbot_plugin_sl_query) | ASTRBOT 插件 · Python | ● 活跃 |
-| 003 | [SLAgent](https://github.com/DNTOF/SLAgent) | 服务端插件 · EXILED · C# | ● 维护 |
-| 004 | [astrbot_plugin_adsb_monitor](https://github.com/DNTOF/astrbot_plugin_adsb_monitor) | ASTRBOT 插件 · Python | ● 停更 |
-| 005 | [DNT-118](https://github.com/DNT-118) | 开发组织 | ● 运作中 |
-| 006 | [Foundation Console](https://dntof.com/platform/) | 平台 · SELF-HOSTED | ● 源码 2027-01-01 公开 |
+## dnt-index
 
-> 001 运行于 SCP:SL 服务端，通过 HTTP / WebSocket API 实时暴露服务器状态——在线玩家、回合信息、核弹状态、阵营分布；002 是它的群聊查询前端，006 是它的自托管控制台（架构与版本记录见 [dntof.com/platform](https://dntof.com/platform/)）。
+一套主题，没有切换器。纸色底、墨色字、细线、编号、信号色只用青绿。
 
-## SUPPORT · 支持开发
+- `--bg #EDEEE9` · `--ink #14161C` · `--muted #5C6570`
+- `--line rgba(20,22,28,.14)` · `--panel #F7F7F4`
+- `--signal #0F766E` · `--danger #B42318`
+- 字体：IBM Plex Sans + Noto Sans SC + IBM Plex Mono
+
+`platform/`、`dnt-118/`、`redeem.html` 共用这份 CSS 的 token 和顶栏/文档原语。
+
+## 本地预览
+
+仓库根目录就是站点根。不要用 `app/` 里的 Vite 去预览首页——那只会打开实验终端源码。
+
+```bash
+python3 -m http.server 8080
+# http://127.0.0.1:8080/
+# http://127.0.0.1:8080/platform/
+# http://127.0.0.1:8080/dnt-118/
+# http://127.0.0.1:8080/redeem.html
+# http://127.0.0.1:8080/archive/
+```
+
+实验终端源码在 `app/`。`npm run build` 的产物不要覆盖仓库根的 `index.html`；线上入口是 `archive/index.html`，构建资源仍走 `/app-build/`。
+
+## 支持
 
 - 爱发电：https://afdian.com/a/DNT_OF
 - 哔哩哔哩：https://space.bilibili.com/3493125592975851

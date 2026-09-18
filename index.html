@@ -1,23 +1,278 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#e8e5e1" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="DNT_OF" />
-    <meta
-      name="description"
-      content="DNT_OF — Personal Archive OS. 交互式三维档案索引终端。"
-    />
-    <title>DNT_OF · ARCHIVE OS</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <script type="module" crossorigin src="/app-build/index-elIS-sEY.js"></script>
-    <link rel="stylesheet" crossorigin href="/app-build/index-8hQ6QWXX.css">
-  </head>
-  <body>
-    <main id="viewport"><div id="stage"></div></main>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#EDEEE9" />
+  <title>DNT_OF — 个人索引</title>
+  <meta name="description" content="DNT_OF：SCP:SL 插件 / 数据 API 开发者（C# · Python · EXILED · AstrBot）。重点项目 SLDataAPI。" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/dnt-index.css" />
+</head>
+<body>
+
+<a class="dnt-skip" href="#main">跳到主要内容</a>
+
+<div class="dnt-shell">
+
+  <aside class="dnt-rail">
+    <a class="dnt-rail__brand" href="./">DNT_OF</a>
+    <nav class="dnt-rail__nav" aria-label="页面锚点">
+      <a href="#featured" data-idx>01</a>
+      <a href="#projects" data-idx>02</a>
+      <a href="#org" data-idx>03</a>
+      <a href="#activity" data-idx>04</a>
+    </nav>
+    <span class="dnt-rail__foot">dntof.com — personal index</span>
+  </aside>
+
+  <header class="dnt-topbar">
+    <div class="dnt-topbar__id">
+      <a class="dnt-topbar__brand" href="./">DNT_OF</a>
+      <span class="dnt-topbar__meta">SCP:SL // PLUGIN · DATA API</span>
+    </div>
+    <div class="dnt-topbar__right">
+      <span class="dnt-topbar__clock" id="clock" aria-hidden="true">--:--:--</span>
+      <nav class="dnt-topbar__links" aria-label="站内与外部链接">
+        <a href="platform/">platform</a>
+        <a href="dnt-118/">dnt-118</a>
+        <a href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://afdian.com/a/DNT_OF" target="_blank" rel="noreferrer">爱发电</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="dnt-stage" id="main">
+
+    <section class="hero">
+      <div class="hero__inner">
+        <div class="hero__top">
+          <span>PERSONAL INDEX · SCP:SL PLUGIN / DATA API</span>
+          <span class="file">00 / OPERATOR</span>
+        </div>
+        <h1 class="hero__name">DNT_OF</h1>
+
+        <dl class="rec">
+          <div class="rec__row">
+            <dt class="rec__key">WHO</dt>
+            <dd class="rec__val">高中生，正在自学 C# 与 Python。</dd>
+          </div>
+          <div class="rec__row">
+            <dt class="rec__key">WHAT</dt>
+            <dd class="rec__val">SCP: Secret Laboratory 的插件 / 数据 API 开发——把服务器实时数据做成可查询、可复用的东西。</dd>
+          </div>
+          <div class="rec__row">
+            <dt class="rec__key">STACK</dt>
+            <dd class="rec__val">
+              <span class="rec__tags">
+                <span>C#</span>
+                <span>PYTHON</span>
+                <span>.NET</span>
+                <span>EXILED</span>
+                <span>ASTRBOT</span>
+              </span>
+            </dd>
+          </div>
+          <div class="rec__row">
+            <dt class="rec__key">LINKS</dt>
+            <dd class="rec__val">
+              <a href="https://github.com/DNTOF" target="_blank" rel="noreferrer">github.com/DNTOF</a>
+              ／ <a href="platform/">platform/</a>
+              ／ <a href="dnt-118/">dnt-118/</a>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="https://github.com/DNTOF/SLDataAPI" target="_blank" rel="noreferrer">SLDataAPI ↗</a>
+          <a class="btn" href="platform/">平台介绍</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec dnt-wrap" id="featured">
+      <div class="sec__head">
+        <h2>SLDataAPI <span class="zh">重点项目 · 服务端数据接口</span></h2>
+        <span class="sec__lead" aria-hidden="true"></span>
+        <span class="sec__tag"><b>01</b> · FEATURED</span>
+      </div>
+      <div class="feat">
+        <div class="feat__bar">
+          <span>GITHUB.COM/DNTOF/SLDATAAPI · v2.5.4 · GPLv3</span>
+          <span class="chip chip--ok">活跃</span>
+        </div>
+        <div class="feat__body">
+          <h3 class="feat__name"><a href="https://github.com/DNTOF/SLDataAPI" target="_blank" rel="noreferrer">SLDataAPI</a></h3>
+          <p class="feat__sub">C# / .NET · LabAPI 原生 · 运行于 SCP:SL 服务端</p>
+          <p class="feat__desc">
+            通过 HTTP / WebSocket API 实时暴露服务器状态——在线玩家、回合信息、核弹状态、阵营分布，
+            给查询工具和控制台当统一数据源。002 是它的群聊查询前端，platform 页写的是配套的自托管控制台。
+          </p>
+          <ul class="feat__list">
+            <li><span class="no">01</span>多源数据聚合：玩家 / 回合 / 服务器 / 核弹 / 阵营</li>
+            <li><span class="no">02</span>HTTP / WebSocket 实时查询接口</li>
+            <li><span class="no">03</span>面向 astrbot_plugin_sl_query 的数据推送</li>
+            <li><span class="no">04</span>面向 Foundation Console 的服务器控制能力</li>
+          </ul>
+          <div class="feat__links">
+            <a class="btn" href="https://github.com/DNTOF/SLDataAPI" target="_blank" rel="noreferrer">仓库 ↗</a>
+            <a class="btn" href="platform/">platform/</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec dnt-wrap" id="projects">
+      <div class="sec__head">
+        <h2>Index <span class="zh">项目列表 · 以 GitHub 为准</span></h2>
+        <span class="sec__lead" aria-hidden="true"></span>
+        <span class="sec__tag"><b>02</b> · PROJECTS</span>
+      </div>
+      <ul class="proj">
+        <li>
+          <a class="proj__row" href="https://github.com/DNTOF/astrbot_plugin_sl_query" target="_blank" rel="noreferrer">
+            <span class="proj__no">02-1</span>
+            <span class="proj__main">
+              <span class="proj__name">astrbot_plugin_sl_query</span>
+              <span class="proj__dots" aria-hidden="true"></span>
+              <span class="proj__tech">PYTHON / ASTRBOT</span>
+            </span>
+            <span class="chip chip--ok">活跃</span>
+            <span class="proj__desc">SCP:SL 服务器查询 AstrBot 插件：官方 API 与 EXILED 实时数据双源查询，多服务器绑定、多会话数据隔离。</span>
+          </a>
+        </li>
+        <li>
+          <a class="proj__row" href="https://github.com/DNTOF/SLAgent" target="_blank" rel="noreferrer">
+            <span class="proj__no">02-2</span>
+            <span class="proj__main">
+              <span class="proj__name">SLAgent</span>
+              <span class="proj__dots" aria-hidden="true"></span>
+              <span class="proj__tech">C# / EXILED</span>
+            </span>
+            <span class="chip">维护</span>
+            <span class="proj__desc">SCP:SL × AI 辅助插件：在游戏中用自然语言管理服务器，支持上下文记忆与白名单控制。</span>
+          </a>
+        </li>
+        <li>
+          <a class="proj__row" href="https://github.com/DNTOF/astrbot_plugin_adsb_monitor" target="_blank" rel="noreferrer">
+            <span class="proj__no">02-3</span>
+            <span class="proj__main">
+              <span class="proj__name">astrbot_plugin_adsb_monitor</span>
+              <span class="proj__dots" aria-hidden="true"></span>
+              <span class="proj__tech">PYTHON / ADS-B</span>
+            </span>
+            <span class="chip chip--off">停更</span>
+            <span class="proj__desc">连接本地 Dump1090 JSON 输出，实时解析并推送 ADS-B 飞机信息。仓库已归档。</span>
+          </a>
+        </li>
+        <li>
+          <a class="proj__row" href="platform/">
+            <span class="proj__no">02-4</span>
+            <span class="proj__main">
+              <span class="proj__name">Foundation Console</span>
+              <span class="proj__dots" aria-hidden="true"></span>
+              <span class="proj__tech">PLATFORM · SELF-HOSTED</span>
+            </span>
+            <span class="chip chip--wait">源码待公开</span>
+            <span class="proj__desc">SLDataAPI 的自托管控制台。源码计划 2027-01-01 11:18（UTC+8）公开，说明写在 platform/。</span>
+          </a>
+        </li>
+      </ul>
+      <p class="sec__lede">其余公开仓库以 <a href="https://github.com/DNTOF" target="_blank" rel="noreferrer">github.com/DNTOF</a> 为准，这里不另编目录。</p>
+    </section>
+
+    <section class="sec dnt-wrap" id="org">
+      <div class="sec__head">
+        <h2>DNT-118 <span class="zh">开发组织</span></h2>
+        <span class="sec__lead" aria-hidden="true"></span>
+        <span class="sec__tag"><b>03</b> · ORGANIZATION</span>
+      </div>
+      <div class="org">
+        <p>
+          面向 SCP:SL 服务器生态的开发组织。当前方向：EXILED 服务端插件与数据接口。
+          计划把<strong>已知、归组织所有的项目逐个开出公开分支</strong>，作为面向社区的版本——
+          功能内核不变，其它都放开。
+        </p>
+        <div class="feat__links">
+          <a class="btn" href="dnt-118/">组织页</a>
+          <a class="btn" href="https://github.com/DNT-118" target="_blank" rel="noreferrer">GitHub · DNT-118 ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec dnt-wrap" id="activity">
+      <div class="sec__head">
+        <h2>Contributions <span class="zh">提交足迹</span></h2>
+        <span class="sec__lead" aria-hidden="true"></span>
+        <span class="sec__tag"><b>04</b> · ACTIVITY</span>
+      </div>
+      <figure class="dnt-figure">
+        <img src="https://ghchart.rshah.org/0F766E/DNTOF"
+             alt="DNT_OF 的 GitHub 贡献图"
+             loading="lazy"
+             width="884"
+             height="128" />
+        <figcaption>
+          <span>GITHUB CONTRIBUTIONS</span>
+          <span>SOURCE: GHCHART.RSHAH.ORG</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <footer class="dnt-wrap dnt-foot">
+      <span>© <span id="year">2026</span> DNT_OF · dntof.com</span>
+      <nav class="dnt-foot__links" aria-label="页脚链接">
+        <a href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://space.bilibili.com/3493125592975851" target="_blank" rel="noreferrer">哔哩哔哩</a>
+        <a href="https://afdian.com/a/DNT_OF" target="_blank" rel="noreferrer">爱发电</a>
+        <a href="redeem.html">兑换</a>
+        <a href="archive/">实验终端</a>
+      </nav>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  (function () {
+    var el = document.getElementById('clock');
+    if (!el) return;
+    function tick() {
+      var d = new Date();
+      el.textContent = [d.getHours(), d.getMinutes(), d.getSeconds()]
+        .map(function (n) { return String(n).padStart(2, '0'); })
+        .join(':');
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  (function () {
+    var links = document.querySelectorAll('[data-idx]');
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {};
+    links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var link = map[e.target.id];
+        if (!link) return;
+        if (e.isIntersecting) {
+          links.forEach(function (l) { l.classList.remove('is-active'); });
+          link.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    Object.keys(map).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  })();
+</script>
+
+</body>
 </html>
