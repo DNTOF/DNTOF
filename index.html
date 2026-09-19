@@ -29,47 +29,35 @@
 
   <div class="deck__index">
     <section class="ident">
-      <p class="ident__who">高中生 · 自学 C# / Python</p>
       <h1 class="ident__name">DNT<span>_</span>OF</h1>
       <p class="ident__claim">给 SCP:SL 服务端写插件：把局内玩家、回合、核弹做成外面能查的 API。</p>
     </section>
 
     <section class="listing" id="projects">
-      <header class="listing__head">
-        <h2>项目</h2>
-        <p>以 GitHub 为准，不另编目录。</p>
-      </header>
+      <h2>项目</h2>
       <ul class="listing__rows">
         <li>
           <a href="https://github.com/DNTOF/astrbot_plugin_sl_query" target="_blank" rel="noreferrer">
             <span class="listing__name">astrbot_plugin_sl_query</span>
             <span class="flag flag--on">活跃</span>
-            <span class="listing__meta">Python · AstrBot</span>
-            <span class="listing__desc">SCP:SL 查询：官方 API 与 EXILED 实时数据双源，多服务器绑定，会话隔离。</span>
           </a>
         </li>
         <li>
           <a href="https://github.com/DNTOF/SLAgent" target="_blank" rel="noreferrer">
             <span class="listing__name">SLAgent</span>
             <span class="flag">维护</span>
-            <span class="listing__meta">C# · EXILED</span>
-            <span class="listing__desc">游戏里用自然语言管服务器，带上下文记忆和白名单。</span>
           </a>
         </li>
         <li>
           <a href="https://github.com/DNTOF/astrbot_plugin_adsb_monitor" target="_blank" rel="noreferrer">
             <span class="listing__name">astrbot_plugin_adsb_monitor</span>
             <span class="flag flag--off">停更</span>
-            <span class="listing__meta">Python · ADS-B · 已归档</span>
-            <span class="listing__desc">接本地 Dump1090 JSON，解析并推送飞机信息。</span>
           </a>
         </li>
         <li>
           <a href="platform/">
             <span class="listing__name">Foundation Console</span>
             <span class="flag">待公开</span>
-            <span class="listing__meta">自托管 · 2027-01-01</span>
-            <span class="listing__desc">SLDataAPI 的 Web 控制台。日期写在平台页：2027-01-01 11:18（UTC+8）。</span>
           </a>
         </li>
       </ul>
@@ -77,70 +65,33 @@
 
     <section class="org" id="org">
       <h2>DNT-118</h2>
-      <p>
-        面向 SCP:SL 服务器生态的开发组织。方向是 EXILED 插件与数据接口。
-        计划把<strong>已知、归组织所有的项目逐个开出公开分支</strong>——功能内核不变，其它都放开。
-      </p>
-      <p class="org__links">
-        <a href="dnt-118/">组织页</a>
-        <a href="https://github.com/DNT-118" target="_blank" rel="noreferrer">github.com/DNT-118</a>
-      </p>
+      <p>SCP:SL 插件与数据接口组织。公开分支计划见<a href="dnt-118/">组织页</a>。</p>
     </section>
   </div>
 
   <aside class="focus" id="featured">
     <div class="focus__head">
       <h2>SLDataAPI</h2>
-      <p class="flags">
-        <span class="flag flag--on">活跃</span>
-        <span class="flag">v2.5.4</span>
-        <span class="flag">GPLv3</span>
-        <span class="flag">LabAPI</span>
-      </p>
+      <p class="flag">v2.5.4</p>
     </div>
     <p class="focus__lede">
-      跑在 SCP:SL 进程里。HTTP / WebSocket 暴露在线玩家、回合、核弹、阵营——
-      查询插件和控制台读同一份数据。
+      跑在 SCP:SL 进程里，用 HTTP / WebSocket 把局内状态送给查询插件和控制台。
     </p>
     <figure class="bus">
-      <svg class="bus__svg" viewBox="0 0 440 188" role="img" aria-label="SLDataAPI 数据总线：游戏服经 LabAPI 到查询插件与控制台">
-        <path d="M12 12h16M12 12v16M428 12h-16M428 12v16M12 176h16M12 176v-16M428 176h-16M428 176v-16" stroke="#C9964A" stroke-width="1.1" fill="none"/>
-        <path d="M40 78h360" stroke="#C9964A" stroke-width="1.25"/>
-        <path d="M56 74v8M96 76v4M136 76v4M176 76v4M220 73v10M264 76v4M304 76v4M344 76v4M384 74v8" stroke="#C9964A" stroke-width="1"/>
-        <path d="M220 78v62h164" stroke="#C9964A" stroke-width="1.25" fill="none"/>
-        <circle cx="56" cy="78" r="3.4" fill="#EDE6D8"/>
-        <circle cx="220" cy="78" r="5.2" fill="#C9964A"/>
-        <circle cx="400" cy="78" r="3.4" fill="#EDE6D8"/>
-        <circle cx="384" cy="140" r="3.4" fill="#EDE6D8"/>
-        <text x="56" y="36" text-anchor="middle" fill="#EDE6D8" font-size="12" font-weight="600">SCP:SL</text>
-        <text x="56" y="52" text-anchor="middle" fill="#9A9184" font-size="10">游戏服</text>
-        <text x="220" y="32" text-anchor="middle" fill="#EDE6D8" font-size="15" font-weight="700">SLDataAPI</text>
-        <text x="220" y="50" text-anchor="middle" fill="#9A9184" font-size="10">LabAPI 进程内</text>
-        <text x="400" y="36" text-anchor="end" fill="#EDE6D8" font-size="11" font-weight="600">sl_query</text>
-        <text x="400" y="52" text-anchor="end" fill="#9A9184" font-size="10">群聊查询</text>
-        <text x="232" y="108" fill="#9A9184" font-size="10">HTTP / WS</text>
-        <text x="400" y="164" text-anchor="end" fill="#EDE6D8" font-size="11" font-weight="600">Foundation Console</text>
-        <text x="400" y="178" text-anchor="end" fill="#9A9184" font-size="10">自托管 · 2027-01-01</text>
+      <svg class="bus__svg" viewBox="0 0 400 132" role="img" aria-label="SLDataAPI：游戏服到查询与控制台">
+        <path d="M16 16h12M16 16v12M384 16h-12M384 16v12M16 116h12M16 116v-12M384 116h-12M384 116v-12" stroke="#C9964A" stroke-opacity=".55" stroke-width="1" fill="none"/>
+        <path d="M36 56h328" stroke="#C9964A" stroke-width="1.2"/>
+        <path d="M200 56v40h148" stroke="#C9964A" stroke-width="1.2" fill="none"/>
+        <circle cx="48" cy="56" r="3" fill="#EDE6D8"/>
+        <circle cx="200" cy="56" r="4.5" fill="#C9964A"/>
+        <circle cx="352" cy="56" r="3" fill="#EDE6D8"/>
+        <circle cx="348" cy="96" r="3" fill="#EDE6D8"/>
+        <text x="48" y="40" text-anchor="middle" fill="#9A9184" font-size="11">游戏服</text>
+        <text x="200" y="36" text-anchor="middle" fill="#EDE6D8" font-size="13" font-weight="600">SLDataAPI</text>
+        <text x="352" y="40" text-anchor="middle" fill="#9A9184" font-size="11">群聊</text>
+        <text x="348" y="118" text-anchor="middle" fill="#9A9184" font-size="11">控制台</text>
       </svg>
     </figure>
-    <dl class="caps">
-      <div>
-        <dt>多源聚合</dt>
-        <dd>玩家、回合、服务器、核弹、阵营，一份接口读完。</dd>
-      </div>
-      <div>
-        <dt>实时通道</dt>
-        <dd>HTTP 查询，WebSocket 推事件，不用轮询猜状态。</dd>
-      </div>
-      <div>
-        <dt>给机器人</dt>
-        <dd><a href="https://github.com/DNTOF/astrbot_plugin_sl_query" target="_blank" rel="noreferrer">astrbot_plugin_sl_query</a> 的数据推送。</dd>
-      </div>
-      <div>
-        <dt>给控制台</dt>
-        <dd><a href="platform/">Foundation Console</a> 的服务器控制。源码计划 2027-01-01 公开。</dd>
-      </div>
-    </dl>
     <p class="focus__links">
       <a href="https://github.com/DNTOF/SLDataAPI" target="_blank" rel="noreferrer">仓库</a>
       <a href="platform/">platform 页</a>
