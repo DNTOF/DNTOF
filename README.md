@@ -35,12 +35,11 @@ css/dnt-index.css 全站唯一主题
 
 ## dnt-index
 
-一套主题，没有切换器。根页是**深色 ops 索引**（近黑底、细网格、teal 信号色、内嵌链路面板）；`platform/`、`dnt-118/`、`redeem` 仍用 `:root` 浅色文档样式。没有左轨编号条，也没有假 HUD 顶栏。
+一套主题，没有切换器。根页是**深色 ops 索引**：暖黑平面 + 赭石信号色，左侧目录 / 右侧 SLDataAPI 预览面。`platform/`、`dnt-118/`、`redeem` 仍用 `:root` 浅色文档样式。没有左轨编号、假 HUD、顶栏 logo。
 
-- `--bg #EDEEE9` · `--ink #14161C` · `--muted #5C6570`
-- `--line rgba(20,22,28,.14)` · `--panel #F7F7F4`
-- `--signal #0F766E` · `--danger #B42318`
-- 字体：IBM Plex Sans + Noto Sans SC（等宽只出现在示意图标注和子页）
+- 根页：`--bg #100E0C` · `--ink #EDE6D8` · `--signal #C9964A`
+- 子页：`--bg #EDEEE9` · `--ink #14161C` · `--signal #0F766E`
+- 字体：Newsreader（身份行）+ IBM Plex Sans / Noto Sans SC（正文）+ IBM Plex Mono（路径/状态）
 
 `platform/`、`dnt-118/`、`redeem.html` 共用这份 CSS 的 token 和文档原语。
 
