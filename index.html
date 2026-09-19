@@ -7,12 +7,11 @@
   <title>DNT_OF — SCP:SL 插件 / 数据 API</title>
   <meta name="description" content="DNT_OF：高中生，给 SCP: Secret Laboratory 写插件和数据接口。重点项目 SLDataAPI。" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/fonts/fonts.css" />
+  <link rel="stylesheet" href="assets/base.css" />
   <link rel="stylesheet" href="css/dnt-index.css" />
 </head>
 <body class="home">
@@ -25,6 +24,7 @@
     <a href="dnt-118/">组织</a>
     <a href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub</a>
     <a href="https://afdian.com/a/DNT_OF" target="_blank" rel="noreferrer">爱发电</a>
+    <a class="btn btn-primary masthead__cta" href="https://github.com/DNTOF/SLDataAPI" target="_blank" rel="noreferrer">SLDataAPI</a>
   </nav>
 </header>
 
@@ -33,29 +33,35 @@
   <section class="hero">
     <div class="page-container hero__grid">
       <div class="hero__inner">
-        <h1 class="hero__title reveal">DNT<em>_</em>OF</h1>
+        <h1 class="hero__title reveal">
+          给 SCP:SL 写<span class="mark">插件</span>，<br />
+          把局内状态做成<br />
+          外面能查的 <span class="mark">API</span>。
+        </h1>
+      </div>
+      <div class="hero__copy">
         <p class="hero__body reveal">
-          给 SCP:SL 服务端写插件：把局内玩家、回合、核弹做成外面能查的 API。
+          DNT_OF，高中生。自学 C# 与 Python，给 Secret Laboratory 服务器写数据接口。重点是 SLDataAPI。
         </p>
         <p class="hero__actions reveal">
           <a class="btn btn-primary" href="https://github.com/DNTOF/SLDataAPI" target="_blank" rel="noreferrer">SLDataAPI 仓库</a>
           <a class="btn btn-secondary" href="platform/">平台说明</a>
         </p>
+        <figure class="hero__mark reveal">
+          <svg class="ink" viewBox="0 0 360 280" role="img" aria-label="SLDataAPI 把游戏服状态送到查询与控制台">
+            <path d="M28 88 C110 40, 150 48, 188 92 S250 168, 332 148" fill="none" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M188 92 C200 140, 210 168, 248 196" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".45"/>
+            <circle cx="36" cy="84" r="5" fill="currentColor"/>
+            <circle cx="188" cy="92" r="7" fill="currentColor"/>
+            <circle cx="328" cy="148" r="5" fill="currentColor"/>
+            <circle cx="248" cy="196" r="5" fill="currentColor"/>
+            <text x="36" y="64" fill="currentColor" font-size="13">游戏服</text>
+            <text x="188" y="68" text-anchor="middle" fill="currentColor" font-size="16">SLDataAPI</text>
+            <text x="332" y="132" text-anchor="end" fill="currentColor" font-size="13">群聊查询</text>
+            <text x="260" y="224" fill="currentColor" font-size="13">控制台</text>
+          </svg>
+        </figure>
       </div>
-      <figure class="hero__mark reveal" aria-hidden="false">
-        <svg class="ink" viewBox="0 0 360 280" role="img" aria-label="SLDataAPI 把游戏服状态送到查询与控制台">
-          <path d="M28 88 C110 40, 150 48, 188 92 S250 168, 332 148" fill="none" stroke="var(--color-accent-warm)" stroke-width="1.4"/>
-          <path d="M188 92 C200 140, 210 168, 248 196" fill="none" stroke="var(--color-accent-orange)" stroke-width="1.2" stroke-opacity=".7"/>
-          <circle cx="36" cy="84" r="5" fill="var(--color-text-primary)"/>
-          <circle cx="188" cy="92" r="7" fill="var(--color-accent-orange)"/>
-          <circle cx="328" cy="148" r="5" fill="var(--color-text-primary)"/>
-          <circle cx="248" cy="196" r="5" fill="var(--color-text-primary)"/>
-          <text x="36" y="64" fill="var(--color-text-secondary)" font-size="13">游戏服</text>
-          <text x="188" y="68" text-anchor="middle" fill="var(--color-text-primary)" font-size="16">SLDataAPI</text>
-          <text x="332" y="132" text-anchor="end" fill="var(--color-text-secondary)" font-size="13">群聊查询</text>
-          <text x="260" y="224" fill="var(--color-text-secondary)" font-size="13">控制台</text>
-        </svg>
-      </figure>
     </div>
   </section>
 
