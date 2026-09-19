@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" role="img">
+  <title>SLDataAPI data path</title>
+  <rect width="520" height="420" fill="#F7F7F4"/>
+  <path d="M12 20h8M16 16v8M500 20h8M504 16v8M12 400h8M16 396v8M500 400h8M504 396v8" stroke="#14161C" stroke-opacity=".28" stroke-width="1"/>
+  <text x="28" y="36" fill="#5C6570" font-family="IBM Plex Sans, Noto Sans SC, sans-serif" font-size="11">Fig. 1  data path</text>
+  <text x="492" y="36" text-anchor="end" fill="#0F766E" font-family="IBM Plex Sans, sans-serif" font-size="11">v2.5.4</text>
+
+  <rect x="128" y="56" width="264" height="64" fill="#EDEEE9" stroke="#14161C" stroke-width="1.2"/>
+  <text x="260" y="82" text-anchor="middle" fill="#14161C" font-family="IBM Plex Sans, Noto Sans SC, sans-serif" font-size="14" font-weight="600">SCP:SL server</text>
+  <text x="260" y="102" text-anchor="middle" fill="#5C6570" font-family="IBM Plex Sans, Noto Sans SC, sans-serif" font-size="11">players / round / warhead / teams</text>
+
+  <path d="M260 120v28" stroke="#14161C" stroke-width="1.2"/>
+  <path d="M260 148l-4-7h8z" fill="#14161C"/>
+  <text x="272" y="140" fill="#5C6570" font-family="IBM Plex Sans, Noto Sans SC, sans-serif" font-size="10">in-process LabAPI</text>
+
+  <rect x="88" y="152" width="344" height="80" fill="#EDEEE9" stroke="#0F766E" stroke-width="2"/>
+  <rect x="88" y="152" width="8" height="80" fill="#0F766E"/>
+  <text x="260" y="184" text-anchor="middle" fill="#14161C" font-family="IBM Plex Sans, sans-serif" font-size="18" font-weight="700">SLDataAPI</text>
+  <text x="260" y="206" text-anchor="middle" fill="#5C6570" font-family="IBM Plex Sans, sans-serif" font-size="12">native LabAPI plugin  ·  HTTP / WebSocket</text>
+
+  <path d="M170 232v36" stroke="#14161C" stroke-width="1.2"/>
+  <path d="M350 232v36" stroke="#14161C" stroke-width="1.2"/>
+  <path d="M170 268l-4-7h8z" fill="#14161C"/>
+  <path d="M350 268l-4-7h8z" fill="#14161C"/>
+
+  <rect x="36" y="272" width="228" height="88" fill="#EDEEE9" stroke="#14161C" stroke-width="1.2"/>
+  <text x="150" y="304" text-anchor="middle" fill="#14161C" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600">astrbot_plugin_sl_query</text>
+  <text x="150" y="324" text-anchor="middle" fill="#5C6570" font-family="IBM Plex Sans, Noto Sans SC, sans-serif" font-size="11">chat query frontend</text>
+  <text x="150" y="342" text-anchor="middle" fill="#5C6570" font-family="IBM Plex Sans, sans-serif" font-size="11">official API + live data</text>
+
+  <rect x="256" y="272" width="228" height="88" fill="#EDEEE9" stroke="#14161C" stroke-width="1.2"/>
+  <text x="370" y="304" text-anchor="middle" fill="#14161C" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600">Foundation Console</text>
+  <text x="370" y="324" text-anchor="middle" fill="#5C6570" font-family="IBM Plex Sans, Noto Sans SC, sans-serif" font-size="11">self-hosted console</text>
+  <text x="370" y="342" text-anchor="middle" fill="#5C6570" font-family="IBM Plex Sans, sans-serif" font-size="11">source due 2027-01-01</text>
+
+  <text x="28" y="392" fill="#5C6570" font-family="IBM Plex Sans, Noto Sans SC, sans-serif" font-size="10">Matches the public repos and the platform page. Not a dummy diagram.</text>
+</svg>

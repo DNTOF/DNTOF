@@ -7,10 +7,8 @@
 <meta name="description" content="DNT_OF 兑换中心：选择兑换券坐标，输入兑换码，领取对应的兑换券。" />
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Regular.min.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Medium.min.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Demibold.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
 <link rel="stylesheet" href="css/dnt-index.css"/>
 <style>
 /* 页面专属样式；token 来自 css/dnt-index.css */
@@ -41,6 +39,7 @@ transition:background .15s ease;
 }
 .btn:hover{background:var(--signal)}
 .btn:disabled{opacity:.5;cursor:not-allowed}
+.btn::before,.btn::after{content:none}
 .btn.loading .btn-txt{visibility:hidden}
 .btn.loading::after{content:'';position:absolute;width:20px;height:20px;border:2.5px solid rgba(237,238,233,.3);border-top-color:var(--panel);border-radius:50%;animation:spin .6s linear infinite}
 .msg{margin-top:20px;padding:12px 16px;font-size:.9rem;display:none}
@@ -62,6 +61,7 @@ hr{border:none;border-top:1px solid var(--line);margin:24px 0}
 </style>
 </head>
 <body>
+<a class="dnt-skip" href="#frm">跳到主要内容</a>
 <div class="page">
 <header class="header">
 <p class="hero__kicker">REDEEM · 兑换</p>
@@ -94,7 +94,7 @@ hr{border:none;border-top:1px solid var(--line);margin:24px 0}
 </div>
 <footer class="foot">
 <span>DNT_OF · 兑换中心</span>
-<span><a href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub</a> &middot; 如遇问题请联系管理员</span>
+<span><a href="./">索引</a> &middot; <a href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub</a> &middot; 如遇问题请联系管理员</span>
 </footer>
 </div>
 <script>
