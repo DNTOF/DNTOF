@@ -66,7 +66,7 @@ body.home {
   --font-body-cn: var(--font-body);
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
   --font-sans: var(--font-heading);
-  --radius-control: 10px;
+  --radius-control: 8px;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-md: 1.125rem;
@@ -178,12 +178,12 @@ body.home .masthead__nav {
   gap: var(--space-6);
   flex-wrap: wrap;
   font-family: var(--font-heading);
-  font-size: var(--text-sm);
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 400;
 }
-body.home .masthead__nav a { color: var(--color-text-secondary); }
-body.home .masthead__nav a:hover { color: var(--color-text-primary); }
-body.home .masthead__cta { margin-left: var(--space-1); }
+body.home .masthead__nav a { color: var(--color-text-primary); }
+body.home .masthead__nav a:hover { opacity: 0.7; }
+body.home .masthead__cta { margin-left: var(--space-2); }
 
 body.home .hero {
   padding-block: clamp(72px, 11vw, 140px) clamp(48px, 8vw, 96px);
@@ -198,11 +198,12 @@ body.home .hero__grid {
 body.home .hero__inner { min-width: 0; }
 body.home .hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5.2vw, 4.25rem);
+  font-size: clamp(2.25rem, 4.6vw, 58px);
   font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.035em;
-  max-width: 10em;
+  line-height: 1.12;
+  letter-spacing: normal;
+  color: var(--color-text-primary);
+  max-width: 11em;
   text-wrap: balance;
 }
 body.home .hero__title .mark {
@@ -226,7 +227,6 @@ body.home .hero__body {
   max-width: 28em;
   text-spacing-trim: trim-start allow-end;
 }
-body.home .hero__actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
 body.home .hero__mark {
   width: min(100%, 340px);
   color: var(--color-text-primary);
@@ -239,23 +239,23 @@ body.home .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
-  min-width: 44px;
-  padding: 0 18px;
+  box-sizing: border-box;
+  height: 36px;
+  min-height: 36px;
+  padding: 8px 16px;
   font-family: var(--font-heading);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  border-radius: var(--radius-control);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
+  border-radius: 8px;
   box-shadow: none;
-  transition: opacity var(--duration-fast) var(--ease-default),
-              transform var(--duration-fast) var(--ease-default);
+  transition: opacity var(--duration-fast) var(--ease-default);
 }
 body.home .btn:hover { opacity: 0.88; }
-body.home .btn:active { transform: scale(0.98); }
 body.home .btn-primary {
-  background: var(--color-bg-inverted);
-  color: var(--color-text-inverted);
+  background: #141413;
+  color: #FAF9F5;
 }
 body.home .btn-secondary {
   background: transparent;
