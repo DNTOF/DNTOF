@@ -35,14 +35,14 @@ css/dnt-index.css 全站唯一主题
 
 ## dnt-index
 
-一套主题，没有切换器。纸色底、墨色字、细线、编号、信号色只用青绿。
+一套主题，没有切换器。根页是编辑式个人索引：自定义字标、纸纹网格、SLDataAPI 数据链路示意图。没有左轨编号条，也没有假 HUD 顶栏。
 
 - `--bg #EDEEE9` · `--ink #14161C` · `--muted #5C6570`
 - `--line rgba(20,22,28,.14)` · `--panel #F7F7F4`
 - `--signal #0F766E` · `--danger #B42318`
-- 字体：IBM Plex Sans + Noto Sans SC + IBM Plex Mono
+- 字体：IBM Plex Sans + Noto Sans SC（等宽只出现在示意图标注和子页）
 
-`platform/`、`dnt-118/`、`redeem.html` 共用这份 CSS 的 token 和顶栏/文档原语。
+`platform/`、`dnt-118/`、`redeem.html` 共用这份 CSS 的 token 和文档原语。
 
 ## 本地预览
 
