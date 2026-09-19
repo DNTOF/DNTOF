@@ -266,7 +266,7 @@ button { font-family: inherit; }
 .works__list a:hover { background: var(--bg); }
 .works__list h3 {
   font-size: 1.15rem;
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: -0.02em;
 }
 .works__status {
