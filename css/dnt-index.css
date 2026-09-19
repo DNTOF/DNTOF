@@ -158,7 +158,9 @@ button { font-family: inherit; }
   border: 1px solid var(--line);
   box-shadow: 12px 16px 0 color-mix(in srgb, var(--ink) 6%, transparent);
 }
-.hero__figure img { width: 100%; height: auto; }
+.hero__figure img,
+.hero__figure .flow { width: 100%; height: auto; display: block; }
+.hero__figure .flow text { font-family: var(--font-sans); }
 .hero__figure figcaption {
   padding: 10px 14px 12px;
   border-top: 1px solid var(--line);
