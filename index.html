@@ -1,621 +1,310 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh" data-ark-theme="ark" data-ark-depth="complex">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DNT_OF — Developer</title>
+  <title>DNT_OF — Developer Index</title>
+  <script>
+    // 防闪烁：在样式表应用前恢复用户选择的主题家族
+    try {
+      var t = localStorage.getItem('ark-theme');
+      if (t && ['ark', 'endfield', 'exa', 'popucom', 'corporate'].indexOf(t) !== -1) {
+        document.documentElement.dataset.arkTheme = t;
+      }
+    } catch (e) {}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Archivo:wght@400;500;600&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@400;500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Regular.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Medium.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Demibold.min.css" />
-  <style>
-    :root {
-      /* ===== anthropic.com 真实 swatch（扒自官方 CSS）===== */
-      --bg: #faf9f5;            /* ivory-light */
-      --bg-alt: #f0eee6;        /* ivory-medium */
-      --bg-hover: #e8e6dc;      /* ivory-dark */
-      --ink: #141413;           /* slate-dark */
-      --ink-2: #3d3d3a;         /* slate-medium */
-      --dim: #5e5d59;           /* slate-light */
-      --faint: #87867f;         /* cloud-dark */
-      --fainter: #b0aea5;       /* cloud-medium */
-      --line: #1414131a;        /* slate-faded-10 */
-      --line-2: #14141333;      /* slate-faded-20 */
-      --accent: #c6613f;        /* accent（官方强调色）*/
-      --clay: #d97757;          /* clay */
-      --dark-band: #141413;
-      --dark-ink: #faf9f5;
-
-      --font-serif: 'Source Serif 4', 'Noto Serif SC', Georgia, serif;
-      --font-sans: 'Archivo', 'MiSans', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-
-      --radius-sm: 4px;
-      --radius: 8px;
-      --radius-lg: 16px;
-      --radius-xl: 24px;
-      --space-2: 8px;
-      --space-3: 12px;
-      --space-4: 16px;
-      --space-5: 20px;
-      --space-6: 24px;
-      --space-8: 32px;
-      --space-10: 40px;
-      --space-16: 64px;
-      --space-20: 80px;
-      --space-24: 96px;
-      --ease-default: cubic-bezier(0.16, 1, 0.3, 1);
-      --duration-normal: 250ms;
-      --duration-slow: 500ms;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-
-    body {
-      background-color: var(--bg);
-      color: var(--ink);
-      font-family: var(--font-sans);
-      font-size: 1rem;
-      line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-
-    :focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-      border-radius: var(--radius-sm);
-    }
-
-    ::selection { background: var(--accent); color: var(--dark-ink); }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-
-    @view-transition { navigation: auto; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .reveal { opacity: 0; animation: fadeUp var(--duration-slow) var(--ease-default) forwards; }
-    .reveal:nth-child(1) { animation-delay: 0ms; }
-    .reveal:nth-child(2) { animation-delay: 90ms; }
-    .reveal:nth-child(3) { animation-delay: 180ms; }
-    .reveal:nth-child(4) { animation-delay: 270ms; }
-    .reveal:nth-child(5) { animation-delay: 360ms; }
-
-    /* ── Hero 逐词浮现（复刻官方 animate-word）── */
-    .animate-word {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .animate-word.is-in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) {
-      .animate-word { opacity: 1; transform: none; transition: none; }
-    }
-
-    /* ── NAV（Anthropic Sans 角色 → MiSans 中文）── */
-    .nav {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(250, 249, 245, 0.9);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-      padding: 0 clamp(20px, 5vw, 64px);
-      height: 64px;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: var(--space-4);
-    }
-    .nav__brand {
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 1.05rem;
-      letter-spacing: 0.005em;
-      color: var(--ink);
-    }
-    .nav__brand b { color: var(--accent); font-weight: 600; }
-    .nav__links { display: flex; gap: var(--space-6); flex-wrap: wrap; }
-    .nav__links a {
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--dim);
-      transition: color 0.2s ease;
-    }
-    .nav__links a:hover { color: var(--ink); }
-
-    .wrap {
-      max-width: 1200px; margin: 0 auto;
-      padding: 0 clamp(20px, 5vw, 48px);
-    }
-
-    /* ── HERO（官方 u-display-xl：sans 700 · 1.1 行高 · 零字距 · 句内链接）── */
-    .hero { padding: clamp(80px, 12vw, 140px) 0 clamp(64px, 8vw, 96px); }
-    .hero h1 {
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: clamp(2.4rem, 5.5vw, 4rem);
-      line-height: 1.1;
-      letter-spacing: 0;
-      text-wrap: balance;
-      max-width: 20ch;
-      color: var(--ink);
-    }
-    .hero h1 a {
-      color: inherit;
-      text-decoration: underline;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 5px;
-      text-decoration-color: var(--line-2);
-      transition: color 0.2s ease, text-decoration-color 0.2s ease;
-    }
-    .hero h1 a:hover { color: var(--accent); text-decoration-color: var(--accent); }
-    .hero__sub {
-      margin-top: var(--space-6);
-      font-family: var(--font-serif);
-      font-size: clamp(1.05rem, 2vw, 1.2rem);
-      line-height: 1.85;
-      color: var(--dim);
-      max-width: 52ch;
-    }
-    .hero__cta { margin-top: var(--space-10); display: flex; gap: var(--space-3); flex-wrap: wrap; }
-
-    /* ── 按钮（官方规格：8px 圆角矩形 · 36px 高 · 颜色过渡）── */
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
-      min-height: 2.25rem;
-      padding: var(--space-2) var(--space-4);
-      border-radius: var(--radius);
-      font-family: var(--font-sans);
-      font-size: 0.95rem;
-      font-weight: 500;
-      line-height: 1;
-      letter-spacing: 0.005em;
-      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-    }
-    .btn--primary { background: var(--ink); color: var(--dark-ink); }
-    .btn--primary:hover { background: var(--ink-2); }
-    .btn--ghost { border: 1px solid var(--line-2); color: var(--ink); }
-    .btn--ghost:hover { border-color: var(--ink); }
-
-    /* ── 区块通用（官方节奏：section-space--main = 10rem）── */
-    .section { padding: clamp(96px, 10vw, 160px) 0 0; }
-    .section:last-of-type { padding-bottom: var(--space-24); }
-    .section-label {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      color: var(--accent);
-      margin-bottom: var(--space-6);
-    }
-    .section-title {
-      font-family: var(--font-serif);
-      font-weight: 600;
-      font-size: clamp(1.75rem, 3.6vw, 2.6rem);
-      line-height: 1.25;
-      letter-spacing: -0.01em;
-      color: var(--ink);
-      max-width: 26ch;
-    }
-
-    /* ── FEATURED：左文右码 ── */
-    .featured {
-      margin-top: var(--space-10);
-      display: grid;
-      grid-template-columns: 6fr 5fr;
-      gap: clamp(var(--space-8), 5vw, var(--space-16));
-      align-items: center;
-    }
-    .featured__name {
-      font-family: var(--font-serif);
-      font-weight: 600;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      margin-bottom: var(--space-4);
-    }
-    .featured__name a:hover { color: var(--accent); }
-    .featured__desc {
-      font-family: var(--font-serif);
-      color: var(--dim);
-      line-height: 1.85;
-      max-width: 54ch;
-      margin-bottom: var(--space-6);
-    }
-    .featured__list { list-style: none; margin-bottom: var(--space-6); }
-    .featured__list li {
-      padding: var(--space-3) 0;
-      border-top: 1px solid var(--line);
-      color: var(--dim);
-      font-size: 0.95rem;
-      display: flex; gap: var(--space-3); align-items: baseline;
-    }
-    .featured__list li::before { content: '—'; color: var(--accent); flex-shrink: 0; }
-    .featured__links { display: flex; gap: var(--space-6); flex-wrap: wrap; }
-    .textlink {
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--accent);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s ease;
-    }
-    .textlink:hover { border-bottom-color: var(--accent); }
-
-    /* 代码卡片 */
-    .codecard {
-      position: relative;
-      background: var(--dark-band);
-      border-radius: var(--radius-lg);
-      padding: 28px 0 24px;
-      box-shadow: 0 20px 48px rgba(20, 20, 19, 0.14);
-      transform: rotate(1.2deg);
-    }
-    .codecard::before {
-      content: '●  ●  ●';
-      position: absolute; top: 14px; left: 20px;
-      font-size: 9px; letter-spacing: 4px; color: #5a5d59;
-    }
-    .codecard code {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 12.5px; line-height: 1.9;
-      padding: 0 24px; white-space: pre;
-      overflow-x: auto;
-      color: var(--dark-ink);
-      opacity: 0.72;
-    }
-    .codecard .k { color: var(--clay); opacity: 1; }
-    .codecard .s { color: #788c5d; opacity: 1; }
-    .codecard .c { color: #87867f; font-style: italic; opacity: 1; }
-    .codecard .p { color: var(--accent); opacity: 1; }
-    .codecard__badge {
-      position: absolute; bottom: -12px; right: 24px;
-      background: var(--accent); color: var(--dark-ink);
-      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
-      padding: 6px 14px; border-radius: var(--radius-sm);
-    }
-
-    /* ── 大号 CTA（官方 big-cta：24px 圆角深色容器 · 居中）── */
-    .big-cta {
-      margin-top: var(--space-24);
-      background: var(--dark-band);
-      color: var(--dark-ink);
-      border-radius: var(--radius-xl);
-      padding: clamp(var(--space-16), 8vw, var(--space-24)) var(--space-6);
-      text-align: center;
-    }
-    .big-cta .section-label { color: var(--clay); }
-    .big-cta p.lede {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      line-height: 1.6;
-      max-width: 30ch;
-      margin: 0 auto var(--space-8);
-    }
-    .big-cta .textlink { color: var(--clay); }
-    .big-cta .textlink:hover { border-bottom-color: var(--clay); }
-
-    /* ── 项目：细顶线卡片 ── */
-    .cards {
-      margin-top: var(--space-10);
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: var(--space-8);
-    }
-    .card {
-      background: var(--bg-alt);
-      border-radius: var(--radius-lg);
-      padding: var(--space-6);
-      display: flex; flex-direction: column; gap: var(--space-3);
-      transition: background-color 0.2s ease;
-    }
-    .card:hover { background: var(--bg-hover); }
-    .card .meta {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      color: var(--faint);
-    }
-    .card h3 {
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 1.05rem;
-      color: var(--ink);
-    }
-    .card p {
-      font-family: var(--font-serif);
-      color: var(--dim);
-      font-size: 0.95rem;
-      line-height: 1.8;
-      flex: 1;
-    }
-    .card .textlink { align-self: flex-start; }
-
-    /* ── 贡献图 ── */
-    .chart-panel {
-      margin-top: var(--space-10);
-      background: var(--bg-alt);
-      border-radius: var(--radius-lg);
-      padding: var(--space-5);
-    }
-    .chart-panel img { width: 100%; height: auto; border-radius: var(--radius-sm); }
-    .figure-caption {
-      margin-top: var(--space-3);
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--faint);
-      display: flex; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap;
-    }
-    .figure-caption b { color: var(--dim); font-weight: 400; }
-
-    /* ── FOOTER ── */
-    footer {
-      margin-top: var(--space-24);
-      border-top: 1px solid var(--line);
-      background: var(--bg-alt);
-      padding: var(--space-16) 0 var(--space-10);
-    }
-    .footer__grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: var(--space-10);
-    }
-    .footer__brand p {
-      font-family: var(--font-serif);
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: var(--ink);
-      max-width: 22ch;
-    }
-    .footer__brand b { color: var(--accent); font-weight: 600; }
-    .footer__col h4 {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      color: var(--faint);
-      margin-bottom: var(--space-4);
-      font-weight: 400;
-    }
-    .footer__col ul { list-style: none; }
-    .footer__col li { margin-bottom: var(--space-3); }
-    .footer__col a {
-      font-size: 0.9rem;
-      color: var(--dim);
-      transition: color 0.2s ease;
-    }
-    .footer__col a:hover { color: var(--ink); }
-    .footer__bottom {
-      margin-top: var(--space-16);
-      padding-top: var(--space-6);
-      border-top: 1px solid var(--line);
-      display: flex; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--faint);
-    }
-
-    @media (max-width: 800px) {
-      .featured { grid-template-columns: 1fr; }
-      .footer__grid { grid-template-columns: 1fr 1fr; }
-      .nav__links { gap: var(--space-4); }
-    }
-    @media (max-width: 540px) {
-      .footer__grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Space+Grotesk:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/ark-theme.css" />
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <a class="nav__brand" href="/">DNT_OF<b>\</b></a>
-  <div class="nav__links">
-    <a href="/platform/">平台</a>
-    <a href="/dnt-118/">DNT-118</a>
-    <a href="https://github.com/DNTOF" target="_blank">GitHub ↗</a>
-    <a href="https://afdian.com/a/DNT_OF" target="_blank">爱发电</a>
-  </div>
-</nav>
+<div class="ark-shell">
 
-<main class="wrap">
+  <!-- 左轨 -->
+  <aside class="ark-rail">
+    <a class="ark-rail__brand" href="/">DNT_OF</a>
+    <nav class="ark-rail__indices" aria-label="页面索引">
+      <a href="#featured" data-index>01</a>
+      <a href="#projects" data-index>02</a>
+      <a href="#org" data-index>03</a>
+      <a href="#contrib" data-index>04</a>
+    </nav>
+    <span class="ark-rail__foot">PERSONAL INDEX — dntof.com</span>
+  </aside>
 
-  <!-- HERO -->
-  <header class="hero reveal">
-    <h1>为 SCP:SL 服务器生态，写<a href="https://github.com/DNTOF" target="_blank">插件</a>、<a href="/platform/">数据接口</a>与<a href="/dnt-118/">工具</a>。</h1>
-    <p class="hero__sub">
-      DNT_OF —— 高中生，正在自学 C# 与 Python。为 SCP: Secret Laboratory 服务器写插件，
-      把游戏世界的实时数据变成可用的产品。
-    </p>
-    <div class="hero__cta">
-      <a class="btn btn--primary" href="/platform/">查看平台介绍</a>
-      <a class="btn btn--ghost" href="https://github.com/DNTOF" target="_blank">GitHub ↗</a>
+  <!-- 顶栏 -->
+  <header class="ark-topbar">
+    <a class="ark-topbar__brand" href="/">DNT_OF<b>\</b></a>
+    <span class="ark-topbar__meta">SCP:SL // PLUGIN INDEX</span>
+    <div class="ark-topbar__right">
+      <div class="ark-topbar__links">
+        <a href="/platform/">平台</a>
+        <a href="/dnt-118/">DNT-118</a>
+        <a href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://afdian.com/a/DNT_OF" target="_blank" rel="noreferrer">爱发电</a>
+      </div>
+      <label class="ark-themeswitch">
+        <span class="ark-themeswitch__label">THEME</span>
+        <select id="arkThemeSelect" aria-label="选择主题家族">
+          <option value="ark">ARK</option>
+          <option value="endfield">ENDFIELD</option>
+          <option value="exa">EX ASTRIS</option>
+          <option value="popucom">POPUCOM</option>
+          <option value="corporate">CORPORATE</option>
+        </select>
+      </label>
     </div>
   </header>
 
-  <!-- FEATURED：左文右码 -->
-  <section class="section reveal">
-    <div class="section-label">FEATURED · 重点项目</div>
-    <div class="featured">
-      <div>
-        <h2 class="featured__name"><a href="https://github.com/DNTOF/SLDataAPI" target="_blank">SLDataAPI</a></h2>
-        <p class="featured__desc">
-          面向 astrbot_plugin_sl_query 和 FDC 控制台的 EXILED 服务端信息提供与服务器控制插件。
-          通过 HTTP API 实时暴露服务器状态——在线玩家、回合信息、核弹状态、阵营分布，
-          为前端查询工具和控制台提供统一的数据源。
+  <!-- 主舞台 -->
+  <main class="ark-stage">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__inner">
+        <p class="hero__kicker">PERSONAL INDEX · SCP:SL PLUGIN DEVELOPER</p>
+        <h1 class="hero__id">DNT<span>_</span>OF</h1>
+        <p class="hero__statement">
+          高中生，正在自学 C# 与 Python。为 SCP: Secret Laboratory 服务器写
+          <a href="https://github.com/DNTOF" target="_blank" rel="noreferrer">插件</a>、
+          <a href="/platform/">数据接口</a>与
+          <a href="/dnt-118/">工具</a>——把游戏世界的实时数据变成可用的产品。
         </p>
-        <ul class="featured__list">
-          <li>多源数据聚合：玩家 / 回合 / 服务器 / 核弹 / 阵营</li>
-          <li>HTTP API 实时查询，低延迟推送</li>
-          <li>支持 FDC 控制台远程服务器控制</li>
-        </ul>
-        <div class="featured__links">
-          <a class="textlink" href="/platform/">平台介绍 →</a>
-          <a class="textlink" href="https://github.com/DNTOF/SLDataAPI" target="_blank">查看项目 →</a>
+        <div class="hero__meta">
+          <span>C#</span>
+          <span>PYTHON</span>
+          <span>.NET</span>
+          <span>EXILED</span>
+          <span>ASTRBOT</span>
+        </div>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="/platform/">平台介绍 / PLATFORM</a>
+          <a class="btn" href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub ↗</a>
         </div>
       </div>
-      <div>
-        <div class="codecard">
-          <code><span class="c"># GET /api/v1/round/status</span>
+      <div class="hero__status">
+        <span>INDEX: <b>04 SECTIONS</b></span>
+        <span>ECOLOGY: <b>SCP:SL · EXILED · ASTRBOT</b></span>
+        <span>STATUS: <b class="ok">ACTIVE</b></span>
+        <span>dntof.com</span>
+      </div>
+    </section>
+
+    <!-- FEATURED -->
+    <section class="section wrap" id="featured">
+      <header class="section-head ark-reveal" data-ark-reveal>
+        <p class="kicker"><b>01</b> / FEATURED · 重点项目</p>
+        <h2>SLDataAPI <span class="zh">服务端数据接口</span></h2>
+        <span class="rule" aria-hidden="true"></span>
+      </header>
+      <div class="panel featured">
+        <div class="featured__body">
+          <h3 class="featured__name"><a href="https://github.com/DNTOF/SLDataAPI" target="_blank" rel="noreferrer">SLDataAPI</a></h3>
+          <p class="featured__desc">
+            面向 astrbot_plugin_sl_query 和 FDC 控制台的 EXILED 服务端信息提供与服务器控制插件。
+            通过 HTTP API 实时暴露服务器状态——在线玩家、回合信息、核弹状态、阵营分布，
+            为前端查询工具和控制台提供统一的数据源。
+          </p>
+          <ul class="featured__list">
+            <li>多源数据聚合：玩家 / 回合 / 服务器 / 核弹 / 阵营</li>
+            <li>HTTP API 实时查询，低延迟推送</li>
+            <li>支持 FDC 控制台远程服务器控制</li>
+          </ul>
+          <div class="featured__links">
+            <a class="textlink" href="/platform/">平台介绍 →</a>
+            <a class="textlink" href="https://github.com/DNTOF/SLDataAPI" target="_blank" rel="noreferrer">查看项目 →</a>
+          </div>
+        </div>
+        <div class="terminal" aria-label="接口响应示例">
+          <div class="terminal__bar"><span>RESPONSE <b>/api/v1/round/status</b></span><span>200 OK</span></div>
+<code><span class="c">// 实时回合状态（示意）</span>
 {
   <span class="k">"success"</span>: <span class="s">true</span>,
   <span class="k">"round"</span>: {
-    <span class="k">"state"</span>:   <span class="s">"ongoing"</span>,
+    <span class="k">"state"</span>:    <span class="s">"ongoing"</span>,
     <span class="k">"duration"</span>: <span class="s">1284</span>,
     <span class="k">"players"</span>:  <span class="s">17</span>
   },
   <span class="k">"warhead"</span>: <span class="s">"armed"</span>
 }</code>
-          <span class="codecard__badge">v2.3.0 · EXILED 9.x</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 大号 CTA：DNT-118 -->
-  <section class="section">
-    <div class="big-cta">
-      <div class="section-label">ORGANIZATION · 开发组织</div>
-      <p class="lede">DNT-118 —— 面向 SCP:SL 服务器生态的开发组织，专注 EXILED 插件与服务端数据接口。</p>
-      <a class="textlink" href="/dnt-118/">了解 DNT-118 →</a>
-    </div>
-  </section>
+    <!-- PROJECTS -->
+    <section class="section wrap" id="projects">
+      <header class="section-head ark-reveal" data-ark-reveal>
+        <p class="kicker"><b>02</b> / PROJECTS · 项目</p>
+        <h2>Index <span class="zh">项目列表</span></h2>
+        <span class="rule" aria-hidden="true"></span>
+      </header>
+      <ul class="news">
+        <li>
+          <a href="https://github.com/DNTOF/astrbot_plugin_sl_query" target="_blank" rel="noreferrer">
+            <span class="cat">PYTHON / ASTRBOT</span>
+            <span class="name">astrbot_plugin_sl_query</span>
+            <span class="lang">ACTIVE</span>
+            <span class="arrow">↗</span>
+            <span class="desc">SCP:SL 服务器查询 AstrBot 插件，官方 API + EXILED 实时数据双源查询，多服务器绑定与多会话隔离。</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/DNTOF/SLAgent" target="_blank" rel="noreferrer">
+            <span class="cat">C# / EXILED</span>
+            <span class="name">SLAgent</span>
+            <span class="lang">ACTIVE</span>
+            <span class="arrow">↗</span>
+            <span class="desc">SCP:SL × AI 辅助插件，在游戏中使用自然语言管理服务器，支持上下文记忆与白名单控制。</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/DNTOF/astrbot_plugin_adsb_monitor" target="_blank" rel="noreferrer">
+            <span class="cat">PYTHON / ADS-B</span>
+            <span class="name">astrbot_plugin_adsb_monitor</span>
+            <span class="lang">DORMANT</span>
+            <span class="arrow">↗</span>
+            <span class="desc">连接本地 Dump1090 JSON 输出，实时解析并推送 ADS-B 飞机信息。</span>
+          </a>
+        </li>
+      </ul>
+    </section>
 
-  <!-- PROJECTS -->
-  <section class="section reveal">
-    <div class="section-label">PROJECTS · 项目</div>
-    <h2 class="section-title">从需求里长出来的项目。</h2>
-    <div class="cards">
-      <article class="card">
-        <span class="meta">PYTHON · ASTRBOT</span>
-        <h3>astrbot_plugin_sl_query</h3>
-        <p>SCP:SL 服务器查询 AstrBot 插件，官方 API + EXILED 实时数据双源查询，多服务器绑定与多会话隔离。</p>
-        <a class="textlink" href="https://github.com/DNTOF/astrbot_plugin_sl_query" target="_blank">了解更多 →</a>
-      </article>
-      <article class="card">
-        <span class="meta">C# · EXILED</span>
-        <h3>SLAgent</h3>
-        <p>SCP:SL × AI 辅助插件，在游戏中使用自然语言管理服务器，支持上下文记忆与白名单控制。</p>
-        <a class="textlink" href="https://github.com/DNTOF/SLAgent" target="_blank">了解更多 →</a>
-      </article>
-      <article class="card">
-        <span class="meta">PYTHON · ADS-B</span>
-        <h3>astrbot_plugin_adsb_monitor</h3>
-        <p>连接本地 Dump1090 JSON 输出，实时解析并推送 ADS-B 飞机信息，写给同样是航空爱好者的你。</p>
-        <a class="textlink" href="https://github.com/DNTOF/astrbot_plugin_adsb_monitor" target="_blank">了解更多 →</a>
-      </article>
-    </div>
-  </section>
-
-  <!-- CONTRIBUTIONS -->
-  <section class="section reveal">
-    <div class="section-label">CONTRIBUTIONS · 贡献记录</div>
-    <h2 class="section-title">过去一年的提交足迹。</h2>
-    <div class="chart-panel">
-      <img src="https://ghchart.rshah.org/DNTOF"
-           alt="DNT_OF GitHub contribution graph"
-           loading="lazy" />
-    </div>
-    <div class="figure-caption">
-      <b>FIG.01 — GITHUB CONTRIBUTIONS</b>
-      <span>SOURCE: GHCHART.RSHAH.ORG</span>
-    </div>
-  </section>
-
-</main>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="footer__grid">
-      <div class="footer__brand">
-        <p>为 SCP:SL 社区服务器而写的工具，<b>从源码视角讲述。</b></p>
+    <!-- ORG -->
+    <section class="section wrap" id="org">
+      <header class="section-head ark-reveal" data-ark-reveal>
+        <p class="kicker"><b>03</b> / ORGANIZATION · 开发组织</p>
+        <h2>DNT-118 <span class="zh">组织方向</span></h2>
+        <span class="rule" aria-hidden="true"></span>
+      </header>
+      <div class="org">
+        <div class="org__body">
+          <h3 class="org__title">DNT-118</h3>
+          <p class="org__text">
+            面向 SCP:SL 服务器生态的开发组织。当前方向：EXILED 服务端插件与数据接口。
+            计划把<strong>已知、归组织所有的项目逐个开出公开分支</strong>，作为面向大众社区的版本——
+            功能内核不变，其它都放开。
+          </p>
+          <div class="featured__links">
+            <a class="textlink" href="/dnt-118/">组织主页 →</a>
+            <a class="textlink" href="https://github.com/DNT-118" target="_blank" rel="noreferrer">GitHub · DNT-118 →</a>
+          </div>
+        </div>
       </div>
-      <div class="footer__col">
-        <h4>站点</h4>
-        <ul>
-          <li><a href="/platform/">平台介绍</a></li>
-          <li><a href="/dnt-118/">DNT-118 组织</a></li>
-        </ul>
+    </section>
+
+    <!-- CONTRIBUTIONS -->
+    <section class="section wrap" id="contrib">
+      <header class="section-head ark-reveal" data-ark-reveal>
+        <p class="kicker"><b>04</b> / CONTRIBUTIONS · 贡献记录</p>
+        <h2>Activity <span class="zh">提交足迹</span></h2>
+        <span class="rule" aria-hidden="true"></span>
+      </header>
+      <div class="chart-inset">
+        <img src="https://ghchart.rshah.org/DNTOF"
+             alt="DNT_OF GitHub contribution graph"
+             loading="lazy" />
       </div>
-      <div class="footer__col">
-        <h4>项目</h4>
-        <ul>
-          <li><a href="https://github.com/DNTOF/SLDataAPI" target="_blank">SLDataAPI</a></li>
-          <li><a href="https://github.com/DNTOF" target="_blank">GitHub · DNT_OF</a></li>
-        </ul>
+      <div class="figure-caption">
+        <b>FIG.01 — GITHUB CONTRIBUTIONS / LAST 12 MONTHS</b>
+        <span>SOURCE: GHCHART.RSHAH.ORG</span>
       </div>
-      <div class="footer__col">
-        <h4>支持</h4>
-        <ul>
-          <li><a href="https://afdian.com/a/DNT_OF" target="_blank">爱发电</a></li>
-          <li><a href="https://space.bilibili.com/3493125592975851" target="_blank">哔哩哔哩</a></li>
-        </ul>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="ark-footer">
+      <div class="wrap">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <p>为 SCP:SL 社区服务器而写的工具——<b>数据实时，控制留痕。</b></p>
+          </div>
+          <div class="footer__col">
+            <h4>SITE / 站点</h4>
+            <ul>
+              <li><a href="/platform/">平台介绍</a></li>
+              <li><a href="/dnt-118/">DNT-118 组织</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>PROJECTS / 项目</h4>
+            <ul>
+              <li><a href="https://github.com/DNTOF/SLDataAPI" target="_blank" rel="noreferrer">SLDataAPI</a></li>
+              <li><a href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub · DNT_OF</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>SUPPORT / 支持</h4>
+            <ul>
+              <li><a href="https://afdian.com/a/DNT_OF" target="_blank" rel="noreferrer">爱发电</a></li>
+              <li><a href="https://space.bilibili.com/3493125592975851" target="_blank" rel="noreferrer">哔哩哔哩</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <span>© <span id="year"></span> DNT_OF\</span>
+          <span>THEME: ARK / COMPLEX</span>
+          <span>dntof.com</span>
+        </div>
       </div>
-    </div>
-    <div class="footer__bottom">
-      <span>© <span id="year"></span> DNT_OF\</span>
-      <span>dntof.com</span>
-    </div>
-  </div>
-</footer>
+    </footer>
+
+  </main>
+</div>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Hero 逐词浮现（复刻官方 word animation：拉丁词整体、CJK 单字、链接作为整体单元）
+  // 主题家族切换（root data-ark-theme 轴；localStorage 持久化）
   (function () {
-    const h1 = document.querySelector('.hero h1');
-    if (!h1 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const tokens = [];
-    h1.childNodes.forEach(node => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        const parts = node.textContent.match(/[A-Za-z0-9._:\\-]+|\s+|./gs) || [];
-        parts.forEach(p => tokens.push({ t: p, href: null }));
-      } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'A') {
-        tokens.push({ t: node.textContent, href: node.getAttribute('href') });
-      }
+    const sel = document.getElementById('arkThemeSelect');
+    if (!sel) return;
+    sel.value = document.documentElement.dataset.arkTheme || 'ark';
+    sel.addEventListener('change', () => {
+      const v = sel.value;
+      document.documentElement.dataset.arkTheme = v;
+      try { localStorage.setItem('ark-theme', v); } catch (e) {}
     });
+  })();
 
-    h1.textContent = '';
-    let i = 0;
-    const spans = [];
-    tokens.forEach(tok => {
-      if (/^\s+$/.test(tok.t)) { h1.appendChild(document.createTextNode(' ')); return; }
-      const span = document.createElement('span');
-      span.className = 'animate-word';
-      span.textContent = tok.t;
-      span.style.transitionDelay = (i++ * 45) + 'ms';
-      if (tok.href) {
-        const a = document.createElement('a');
-        a.href = tok.href;
-        a.appendChild(span);
-        h1.appendChild(a);
-      } else {
-        h1.appendChild(span);
-      }
-      spans.push(span);
+  // Masked lateral reveal（官方系 masked reveal 模式）
+  (function () {
+    const els = document.querySelectorAll('[data-ark-reveal]');
+    if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(el => el.setAttribute('data-visible', 'true'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.setAttribute('data-visible', 'true');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    els.forEach(el => io.observe(el));
+  })();
+
+  // 左轨索引高亮（真实滚动位置，非装饰状态）
+  (function () {
+    const links = document.querySelectorAll('[data-index]');
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    const map = {};
+    links.forEach(a => { map[a.getAttribute('href').slice(1)] = a; });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        const link = map[e.target.id];
+        if (!link) return;
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.remove('is-active'));
+          link.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    Object.keys(map).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
     });
-
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      spans.forEach(s => s.classList.add('is-in'));
-    }));
   })();
 </script>
 
