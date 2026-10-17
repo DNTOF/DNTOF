@@ -1,6 +1,23 @@
 {
-  "generated": "2026-10-17T15:55:48.568Z",
+  "generated": "2026-10-17T16:17:36.230Z",
   "posts": [
+    {
+      "slug": "2026-10-17-杂牌MP3折腾记",
+      "title": "为了装个阅读器看小说，把拼多多杂牌 MP3 折腾到 Root：BF10 (MT6735M) 记录",
+      "date": "2026-10-17",
+      "updated": "2026-10-18",
+      "summary": "一台没有官方固件的拼多多杂牌 Android MP3，为了装阅读器看小说，绕过厂商安装限制、用 mtk-su 备份分区，并用 Magisk 完成永久 Root 的全过程。",
+      "tags": [
+        "Android",
+        "MT6735M",
+        "Magisk",
+        "Root",
+        "逆向",
+        "杂牌MP3"
+      ],
+      "minutes": 14,
+      "path": "posts/2026-10-17-杂牌MP3折腾记.md"
+    },
     {
       "slug": "2026-10-17-hello",
       "title": "开一个博客",

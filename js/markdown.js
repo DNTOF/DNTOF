@@ -88,8 +88,8 @@
     var out = [];
     var paragraph = [];
     var quote = [];
-    var listType = null;
-    var listItems = [];
+    var listRoot = null;
+    var listStack = [];
     var i = 0;
 
     function flushParagraph() {
@@ -98,15 +98,18 @@
       paragraph = [];
     }
 
+    function renderList(node) {
+      return '<' + node.type + '>' + node.items.map(function (item) {
+        var children = item.children.map(renderList).join('');
+        return '<li>' + inline(item.text, base) + children + '</li>';
+      }).join('') + '</' + node.type + '>';
+    }
+
     function flushList() {
-      if (!listType) return;
-      out.push(
-        '<' + listType + '>' +
-        listItems.map(function (item) { return '<li>' + inline(item, base) + '</li>'; }).join('') +
-        '</' + listType + '>'
-      );
-      listType = null;
-      listItems = [];
+      if (!listRoot) return;
+      out.push(renderList(listRoot));
+      listRoot = null;
+      listStack = [];
     }
 
     function flushQuote() {
@@ -199,19 +202,45 @@
         continue;
       }
 
-      var bullet = line.match(/^\s*[-*+]\s+(.*)$/);
-      var numbered = line.match(/^\s*\d+[.)]\s+(.*)$/);
-      if (bullet || numbered) {
+      var listMatch = line.match(/^(\s*)([-*+]|\d+[.)])\s+(.*)$/);
+      if (listMatch) {
         flushParagraph();
         flushQuote();
-        var type = bullet ? 'ul' : 'ol';
-        if (listType && listType !== type) flushList();
-        listType = type;
-        listItems.push((bullet || numbered)[1]);
+
+        var indent = listMatch[1].replace(/\t/g, '    ').length;
+        var type = /^\d/.test(listMatch[2]) ? 'ol' : 'ul';
+        var itemText = listMatch[3];
+
+        if (!listRoot) {
+          listRoot = { type: type, indent: indent, items: [] };
+          listStack = [listRoot];
+        } else {
+          var top = listStack[listStack.length - 1];
+          if (indent > top.indent) {
+            var parentItem = top.items[top.items.length - 1];
+            if (parentItem) {
+              var child = { type: type, indent: indent, items: [] };
+              parentItem.children.push(child);
+              listStack.push(child);
+            }
+          } else {
+            while (listStack.length > 1 && listStack[listStack.length - 1].indent > indent) {
+              listStack.pop();
+            }
+            var current = listStack[listStack.length - 1];
+            if (current.indent !== indent || current.type !== type) {
+              flushList();
+              listRoot = { type: type, indent: indent, items: [] };
+              listStack = [listRoot];
+            }
+          }
+        }
+
+        listStack[listStack.length - 1].items.push({ text: itemText, children: [] });
         i++;
         continue;
       }
-      if (listType) flushList();
+      if (listRoot) flushList();
 
       paragraph.push(line);
       i++;

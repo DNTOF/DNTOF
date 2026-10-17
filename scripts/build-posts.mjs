@@ -22,8 +22,9 @@ const OUT_FILE = path.join(POSTS_DIR, 'index.json');
 const FRONT_MATTER = /^---\n([\s\S]*?)\n---\n?/;
 
 function parseFrontMatter(raw) {
-  const match = raw.match(FRONT_MATTER);
-  if (!match) return { data: {}, body: raw };
+  const text = raw.replace(/\r\n?/g, '\n');
+  const match = text.match(FRONT_MATTER);
+  if (!match) return { data: {}, body: text };
 
   const data = {};
   for (const line of match[1].split('\n')) {
@@ -39,7 +40,7 @@ function parseFrontMatter(raw) {
     }
     if (key) data[key] = value;
   }
-  return { data, body: raw.slice(match[0].length) };
+  return { data, body: text.slice(match[0].length) };
 }
 
 function normalizeDate(value) {
@@ -124,7 +125,8 @@ function readingMinutes(body) {
 }
 
 function titleFromBody(body) {
-  const heading = body.match(/^#\s+(.+)$/m);
+  const text = body.replace(/```[\s\S]*?```/g, '');
+  const heading = text.match(/^#\s+(.+)$/m);
   return heading ? heading[1].trim() : null;
 }
 

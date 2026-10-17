@@ -583,6 +583,8 @@ figcaption {
 .post-body ul,
 .post-body ol { margin: 0 0 1.15em 1.4em; }
 .post-body li { margin: 0.3em 0; }
+.post-body li > ul,
+.post-body li > ol { margin: 0.35em 0 0.35em 1.1em; }
 .post-body blockquote {
   margin: 1.4em 0;
   padding: 2px 0 2px 18px;
