@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>文章 — DNT_OF</title>
+  <meta name="description" content="DNT_OF 的博客：插件开发、SCP:SL 服务器运维和一些小工具。" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%2324292f'/%3E%3Ctext%20x='32'%20y='45'%20font-family='monospace'%20font-size='36'%20fill='%23fafaf7'%20text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<div class="wrap">
+  <div class="layout">
+
+    <aside class="side">
+      <div>
+        <a class="side-brand" href="/">DNT_OF</a>
+        <p class="side-role">高中生 · 插件作者</p>
+      </div>
+      <p class="side-now">最近在写 SLDataAPI v2.6</p>
+      <nav class="side-nav" aria-label="站内导航">
+        <a href="/">主页</a>
+        <a href="/blog/" aria-current="page">博客</a>
+        <a href="/platform/">平台</a>
+        <a href="/dnt-118/">DNT-118</a>
+        <a class="ext" href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+      <div class="side-social">
+        <a href="https://space.bilibili.com/3493125592975851" target="_blank" rel="noreferrer">哔哩哔哩</a>
+        <a href="https://afdian.com/a/DNT_OF" target="_blank" rel="noreferrer">爱发电</a>
+      </div>
+    </aside>
+
+    <main class="content">
+      <h1>文章</h1>
+      <p class="lead">
+        插件开发、服务器运维，还有一些顺手写的小工具。写得不勤，但记下的都是自己踩过的坑。
+      </p>
+
+      <div class="post-list" id="post-list">
+        <p class="post-empty">正在加载文章…</p>
+      </div>
+      <p class="post-empty" id="post-error" hidden>
+        文章索引没加载出来。<a href="https://github.com/DNTOF/DNTOF/tree/main/posts" target="_blank" rel="noreferrer">去仓库里看原文 ↗</a>
+      </p>
+      <p class="post-source">
+        文章放在仓库的 <code>posts/</code> 目录，推送后自动更新。
+        <a href="https://github.com/DNTOF/DNTOF/tree/main/posts" target="_blank" rel="noreferrer">在 GitHub 上看 ↗</a>
+      </p>
+    </main>
+
+  </div>
+
+  <footer class="site-foot">
+    <span>© 2026 DNT_OF</span>
+    <span>
+      <a href="/">主页</a>
+      ·
+      <a href="/platform/">平台</a>
+      ·
+      <a href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub</a>
+    </span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var list = document.getElementById('post-list');
+  var error = document.getElementById('post-error');
+
+  function escapeHtml(text) {
+    return String(text)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function tagsHtml(tags) {
+    if (!tags || !tags.length) return '';
+    return tags.map(function (tag) {
+      return '<span class="tag">' + escapeHtml(tag) + '</span>';
+    }).join('');
+  }
+
+  fetch('../posts/index.json', { cache: 'no-cache' })
+    .then(function (response) {
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return response.json();
+    })
+    .then(function (data) {
+      var posts = data.posts || [];
+      if (!posts.length) {
+        list.innerHTML = '<p class="post-empty">还没有文章。</p>';
+        return;
+      }
+      list.innerHTML = posts.map(function (post) {
+        var meta = [];
+        if (post.updated !== post.date) meta.push('发布于 ' + post.date);
+        meta.push('约 ' + post.minutes + ' 分钟');
+        return (
+          '<article class="post-item">' +
+            '<p class="post-date"><span>最后修改</span><time datetime="' + post.updated + '">' + post.updated + '</time></p>' +
+            '<div>' +
+              '<h2 class="post-title"><a href="post.html?slug=' + encodeURIComponent(post.slug) + '">' + escapeHtml(post.title) + '</a></h2>' +
+              (post.summary ? '<p class="post-summary">' + escapeHtml(post.summary) + '</p>' : '') +
+              '<p class="post-meta">' + meta.join(' · ') + '</p>' +
+              (post.tags && post.tags.length ? '<p class="post-tags">' + tagsHtml(post.tags) + '</p>' : '') +
+            '</div>' +
+          '</article>'
+        );
+      }).join('');
+    })
+    .catch(function () {
+      list.innerHTML = '';
+      error.hidden = false;
+    });
+})();
+</script>
+</body>
+</html>

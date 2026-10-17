@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>文章 — DNT_OF</title>
+  <meta name="description" content="DNT_OF 的博客文章。" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%2324292f'/%3E%3Ctext%20x='32'%20y='45'%20font-family='monospace'%20font-size='36'%20fill='%23fafaf7'%20text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<div class="wrap">
+  <div class="layout">
+
+    <aside class="side">
+      <div>
+        <a class="side-brand" href="/">DNT_OF</a>
+        <p class="side-role">高中生 · 插件作者</p>
+      </div>
+      <p class="side-now">最近在写 SLDataAPI v2.6</p>
+      <nav class="side-nav" aria-label="站内导航">
+        <a href="/">主页</a>
+        <a href="/blog/" aria-current="page">博客</a>
+        <a href="/platform/">平台</a>
+        <a href="/dnt-118/">DNT-118</a>
+        <a class="ext" href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+      <div class="side-social">
+        <a href="https://space.bilibili.com/3493125592975851" target="_blank" rel="noreferrer">哔哩哔哩</a>
+        <a href="https://afdian.com/a/DNT_OF" target="_blank" rel="noreferrer">爱发电</a>
+      </div>
+    </aside>
+
+    <main class="content">
+      <p class="post-back"><a href="/blog/">← 全部文章</a></p>
+
+      <article class="post" id="post">
+        <header class="post-head">
+          <h1 id="post-title">加载中…</h1>
+          <p class="post-meta" id="post-info"></p>
+          <p class="post-tags" id="post-tags"></p>
+        </header>
+        <div class="post-body" id="post-body"></div>
+      </article>
+
+      <nav class="post-nav" id="post-nav" hidden>
+        <a id="post-newer" hidden><span>较新的一篇</span></a>
+        <a id="post-older" hidden><span>较早的一篇</span></a>
+      </nav>
+    </main>
+
+  </div>
+
+  <footer class="site-foot">
+    <span>© 2026 DNT_OF</span>
+    <span>
+      <a href="/">主页</a>
+      ·
+      <a href="/blog/">博客</a>
+      ·
+      <a href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub</a>
+    </span>
+  </footer>
+</div>
+
+<script src="/js/markdown.js"></script>
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var slug = params.get('slug');
+  var titleEl = document.getElementById('post-title');
+  var infoEl = document.getElementById('post-info');
+  var tagsEl = document.getElementById('post-tags');
+  var bodyEl = document.getElementById('post-body');
+  var navEl = document.getElementById('post-nav');
+  var current = null;
+
+  function fail(message) {
+    titleEl.textContent = message;
+    infoEl.textContent = '';
+    bodyEl.innerHTML = '<p class="post-empty">可以回<a href="/blog/">文章列表</a>看看别的。</p>';
+  }
+
+  function setTitle(text) {
+    document.title = text + ' — DNT_OF';
+    titleEl.textContent = text;
+  }
+
+  if (!slug) {
+    fail('没指定文章');
+    return;
+  }
+
+  fetch('../posts/index.json', { cache: 'no-cache' })
+    .then(function (response) {
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return response.json();
+    })
+    .then(function (data) {
+      var posts = data.posts || [];
+      var index = posts.map(function (post) { return post.slug; }).indexOf(slug);
+      if (index === -1) {
+        fail('没有找到这篇文章');
+        return;
+      }
+      var post = posts[index];
+      current = post;
+      setTitle(post.title);
+
+      infoEl.textContent = [
+        '发布于 ' + post.date,
+        '最后修改 ' + post.updated,
+        '约 ' + post.minutes + ' 分钟'
+      ].join(' · ');
+
+      if (post.tags && post.tags.length) {
+        post.tags.forEach(function (tag) {
+          var span = document.createElement('span');
+          span.className = 'tag';
+          span.textContent = tag;
+          tagsEl.appendChild(span);
+        });
+      }
+
+      var newer = posts[index - 1];
+      var older = posts[index + 1];
+      var newerEl = document.getElementById('post-newer');
+      var olderEl = document.getElementById('post-older');
+      if (newer) {
+        newerEl.href = 'post.html?slug=' + encodeURIComponent(newer.slug);
+        newerEl.appendChild(document.createTextNode(newer.title));
+        newerEl.hidden = false;
+      }
+      if (older) {
+        olderEl.href = 'post.html?slug=' + encodeURIComponent(older.slug);
+        olderEl.appendChild(document.createTextNode(older.title));
+        olderEl.hidden = false;
+      }
+      if (newer || older) navEl.hidden = false;
+
+      return fetch('../' + post.path, { cache: 'no-cache' });
+    })
+    .then(function (response) {
+      if (!response) return null;
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return response.text();
+    })
+    .then(function (markdown) {
+      if (!markdown) return;
+      bodyEl.innerHTML = window.renderMarkdown(markdown, { base: '../posts/' });
+    })
+    .catch(function () {
+      if (!current) {
+        fail('文章加载失败');
+        return;
+      }
+      bodyEl.innerHTML =
+        '<p class="post-empty">正文没加载出来。' +
+        '<a href="https://github.com/DNTOF/DNTOF/blob/main/' + current.path +
+        '" target="_blank" rel="noreferrer">去仓库看原文 ↗</a></p>';
+    });
+})();
+</script>
+</body>
+</html>

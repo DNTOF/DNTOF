@@ -22,6 +22,7 @@
       <p class="side-now">最近在写 SLDataAPI v2.6</p>
       <nav class="side-nav" aria-label="站内导航">
         <a href="/" aria-current="page">主页</a>
+        <a href="/blog/">博客</a>
         <a href="/platform/">平台</a>
         <a href="/dnt-118/">DNT-118</a>
         <a class="ext" href="https://github.com/DNTOF" target="_blank" rel="noreferrer">GitHub</a>
@@ -104,16 +105,11 @@
         </article>
       </div>
 
-      <h2>组织</h2>
-      <div class="band">
-        <h3>DNT-118</h3>
-        <p>
-          我名下的开发组织，面向 SCP:SL 服务器生态，现在主要维护 EXILED / LabAPI
-          插件和数据接口。接下来打算把一些内部项目开出面向社区的公开分支——
-          功能内核不变，其它都放开。
-        </p>
-        <p style="margin-top:14px"><a href="/dnt-118/">组织主页 →</a></p>
+      <h2>文章</h2>
+      <div class="post-rows" id="home-posts">
+        <p class="post-empty">正在加载…</p>
       </div>
+      <p class="more-link"><a href="/blog/">全部文章 →</a></p>
 
       <h2>提交记录</h2>
       <figure>
@@ -137,5 +133,45 @@
     <span>dntof.com</span>
   </footer>
 </div>
+
+<script>
+(function () {
+  var box = document.getElementById('home-posts');
+  if (!box) return;
+
+  function escapeHtml(text) {
+    return String(text)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  fetch('posts/index.json', { cache: 'no-cache' })
+    .then(function (response) {
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return response.json();
+    })
+    .then(function (data) {
+      var posts = (data.posts || []).slice(0, 3);
+      if (!posts.length) {
+        box.innerHTML = '<p class="post-empty">还没有文章。</p>';
+        return;
+      }
+      box.innerHTML = posts.map(function (post) {
+        return (
+          '<a class="post-row" href="/blog/post.html?slug=' + encodeURIComponent(post.slug) + '">' +
+            '<span class="post-row__date">' + post.updated + '</span>' +
+            '<span class="post-row__title">' + escapeHtml(post.title) + '</span>' +
+            '<span class="post-row__meta">' + post.minutes + ' 分钟</span>' +
+          '</a>'
+        );
+      }).join('');
+    })
+    .catch(function () {
+      box.innerHTML = '<p class="post-empty"><a href="/blog/">文章都在博客里 →</a></p>';
+    });
+})();
+</script>
 </body>
 </html>
