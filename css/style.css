@@ -272,6 +272,19 @@ a.p-name:hover { color: var(--link); }
 .band p { font-size: 0.95rem; max-width: 58ch; }
 .band a { color: #8ec4ff; }
 
+/* ── 停运/状态公告 ── */
+.notice {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--link);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 24px 0 8px;
+  max-width: 62ch;
+}
+.notice p { margin: 0; font-size: 0.95rem; color: var(--ink-2); }
+.notice b { color: var(--ink); }
+
 /* ── 规格行（接口说明） ── */
 .rows { margin-top: 4px; }
 .row-item {

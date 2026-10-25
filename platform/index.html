@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SLDataAPI · Foundation Console</title>
-  <meta name="description" content="SLDataAPI 与 Foundation Console：给 SCP:SL 服主用的服务端数据接口，以及可以自托管的远程管理控制台。" />
+  <title>SLDataAPI · SLConsole</title>
+  <meta name="description" content="SLDataAPI：给 SCP:SL 服主用的服务端数据接口插件；配套 Android 管理应用 SLConsole。原 Web 控制台 FDC 已于 2026-10-25 停止运行，源码将按计划公开。" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%2324292f'/%3E%3Ctext%20x='32'%20y='45'%20font-family='monospace'%20font-size='36'%20fill='%23fafaf7'%20text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" />
@@ -19,7 +19,7 @@
         <a class="side-brand" href="/">DNT_OF</a>
         <p class="side-role">高中生 · 插件作者</p>
       </div>
-      <p class="side-now">最近在写 SLDataAPI v2.6</p>
+      <p class="side-now">最近在写 SLConsole 和 MeSL</p>
       <nav class="side-nav" aria-label="站内导航">
         <a href="/">主页</a>
         <a href="/blog/">博客</a>
@@ -37,12 +37,20 @@
       <h1>SLDataAPI</h1>
       <p class="lead">
         一套给 SCP:SL 服主用的服务端工具：跑在游戏服务器里的插件负责数据与控制接口，
-        配套的 Web 控制台（Foundation Console）负责远程管理。
-        目前闭源开发中，源码计划 2027 年 1 月 1 日公开。
+        手机上用 SLConsole 远程管理。原 Web 控制台 Foundation Console（FDC）
+        已于 2026 年 10 月 25 日停止运行。
       </p>
+      <div class="notice">
+        <p>
+          <b>FDC 已于 2026-10-25 停止运行。</b>
+          接替它的是 Android 应用
+          <a href="https://github.com/DNTOF/SLConsole" target="_blank" rel="noreferrer">SLConsole</a>。
+          FDC 的源码仍会按计划公开，时间见页面底部的倒计时。
+        </p>
+      </div>
       <p class="hero-actions">
-        <a class="btn btn-primary" href="https://github.com/DNTOF/SLDataAPI" target="_blank" rel="noreferrer">GitHub ↗</a>
-        <span class="meta">v2.6.0 preview · 2026-09</span>
+        <a class="btn btn-primary" href="https://github.com/DNTOF/SLDataAPI" target="_blank" rel="noreferrer">SLDataAPI ↗</a>
+        <a class="btn btn-ghost" href="https://github.com/DNTOF/SLConsole" target="_blank" rel="noreferrer">SLConsole ↗</a>
       </p>
 
       <h2>两个部分</h2>
@@ -61,16 +69,16 @@
           </div>
         </article>
         <article class="card">
-          <span class="kicker">Self-hosted</span>
-          <h3 class="p-name">Foundation Console</h3>
+          <span class="kicker">Android</span>
+          <h3 class="p-name">SLConsole</h3>
           <p class="p-desc">
-            可自托管的 Web 管理控制台：多服务器总览、公告、语音监听、地图控制。
-            浏览器与游戏服之间的流量全部由平台服务端转发，凭据不下发前端。
+            接替 FDC 的手机端管理应用：实时状态、玩家、地图、远程控制台和插件管理，
+            全部通过 SLDataAPI 与服务器通信。
           </p>
           <div class="tags">
-            <span class="tag">React · TypeScript</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">自托管</span>
+            <span class="tag">Kotlin · Compose</span>
+            <span class="tag">Material 3</span>
+            <span class="tag">Android</span>
           </div>
         </article>
       </div>
@@ -95,11 +103,11 @@
         </div>
         <div class="row-item">
           <span class="row-key">语音与地图</span>
-          <span class="row-val">控制台可以实时监听语音（Opus 解码转发），也能直接控制门、电梯和灯光。</span>
+          <span class="row-val">语音经 WebSocket 实时转发（Opus 解码）；门、电梯、灯光可以远程控制。</span>
         </div>
         <div class="row-item">
-          <span class="row-key">公告与界面</span>
-          <span class="row-val">Markdown 公告、中英双语界面，另带几套主题——包括一个可以放视频背景的。</span>
+          <span class="row-key">实时事件流</span>
+          <span class="row-val">服务器侧状态事件主动推送——玩家进出、回合切换、设施变化毫秒级抵达，不用轮询。</span>
         </div>
       </div>
 
@@ -116,42 +124,14 @@
   "warhead": "armed"
 }</code></pre>
 
-      <h2>版本记录</h2>
-      <ul class="cl">
-        <li>
-          <span class="ver">v2.6.0 preview · 2026-09</span><span class="name">Kerckhoffs</span>
-          <p class="cl-desc">控制接口改用独立的 API Key（明文只在创建时可见一次），控制路径按 RA 面板语义重写成分域的版本化契约，旧的扁平路径退役。</p>
-        </li>
-        <li>
-          <span class="ver">v2.5.5 preview · 2026-08</span><span class="name">Everest C1</span>
-          <p class="cl-desc">侵入性控制操作开始记审计日志：只记发生了什么，不记来源 IP。</p>
-        </li>
-        <li>
-          <span class="ver">v2.5.4 · 2026-08</span><span class="name">GIS,GNSS,RS!</span>
-          <p class="cl-desc">游戏内举报（SSS 面板）、WebSocket 事件流推送、重生波次控制、四档禁言转正。</p>
-        </li>
-        <li>
-          <span class="ver">v2.5.0 · 2026-08</span><span class="name">控制接口 WebSocket 化</span>
-          <p class="cl-desc">高频控制调用搬进单一 WebSocket 长连接，HTTP 和 WS 按传输自动协商。</p>
-        </li>
-        <li>
-          <span class="ver">v2.4.0 · 2026-08</span><span class="name">Rebirth</span>
-          <p class="cl-desc">从 EXILED 迁到 LabAPI 原生，留了一个反射桥兼容旧的 EXILED 生态。</p>
-        </li>
-        <li>
-          <span class="ver">v2.3.0 · 2026-08</span><span class="name">SPY</span>
-          <p class="cl-desc">全频道语音经 WebSocket 实时转发，Opus 解码成 PCM。</p>
-        </li>
-      </ul>
-
-      <h2>源码公开</h2>
+      <h2>FDC 源码公开</h2>
       <p>
-        还在补文档、做最后的整理。源码计划在
-        <strong>2027 年 1 月 1 日 11:18</strong>（UTC+8）发到 GitHub。
+        FDC 虽然停止运行了，但源码整理没有停：计划在
+        <strong>2026 年 11 月 18 日 11:18</strong>（UTC+8）发布到 GitHub。
       </p>
       <div class="panel">
         <div class="count-big" id="countdown">计算中…</div>
-        <p class="count-note">距离源码公开 · 2027-01-01 11:18 · UTC+8</p>
+        <p class="count-note">距离 FDC 源码公开 · 2026-11-18 11:18 · UTC+8</p>
       </div>
     </main>
 
@@ -170,9 +150,9 @@
 </div>
 
 <script>
-// 倒计时：2027-01-01 11:18（UTC+8）
+// 倒计时：2026-11-18 11:18（UTC+8）
 (function () {
-  var TARGET = new Date('2027-01-01T11:18:00+08:00');
+  var TARGET = new Date('2026-11-18T11:18:00+08:00');
   var el = document.getElementById('countdown');
   if (!el) return;
   function pad(n) { return String(n).padStart(2, '0'); }
