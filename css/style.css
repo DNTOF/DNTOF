@@ -218,6 +218,8 @@ a.p-name:hover { color: var(--link); }
   flex-shrink: 0;
 }
 .status.on::before { background: var(--ok); }
+.status.contrib::before { background: var(--ink-3); }
+.status.contrib { color: var(--ink-3); }
 .p-desc {
   color: var(--ink-2);
   font-size: 0.92rem;
