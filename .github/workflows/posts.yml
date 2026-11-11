@@ -28,18 +28,18 @@ jobs:
       - name: 扫描 Markdown 生成索引
         run: node scripts/build-posts.mjs
 
-      - name: 索引有变化时提交
+      - name: 索引或站点地图有变化时提交
         id: commit
         run: |
-          if git diff --quiet -- posts/index.json; then
+          if git diff --quiet -- posts/index.json sitemap.xml; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "索引没有变化，跳过提交"
+            echo "索引和站点地图没有变化，跳过提交"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add posts/index.json
-          git commit -m "chore: 更新文章索引 [skip ci]"
+          git add posts/index.json sitemap.xml
+          git commit -m "chore: 更新文章索引和站点地图 [skip ci]"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
