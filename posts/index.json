@@ -1,6 +1,23 @@
 {
-  "generated": "2026-10-31T15:28:24.303Z",
+  "generated": "2026-11-11T10:36:43.546Z",
   "posts": [
+    {
+      "slug": "2026-11-11-校园网主机与手表Clash桥",
+      "title": "如何在学校给没有授权的设备通过中继绕过校园网认证",
+      "date": "2026-11-11",
+      "updated": "2026-11-11",
+      "summary": "学校批了一台不停机电脑和局域网桥接，但政府机关网屏蔽国外站、主机是 Windows、手表是 Android 7.1 的 Z3，还要求不动任何 IP。最后用 U 盘上的单 bat 把 mihomo direct 部署到 C:\\CampusProxy，手表上用 mihomo + iptables + fake-ip 接管全部 TCP。中间踩了 global 默认 DIRECT、toybox 没有 awk、内嵌 PowerShell 的标记和编码这些坑。",
+      "tags": [
+        "网络",
+        "Clash",
+        "mihomo",
+        "Windows",
+        "Android",
+        "校园网"
+      ],
+      "minutes": 7,
+      "path": "posts/2026-11-11-校园网主机与手表Clash桥.md"
+    },
     {
       "slug": "2026-10-31-小天才Z3解决第三方应用联网问题",
       "title": "小天才 Z3 第三方应用无法联网问题，厂商框架里的进程许可证也干了。",
