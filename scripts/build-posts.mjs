@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * 扫描 posts/*.md，生成 posts/index.json。
+ * 扫描 posts/*.md，生成 posts/index.json，并据此写出仓库根目录的 sitemap.xml。
  *
  * 每篇文章的「最后修改日期」按以下顺序推断：
  *   1. 元数据里的 updated 字段（手动指定，优先级最高）
@@ -8,16 +8,28 @@
  *   3. 文件系统修改时间
  *   4. 元数据里的 date
  *
+ * 站点地图只收录规范公开页。文章 lastmod 使用上面得到的 updated（YYYY-MM-DD）；
+ * 没有这份日期的静态页不写 lastmod。
+ *
  * 用法：node scripts/build-posts.mjs
  */
 
-import { readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 
 const ROOT = process.cwd();
 const POSTS_DIR = path.join(ROOT, 'posts');
 const OUT_FILE = path.join(POSTS_DIR, 'index.json');
+const SITEMAP_FILE = path.join(ROOT, 'sitemap.xml');
+const SITE = 'https://dntof.com';
+
+const STATIC_PAGES = [
+  { loc: `${SITE}/`, file: 'index.html' },
+  { loc: `${SITE}/blog/`, file: 'blog/index.html' },
+  { loc: `${SITE}/platform/`, file: 'platform/index.html' },
+  { loc: `${SITE}/dnt-118/`, file: 'dnt-118/index.html' },
+];
 
 const FRONT_MATTER = /^---\n([\s\S]*?)\n---\n?/;
 
@@ -186,6 +198,75 @@ function collectPosts() {
     });
 }
 
+function xmlEscape(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+function articleLoc(slug) {
+  return `${SITE}/blog/post.html?slug=${encodeURIComponent(slug)}`;
+}
+
+function buildSitemap(postList) {
+  for (const page of STATIC_PAGES) {
+    if (!existsSync(path.join(ROOT, page.file))) {
+      throw new Error(`站点地图引用了不存在的页面：${page.file}`);
+    }
+  }
+
+  const urls = STATIC_PAGES.map((page) => ({ loc: page.loc }));
+  for (const post of postList) {
+    if (!existsSync(path.join(ROOT, post.path))) {
+      throw new Error(`站点地图引用了不存在的文章：${post.path}`);
+    }
+    urls.push({
+      loc: articleLoc(post.slug),
+      lastmod: normalizeDate(post.updated),
+    });
+  }
+
+  const body = urls
+    .map((url) => {
+      const lines = ['  <url>', `    <loc>${xmlEscape(url.loc)}</loc>`];
+      if (url.lastmod) lines.push(`    <lastmod>${url.lastmod}</lastmod>`);
+      lines.push('  </url>');
+      return lines.join('\n');
+    })
+    .join('\n');
+
+  const xml =
+    '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    `${body}\n` +
+    '</urlset>\n';
+
+  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  if (locs.length !== urls.length) {
+    throw new Error(`站点地图 URL 数量不符：${locs.length}，应为 ${urls.length}`);
+  }
+  const seen = new Set();
+  for (const loc of locs) {
+    if (!loc.startsWith(`${SITE}/`)) throw new Error(`站点地图含非规范地址：${loc}`);
+    if (seen.has(loc)) throw new Error(`站点地图 URL 重复：${loc}`);
+    seen.add(loc);
+  }
+  const lastmods = [...xml.matchAll(/<lastmod>([^<]*)<\/lastmod>/g)].map((match) => match[1]);
+  if (lastmods.length !== postList.length) {
+    throw new Error('静态页面不应写入 lastmod');
+  }
+  for (const value of lastmods) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+      throw new Error(`站点地图 lastmod 无效：${value}`);
+    }
+  }
+
+  return xml;
+}
+
 const posts = collectPosts();
 
 let previous = null;
@@ -204,4 +285,7 @@ const index = {
 };
 
 writeFileSync(OUT_FILE, JSON.stringify(index, null, 2) + '\n', 'utf8');
+const sitemap = buildSitemap(posts);
+writeFileSync(SITEMAP_FILE, sitemap, 'utf8');
 console.log(`已生成 posts/index.json：${posts.length} 篇文章`);
+console.log(`已生成 sitemap.xml：${STATIC_PAGES.length + posts.length} 个地址`);

@@ -9,7 +9,7 @@
 3. 正文用 Markdown 写；
 4. 提交并推送到 `main`。
 
-推送后 GitHub Action 会自动重新生成 `posts/index.json`，博客列表随即更新——不需要手动改任何列表文件。
+推送后 GitHub Action 会自动重新生成 `posts/index.json` 和站点地图 `sitemap.xml`，博客列表随即更新——不需要手动改任何列表文件。
 
 ## 元数据
 
