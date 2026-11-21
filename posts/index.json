@@ -1,12 +1,12 @@
 {
-  "generated": "2026-11-21T14:07:54.978Z",
+  "generated": "2026-11-21T14:39:00.005Z",
   "posts": [
     {
       "slug": "2026-11-21-SCP-SL-15.0逆向全记录",
       "title": "SCP:SL 15.0 逆向全记录：122,167 个方法、17 张图集和一张可以预测的地图",
       "date": "2026-11-21",
       "updated": "2026-11-21",
-      "summary": "Northwood 把 metadata 的版本号写成 23、删掉 sanity、重排 header、压缩表条目，通用工具全灭。我们从 il2cpp_init 的运行时锚点一路挖到 122,167 个方法、19,727 个类型，再把 17 张 32×32 图集、颜色到形状的映射、房间权重和 System.Random 消耗序列全部离线还原，最后把 15.0 的地图定位 API 变化也一并理清。",
+      "summary": "Northwood 把 metadata 的版本号写成 23、删掉 sanity、重排 header、压缩表条目，通用工具全灭。我们从 il2cpp_init 的运行时锚点一路挖到 122,167 个方法、19,727 个类型，再把 17 张 32×32 图集、颜色到形状的映射、房间权重和 System.Random 消耗序列全部离线还原，确认地表是固定预制体、只有 LCZ/HCZ/EZ 吃种子，最后把 15.0 的地图定位 API 变化也一并理清。",
       "tags": [
         "SCP:SL",
         "逆向",
@@ -16,7 +16,7 @@
         "UnityPy"
       ],
       "rating": "S",
-      "minutes": 18,
+      "minutes": 19,
       "path": "posts/2026-11-21-SCP-SL-15.0逆向全记录.md"
     },
     {
