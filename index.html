@@ -191,7 +191,9 @@
         return (
           '<a class="post-row" href="/blog/post.html?slug=' + encodeURIComponent(post.slug) + '">' +
             '<span class="post-row__date">' + post.updated + '</span>' +
-            '<span class="post-row__title">' + escapeHtml(post.title) + '</span>' +
+            '<span class="post-row__title">' +
+              (post.rating ? '<span class="rating rating-' + post.rating.toLowerCase() + '" title="文章评级：' + post.rating + '">' + post.rating + '</span> ' : '') +
+              escapeHtml(post.title) + '</span>' +
             '<span class="post-row__meta">' + post.minutes + ' 分钟</span>' +
           '</a>'
         );

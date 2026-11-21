@@ -104,7 +104,9 @@
           '<article class="post-item">' +
             '<p class="post-date"><span>最后修改</span><time datetime="' + post.updated + '">' + post.updated + '</time></p>' +
             '<div>' +
-              '<h2 class="post-title"><a href="post.html?slug=' + encodeURIComponent(post.slug) + '">' + escapeHtml(post.title) + '</a></h2>' +
+              '<h2 class="post-title">' +
+                (post.rating ? '<span class="rating rating-' + post.rating.toLowerCase() + '" title="文章评级：' + post.rating + '">' + post.rating + '</span> ' : '') +
+                '<a href="post.html?slug=' + encodeURIComponent(post.slug) + '">' + escapeHtml(post.title) + '</a></h2>' +
               (post.summary ? '<p class="post-summary">' + escapeHtml(post.summary) + '</p>' : '') +
               '<p class="post-meta">' + meta.join(' · ') + '</p>' +
               (post.tags && post.tags.length ? '<p class="post-tags">' + tagsHtml(post.tags) + '</p>' : '') +

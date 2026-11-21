@@ -150,6 +150,11 @@ function parseTags(value) {
     .filter(Boolean);
 }
 
+function normalizeRating(value) {
+  const text = String(value || '').trim().toUpperCase();
+  return ['S', 'A', 'B', 'C'].includes(text) ? text : '';
+}
+
 function collectPosts() {
   let files = [];
   try {
@@ -187,6 +192,7 @@ function collectPosts() {
         updated,
         summary: (data.summary || data.description || makeSummary(body)).trim(),
         tags: parseTags(data.tags),
+        rating: normalizeRating(data.rating),
         minutes: readingMinutes(body),
         path: relPath,
       };

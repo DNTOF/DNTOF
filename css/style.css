@@ -514,6 +514,45 @@ figcaption {
   margin-top: 9px;
 }
 .post-tags:empty { display: none; }
+
+/* ── 文章评级 ── */
+.rating {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.65em;
+  height: 1.65em;
+  padding: 0 0.32em;
+  border-radius: 5px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+}
+.rating-s {
+  color: #3b2600;
+  background: linear-gradient(135deg, #ffe49a, #f5b301);
+  border: 1px solid #d99a00;
+  box-shadow: 0 0 0 1px rgba(245, 179, 1, 0.15), 0 2px 7px rgba(245, 179, 1, 0.28);
+}
+.rating-a { color: #0b3a66; background: #cfe8ff; border: 1px solid #8cc6f4; }
+.rating-b { color: var(--ink-2); background: var(--tint); border: 1px solid var(--border-strong); }
+.rating-c { color: var(--ink-3); background: transparent; border: 1px dashed var(--border-strong); }
+.post-title .rating { margin-right: 0.45em; }
+.post-row__title .rating { margin-right: 0.45em; }
+.post-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  margin: 0.7em 0 0;
+}
+.rating-label {
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  letter-spacing: 0.08em;
+}
 .post-empty {
   padding: 18px 0;
   font-size: 0.92rem;
